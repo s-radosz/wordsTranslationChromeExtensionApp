@@ -4,15 +4,7 @@
 // Variables
 @import "variables";
 
-@import "./global.scss";
-@import "./searchProducts.scss";
-@import "./homepage.scss";
-@import "./sidebar.scss";
-@import "./dashboard.scss";
-@import "./users.scss";
-@import "./login.scss";
-@import "./menu.scss";
-@import "./game.scss";
+@import "landing";
 
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";

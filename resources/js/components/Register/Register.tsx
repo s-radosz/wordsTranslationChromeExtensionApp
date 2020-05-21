@@ -1,6 +1,6 @@
 import * as React from "react";
 import axios from "axios";
-import ACTIONS from "../../../modules/action";
+import ACTIONS from "../../modules/actions/userActions";
 import { connect } from "react-redux";
 
 const Register = ({ user, createUser }) => {

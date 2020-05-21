@@ -30,7 +30,7 @@ class UserController extends Controller
 
         return response()->json(['result' => [
             'token' => $token,
-            'user_role' => $user->admin_role ? "admin" : "customer",
+            'user' => $user
         ]], 200);
     }
 

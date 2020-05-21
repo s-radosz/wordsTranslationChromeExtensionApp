@@ -1,20 +1,37 @@
-import ACTIONS from "./action";
-import _ from "lodash";
+import actionTypes from "./actionTypes"
 
 const defaultState = {
-    user: []
+    user: {
+        email: "",
+        token: "",
+        email_verified_at: ""
+    },
+    wordsTranslations: [],
+    config: {
+        paths: {
+            APP_URL: "http://127.0.0.1:8000",
+            API_URL: "http://127.0.0.1:8000/api"
+        },
+        showLoader: false,
+        alert: {
+            showAlert: false,
+            alertType: "",
+            alertMessage: ""
+        }
+    }
 };
 
 const userReducer = (state = defaultState, action) => {
     switch (action.type) {
-        case ACTIONS.Types.CREATE_USER: {
-            console.log(action);
-
-            let item = action.payload;
-            let newUser = { email: item };
-            let newState = _.cloneDeep(state);
-            newState.user.push(newUser);
-            return newState;
+        case actionTypes.CREATE_USER: {
+            console.log(["action.payload", action.payload]);
+            return {
+                ...state, user: {
+                    email: action.payload.user.email,
+                    token: action.payload.token,
+                    email_verified_at: action.payload.user.email_verified_at,
+                }
+            };
         }
 
         default:

@@ -6,13 +6,12 @@ import {
     Route,
     Redirect
 } from "react-router-dom";
-import { MainContext } from "./MainContext";
 import history from "./History";
 import Alert from "./utils/Alert/Alert";
-import Home from "./utils/Home/Home";
-import Register from "./utils/Register/Register";
+import Home from "./Home/Home";
+import Register from "./Register/Register";
+import Login from "./Login/Login";
 import { MainProps, MainState } from "./Main.interface";
-import { Provider } from 'react-redux'
 import { Provider as ReduxProvider } from "react-redux";
 import configureStore from "./../modules/store";
 
@@ -45,6 +44,11 @@ class Main extends Component<MainProps, MainState> {
                 path: "/register",
                 name: "Register",
                 Component: Register
+            },
+            {
+                path: "/login",
+                name: "Login",
+                Component: Login
             },
             {
                 path: "/",
