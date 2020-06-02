@@ -1,5 +1,8 @@
 const actionTypes = {
-    CREATE_USER: "CREATE_USER"
+    CREATE_USER: "CREATE_USER",
+    CREATE_WORDS: "CREATE_WORDS",
+    UPDATE_USER_WORDS_COUNTS: "UPDATE_USER_WORDS_COUNTS",
+    REMOVE_WORD: "REMOVE_WORD",
 };
 
 export default actionTypes;

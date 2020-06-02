@@ -22,9 +22,7 @@ const Register = ({ user, createUser }) => {
     }
 
     return (
-        <div>
-            <p>register - {user && user[0] && user[0].email ? user[0].email : ""}</p>
-
+        <div className="container__one-page--center">
             <form>
                 <input onChange={e => setEmail(e.target.value)} placeholder="Email" />
                 <input onChange={e => setPassword(e.target.value)} placeholder="password" />

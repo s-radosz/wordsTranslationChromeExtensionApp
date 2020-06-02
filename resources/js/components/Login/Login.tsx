@@ -1,29 +1,43 @@
 import * as React from "react";
-import axios from "axios";
 import userActions from "../../modules/actions/userActions";
+import wordsActions from "../../modules/actions/wordsActions"
 import { connect } from "react-redux";
 import LoginForm from "./LoginForm/LoginForm"
+import { handlePostRequest, handleGetRequest } from "./../helpers/api"
 
-const Login = ({ user, createUser }) => {
+
+const Login = ({ config, createUser, createWords, handleChangePath }) => {
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        axios.post(`http://127.0.0.1:8000/api/login`, {
+
+        let userResult = await handlePostRequest(`${config.paths.API_URL}/login`, {
             email: email,
             password: password
-        }).then(res => {
-            console.log(res)
-            createUser(res.data.result);
         })
+
+        console.log(["userResult", userResult])
+
+        createUser(userResult);
+
+        //@ts-ignore
+        localStorage.setItem("token", userResult.token);
+        //@ts-ignore
+        localStorage.setItem("user", JSON.stringify(userResult.user));
+
+        //@ts-ignore
+        let wordsResult = await handleGetRequest(`${config.paths.API_URL}/words/all/${userResult.user.id}`, userResult.token)
+
+        createWords(wordsResult)
+
+        handleChangePath("dashboard")
     }
 
     return (
-        <div>
-            <p className="loggedIn">logged in - {user && user.email ? user.email : ""}</p>
-
+        <div className="container__one-page--center">
             <LoginForm
                 setEmail={setEmail}
                 setPassword={setPassword}
@@ -34,11 +48,12 @@ const Login = ({ user, createUser }) => {
     )
 }
 const mapStateToProps = state => ({
-    user: state.user
+    config: state.config
 });
 
 const mapDispatchToProps = dispatch => ({
     createUser: user => dispatch(userActions.createUser(user)),
+    createWords: wordsData => dispatch(wordsActions.createWords(wordsData))
 });
 
 export default connect(

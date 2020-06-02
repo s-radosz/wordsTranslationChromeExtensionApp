@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\Word;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use JWTAuth;
+use Carbon\Carbon;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Validator;
 
@@ -59,14 +61,14 @@ class UserController extends Controller
     {
         try {
             if (!$user = JWTAuth::parseToken()->authenticate()) {
-                return response()->json(['result' => 'user_not_found'], 401);
+                return response()->json(['result' => 'user_not_found', "token_error" => true], 401);
             }
         } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
-            return response()->json(['result' => 'token_expired'], 401);
+            return response()->json(['result' => 'token_expired', "token_error" => true], 401);
         } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
-            return response()->json(['result' => 'token_invalid'], 401);
+            return response()->json(['result' => 'token_invalid', "token_error" => true], 401);
         } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
-            return response()->json(['result' => 'token_absent'], 401);
+            return response()->json(['result' => 'token_absent', "token_error" => true], 401);
         }
 
         return response()->json(['result' => compact('user')], 201);
@@ -83,6 +85,33 @@ class UserController extends Controller
         } catch (\Exception $e) {
             $user = User::where('email', $email)->get();
 
+            $this->storeErrorLog($user->id, '/checkIfEmailExists', $e->getMessage());
+
+            return response()->json(['result' => $e->getMessage()], 401);
+        }
+    }
+
+    public function getUserWordsCounts(Request $request) {
+        try {
+            $userId = $request->userId;
+
+            $wordsOverallCount = Word::where('user_id', $userId)->count();
+
+            $wordsWeekCount = Word::where('user_id', $userId)
+                                ->where('created_at', '>', Carbon::today()->subDays(7))
+                                ->count();
+
+            $wordsTodayCount = Word::where('user_id', $userId)
+                                ->where('created_at', '>=', Carbon::today())
+                                ->count();
+
+            return response()->json(['result' => [
+                "wordsOverallCount" => $wordsOverallCount,
+                "wordsWeekCount" => $wordsWeekCount,
+                "wordsTodayCount" => $wordsTodayCount
+            ]], 201);
+        } catch (\Exception $e) {
+            $user = User::where('email', $email)->get();
             $this->storeErrorLog($user->id, '/checkIfEmailExists', $e->getMessage());
 
             return response()->json(['result' => $e->getMessage()], 401);

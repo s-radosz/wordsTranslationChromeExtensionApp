@@ -8,12 +8,15 @@ import {
 } from "react-router-dom";
 import history from "./History";
 import Alert from "./utils/Alert/Alert";
+import Menu from "./utils/Menu/Menu";
 import Home from "./Home/Home";
 import Register from "./Register/Register";
+import Dashboard from "./Dashboard/Dashboard"
 import Login from "./Login/Login";
 import { MainProps, MainState } from "./Main.interface";
 import { Provider as ReduxProvider } from "react-redux";
 import configureStore from "./../modules/store";
+import LoginCheckMiddleware from "./helpers/LoginCheckMiddleware"
 
 //@ts-ignore
 const reduxStore = configureStore(window.REDUX_INITIAL_DATA);
@@ -26,15 +29,12 @@ class Main extends Component<MainProps, MainState> {
         super(props);
 
         this.state = {
-            APP_URL: "http://127.0.0.1:8000",
-            // APP_URL: "http://land-of-mine.com/",
             showLoader: false,
             alertMessage: "",
             alertStatus: "",
-            allowedPaths: ["game"],
+            allowedPaths: ["dashboard"],
             allowRedirect: false,
-            redirectedPath: "",
-            userLoggedIn: false
+            redirectedPath: ""
         };
 
         this.history = history;
@@ -49,6 +49,11 @@ class Main extends Component<MainProps, MainState> {
                 path: "/login",
                 name: "Login",
                 Component: Login
+            },
+            {
+                path: "/dashboard",
+                name: "Dashboard",
+                Component: Dashboard
             },
             {
                 path: "/",
@@ -70,18 +75,20 @@ class Main extends Component<MainProps, MainState> {
     };
 
     handleChangePath = (path) => {
-        //console.log(["chandleChangePath", path]);
-        const { allowedPaths, userLoggedIn } = this.state;
 
-        if (!userLoggedIn) {
-            if (allowedPaths.includes(path.split("/")[0])) {
-                this.setState({ allowRedirect: true, redirectedPath: path });
-            } else {
-                this.setState({ allowRedirect: true, redirectedPath: "/" });
-            }
+        const { allowedPaths } = this.state;
+
+        // if (!userLoggedIn) {
+        if (allowedPaths.includes(path.split("/")[0])) {
+            console.log(["chandleChangePath1", path]);
+            this.setState({ allowRedirect: true, redirectedPath: path });
         } else {
-            this.history.push({ pathname: path, state: {} });
+            console.log(["chandleChangePath1", path]);
+            this.setState({ allowRedirect: true, redirectedPath: "/" });
         }
+        // } else {
+        //     this.history.push({ pathname: path, state: {} });
+        // }
     };
 
     handleShowAlert = (message, status) => {
@@ -102,7 +109,6 @@ class Main extends Component<MainProps, MainState> {
 
     render() {
         const {
-            APP_URL,
             showLoader,
             alertMessage,
             alertStatus,
@@ -110,15 +116,18 @@ class Main extends Component<MainProps, MainState> {
             redirectedPath,
         } = this.state;
 
-
         return (
             <ReduxProvider store={reduxStore}>
                 {alertMessage && alertStatus && (
                     <Alert message={alertMessage} status={alertStatus} />
                 )}
 
-                <div className="container-sm app__container">
-                    <Router history={history}>
+                <Router history={history}>
+                    <LoginCheckMiddleware />
+
+                    <Menu />
+
+                    <div className="container">
                         {allowRedirect && redirectedPath && (
                             <Redirect to={redirectedPath} />
                         )}
@@ -132,17 +141,18 @@ class Main extends Component<MainProps, MainState> {
                                             key={`path-${name}`}
                                             path={path}
                                         >
-                                            <Component />
+                                            <Component handleChangePath={this.handleChangePath} />
                                         </Route>
                                     );
                                 }
                             )}
                         </Switch>
-                    </Router>
-                </div>
+                    </div>
+                </Router>
             </ReduxProvider>
         );
     }
 }
 
 export default Main;
+

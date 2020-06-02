@@ -29,9 +29,9 @@ const Head = ({ title }) => {
             />
             {/* <link rel="shortcut icon" src={favicon}/> */}
 
-            <link rel="stylesheet" href="/css/bootstrap.min.css" />
+            {/* <link rel="stylesheet" href="/css/bootstrap.min.css" />
             <link rel="stylesheet" href="/css/style.css" />
-            <link rel="stylesheet" href="/css/responsive.css" />
+            <link rel="stylesheet" href="/css/responsive.css" /> */}
         </Helmet>
     );
 };

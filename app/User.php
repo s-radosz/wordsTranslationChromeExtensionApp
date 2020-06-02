@@ -36,4 +36,9 @@
         {
             return [];
         }
+
+        public function words()
+        {
+            return $this->hasMany('App\Word', 'user_id');
+        }
     }
