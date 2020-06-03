@@ -5,6 +5,10 @@ const createUser = task => ({
     payload: task
 });
 
+const logoutUser = () => ({
+    type: actionTypes.LOGOUT_USER
+});
+
 const updateUserWordsCounts = task => ({
     type: actionTypes.UPDATE_USER_WORDS_COUNTS,
     payload: task
@@ -12,5 +16,6 @@ const updateUserWordsCounts = task => ({
 
 export default {
     createUser,
+    logoutUser,
     updateUserWordsCounts
 };

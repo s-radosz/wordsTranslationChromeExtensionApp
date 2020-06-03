@@ -15,8 +15,10 @@ const WordsListRow = ({
             <td>
                 {word.pl}
             </td>
-            <td onClick={() => handleRemoveWord(word.id)}>
-                Remove
+            <td >
+                <button className="btn yellow-btn" onClick={() => handleRemoveWord(word.id)}>
+                    Remove
+                </button>
             </td>
         </tr>
     );

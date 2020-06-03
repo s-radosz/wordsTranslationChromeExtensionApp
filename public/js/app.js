@@ -39291,6 +39291,30 @@ var mapDispatchToProps = function (dispatch) { return ({
 
 /***/ }),
 
+/***/ "./resources/js/components/Dashboard/Statistics/SingleStat/SingleStat.tsx":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/Dashboard/Statistics/SingleStat/SingleStat.tsx ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var SingleStat = function (_a) {
+    var number = _a.number, text = _a.text;
+    return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "dashboard-statistics__single" },
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null,
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: "number" }, number),
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: "text" }, text))));
+};
+/* harmony default export */ __webpack_exports__["default"] = (SingleStat);
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Dashboard/Statistics/Statistics.tsx":
 /*!*********************************************************************!*\
   !*** ./resources/js/components/Dashboard/Statistics/Statistics.tsx ***!
@@ -39302,22 +39326,15 @@ var mapDispatchToProps = function (dispatch) { return ({
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _SingleStat_SingleStat__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SingleStat/SingleStat */ "./resources/js/components/Dashboard/Statistics/SingleStat/SingleStat.tsx");
+
 
 var Statistics = function (_a) {
     var user = _a.user;
     return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "dashboard-statistics" },
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "dashboard-statistics__single" },
-            "Saved ",
-            user.countSavedWordsOverall,
-            " overall"),
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "dashboard-statistics__single" },
-            "Saved ",
-            user.countSavedWordsLastWeek,
-            " weekly"),
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "dashboard-statistics__single" },
-            "Saved ",
-            user.countSavedWordsToday,
-            " today")));
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_SingleStat_SingleStat__WEBPACK_IMPORTED_MODULE_1__["default"], { number: user.countSavedWordsOverall, text: "overall saved" }),
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_SingleStat_SingleStat__WEBPACK_IMPORTED_MODULE_1__["default"], { number: user.countSavedWordsLastWeek, text: "weekly saved" }),
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_SingleStat_SingleStat__WEBPACK_IMPORTED_MODULE_1__["default"], { number: user.countSavedWordsToday, text: "today saved" })));
 };
 /* harmony default export */ __webpack_exports__["default"] = (Statistics);
 
@@ -39361,7 +39378,7 @@ var WordsList = function (_a) {
                         return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_WordsListRow_WordsListRow__WEBPACK_IMPORTED_MODULE_4__["default"], { key: "word-" + i, word: word, i: i, handleRemoveWord: handleRemoveWord }));
                     }))),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("nav", { "aria-label": "Page navigation example" },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_paginate__WEBPACK_IMPORTED_MODULE_3___default.a, { previousLabel: 'prev', nextLabel: 'next', forcePage: words.current_page, breakLabel: '...', breakClassName: 'break-me', pageCount: words.last_page, marginPagesDisplayed: 1, pageRangeDisplayed: 2, onPageChange: handlePageClick, containerClassName: 'pagination', subContainerClassName: 'pages pagination', activeClassName: 'active' })))));
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_paginate__WEBPACK_IMPORTED_MODULE_3___default.a, { previousLabel: false, nextLabell: false, forcePage: words.current_page, breakLabel: '...', breakClassName: 'break-me', pageCount: words.last_page, marginPagesDisplayed: 1, pageRangeDisplayed: 2, onPageChange: handlePageClick, containerClassName: 'pagination', subContainerClassName: 'pages pagination', activeClassName: 'active' })))));
 };
 var mapStateToProps = function (state) { return ({
     user: state.user,
@@ -39395,7 +39412,8 @@ var WordsListRow = function (_a) {
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("th", { scope: "row" }, word.id),
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("td", null, word.en),
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("td", null, word.pl),
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("td", { onClick: function () { return handleRemoveWord(word.id); } }, "Remove")));
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("td", null,
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: function () { return handleRemoveWord(word.id); } }, "Remove"))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (WordsListRow);
 
@@ -39757,7 +39775,7 @@ var Main = (function (_super) {
             alertMessage && alertStatus && (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utils_Alert_Alert__WEBPACK_IMPORTED_MODULE_3__["default"], { message: alertMessage, status: alertStatus })),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], { history: _History__WEBPACK_IMPORTED_MODULE_2__["default"] },
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_helpers_LoginCheckMiddleware__WEBPACK_IMPORTED_MODULE_11__["default"], null),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utils_Menu_Menu__WEBPACK_IMPORTED_MODULE_4__["default"], null),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utils_Menu_Menu__WEBPACK_IMPORTED_MODULE_4__["default"], { handleChangePath: this.handleChangePath }),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "container" },
                     allowRedirect && redirectedPath && (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], { to: redirectedPath })),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, this.routes.map(function (_a) {
@@ -40035,11 +40053,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _modules_actions_userActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../modules/actions/userActions */ "./resources/js/modules/actions/userActions.js");
+
 
 
 
 var Menu = function (_a) {
-    var user = _a.user;
+    var user = _a.user, logoutUser = _a.logoutUser, handleChangePath = _a.handleChangePath;
+    var handleLogout = function () {
+        logoutUser();
+        handleChangePath("");
+    };
     return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "menu box-shadow" },
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "menu-container" },
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { to: "/" },
@@ -40055,7 +40079,7 @@ var Menu = function (_a) {
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: "menu-link" },
                             "Hi, ",
                             user.email),
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "menu-btn yellow-btn" }, "Logout"))
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "menu-btn yellow-btn", onClick: handleLogout }, "Logout"))
                     :
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null,
                             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { to: "/login", className: "menu-link" }, "Sign in"),
@@ -40065,7 +40089,10 @@ var Menu = function (_a) {
 var mapStateToProps = function (state) { return ({
     user: state.user
 }); };
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, {})(Menu));
+var mapDispatchToProps = function (dispatch) { return ({
+    logoutUser: function () { return dispatch(_modules_actions_userActions__WEBPACK_IMPORTED_MODULE_3__["default"].logoutUser()); },
+}); };
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(Menu));
 
 
 /***/ }),
@@ -40083,7 +40110,8 @@ var actionTypes = {
   CREATE_USER: "CREATE_USER",
   CREATE_WORDS: "CREATE_WORDS",
   UPDATE_USER_WORDS_COUNTS: "UPDATE_USER_WORDS_COUNTS",
-  REMOVE_WORD: "REMOVE_WORD"
+  REMOVE_WORD: "REMOVE_WORD",
+  LOGOUT_USER: "LOGOUT_USER"
 };
 /* harmony default export */ __webpack_exports__["default"] = (actionTypes);
 
@@ -40108,6 +40136,12 @@ var createUser = function createUser(task) {
   };
 };
 
+var logoutUser = function logoutUser() {
+  return {
+    type: _actionTypes__WEBPACK_IMPORTED_MODULE_0__["default"].LOGOUT_USER
+  };
+};
+
 var updateUserWordsCounts = function updateUserWordsCounts(task) {
   return {
     type: _actionTypes__WEBPACK_IMPORTED_MODULE_0__["default"].UPDATE_USER_WORDS_COUNTS,
@@ -40117,6 +40151,7 @@ var updateUserWordsCounts = function updateUserWordsCounts(task) {
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   createUser: createUser,
+  logoutUser: logoutUser,
   updateUserWordsCounts: updateUserWordsCounts
 });
 
@@ -40259,6 +40294,12 @@ function user() {
           email_verified_at: action.payload.user.email_verified_at,
           id: action.payload.user.id
         });
+      }
+
+    case _actionTypes__WEBPACK_IMPORTED_MODULE_1__["default"].LOGOUT_USER:
+      {
+        localStorage.clear();
+        return defaultState;
       }
 
     case _actionTypes__WEBPACK_IMPORTED_MODULE_1__["default"].UPDATE_USER_WORDS_COUNTS:

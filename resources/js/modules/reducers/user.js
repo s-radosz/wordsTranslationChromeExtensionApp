@@ -22,6 +22,11 @@ export default function user(state = defaultState, action) {
             };
         }
 
+        case actionTypes.LOGOUT_USER: {
+            localStorage.clear();
+            return defaultState;
+        }
+
         case actionTypes.UPDATE_USER_WORDS_COUNTS: {
             console.log(["action.payload UPDATE_USER_WORDS_COUNTS", action.payload]);
             return {

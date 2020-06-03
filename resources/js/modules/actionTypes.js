@@ -3,6 +3,7 @@ const actionTypes = {
     CREATE_WORDS: "CREATE_WORDS",
     UPDATE_USER_WORDS_COUNTS: "UPDATE_USER_WORDS_COUNTS",
     REMOVE_WORD: "REMOVE_WORD",
+    LOGOUT_USER: "LOGOUT_USER"
 };
 
 export default actionTypes;

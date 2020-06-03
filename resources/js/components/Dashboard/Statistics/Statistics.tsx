@@ -1,19 +1,31 @@
 import * as React from "react";
+import SingleStat from "./SingleStat/SingleStat"
 
-const Statistics = ({ user }) => {
+type userType = {
+    user: {
+        countSavedWordsOverall: number,
+        countSavedWordsLastWeek: number,
+        countSavedWordsToday: number
+    }
+}
+
+const Statistics = ({ user }: userType) => {
     return (
         <div className="dashboard-statistics">
-            <div className="dashboard-statistics__single">
-                Saved {user.countSavedWordsOverall} overall
-            </div>
+            <SingleStat
+                number={user.countSavedWordsOverall}
+                text="overall saved"
+            />
 
-            <div className="dashboard-statistics__single">
-                Saved {user.countSavedWordsLastWeek} weekly
-            </div>
+            <SingleStat
+                number={user.countSavedWordsLastWeek}
+                text="weekly saved"
+            />
 
-            <div className="dashboard-statistics__single">
-                Saved {user.countSavedWordsToday} today
-            </div>
+            <SingleStat
+                number={user.countSavedWordsToday}
+                text="today saved"
+            />
         </div>
     )
 }

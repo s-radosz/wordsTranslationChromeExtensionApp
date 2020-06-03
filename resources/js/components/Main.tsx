@@ -125,7 +125,7 @@ class Main extends Component<MainProps, MainState> {
                 <Router history={history}>
                     <LoginCheckMiddleware />
 
-                    <Menu />
+                    <Menu handleChangePath={this.handleChangePath} />
 
                     <div className="container">
                         {allowRedirect && redirectedPath && (

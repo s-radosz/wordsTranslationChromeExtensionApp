@@ -1,8 +1,15 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom"
+import USERACTIONS from "../../../modules/actions/userActions";
 
-const Menu = ({ user }) => {
+const Menu = ({ user, logoutUser, handleChangePath }) => {
+
+    const handleLogout = () => {
+        logoutUser();
+        handleChangePath("")
+    }
+
     return (
         <div className="menu box-shadow">
             <div className="menu-container">
@@ -20,7 +27,7 @@ const Menu = ({ user }) => {
                             <>
                                 <Link to="/dashboard" className="menu-link">Practice</Link>
                                 <p className="menu-link">Hi, {user.email}</p>
-                                <button className="menu-btn yellow-btn">Logout</button>
+                                <button className="menu-btn yellow-btn" onClick={handleLogout}>Logout</button>
                             </>
                             :
                             <>
@@ -34,12 +41,16 @@ const Menu = ({ user }) => {
         </div>
     )
 }
+
 const mapStateToProps = state => ({
     user: state.user
 });
 
+const mapDispatchToProps = dispatch => ({
+    logoutUser: () => dispatch(USERACTIONS.logoutUser()),
+});
 
 export default connect(
     mapStateToProps,
-    {}
+    mapDispatchToProps
 )(Menu);

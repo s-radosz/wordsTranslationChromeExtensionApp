@@ -34,8 +34,8 @@ const WordsList = ({ handlePageClick, handleRemoveWord, words }) => {
 
                 <nav aria-label="Page navigation example">
                     <ReactPaginate
-                        previousLabel={'prev'}
-                        nextLabel={'next'}
+                        previousLabel={false}
+                        nextLabell={false}
                         forcePage={words.current_page}
                         breakLabel={'...'}
                         breakClassName={'break-me'}
