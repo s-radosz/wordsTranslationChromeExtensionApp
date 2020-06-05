@@ -3,9 +3,9 @@ import * as React from "react";
 const WordsListRow = ({
     word,
     handleRemoveWord,
+    handleAddIllustration,
     i
 }) => {
-    console.log(["WordsListRow", word])
     return (
         <tr className="tranlation__row" key={i}>
             <th scope="row">{word.id}</th>
@@ -15,9 +15,14 @@ const WordsListRow = ({
             <td>
                 {word.pl}
             </td>
-            <td >
+            <td>
                 <button className="btn yellow-btn" onClick={() => handleRemoveWord(word.id)}>
                     Remove
+                </button>
+            </td>
+            <td>
+                <button className="btn yellow-btn" onClick={() => handleAddIllustration(word.id)}>
+                    Add illustration
                 </button>
             </td>
         </tr>

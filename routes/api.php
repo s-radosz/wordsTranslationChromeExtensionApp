@@ -15,6 +15,10 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::post('words/save', 'WordsController@store');
 
     Route::delete('words/remove', 'WordsController@remove');
+
+    Route::post('words/illustartion/new', 'WordIllustrationsController@store');
+    Route::post('words/illustartion/find', 'WordIllustrationsController@findIllustration');
+    
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

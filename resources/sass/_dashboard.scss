@@ -83,6 +83,83 @@
     //     border-top-right-radius: 4px;
     //     display: none!important;
     // }
+
+    .illustration__container {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+
+        .illustration__wrapper {
+            .illustration__overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+            }
+            .illustration__content {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                margin: auto;
+                background-color: #fff;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                .close {
+                    position: absolute;
+                    top: -20px;
+                    right: -20px;
+                    cursor: pointer;
+
+                    .close-icon__container {
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 20px;
+                        background-color: #fff;
+
+                        img{
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                }
+                .illustration__content--elements {
+                    .illustration__sidebar {
+                        .illustration__sidebar--icons-container {
+                            display: flex;
+                            justify-content: space-between;
+
+                            img {
+                                max-width: 50px;
+                                border: 1px solid;
+                                padding: 5px;
+                            }
+                        }
+                    }
+                    .illustration__text-container {
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                    .illustration__drawer {
+                        border: 2px solid #e4e4e4;
+                        border-radius: 5px;
+                        text-align: center;
+
+                    }
+                }
+                .illustration__content--btns {
+                    text-align: right;
+                }
+            }
+        }
+    }
 }
 
 
@@ -119,6 +196,30 @@
         .table-responsive {
             .table {
                 margin: 20px auto;
+            }
+        }
+
+        .illustration__container {
+            .illustration__wrapper {
+                .illustration__content {
+                    width: 50%;
+                    height: 50%;
+                    padding: 20px;
+                    border-radius: 5px;
+
+                    .illustration__content--btns {
+                        button {
+                            margin-left: 15px;
+                        }
+                    }
+
+                    .illustration__text-container {
+                        input{
+                            width: 48%;
+                            margin-top: 10px;
+                        }
+                    }
+                }
             }
         }
     }

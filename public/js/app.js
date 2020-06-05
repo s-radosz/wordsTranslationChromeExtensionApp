@@ -39151,6 +39151,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helpers_api__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../helpers/api */ "./resources/js/components/helpers/api.tsx");
 /* harmony import */ var _WordsList_WordsList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./WordsList/WordsList */ "./resources/js/components/Dashboard/WordsList/WordsList.tsx");
 /* harmony import */ var _Statistics_Statistics__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Statistics/Statistics */ "./resources/js/components/Dashboard/Statistics/Statistics.tsx");
+/* harmony import */ var _IllustrationModal_IllustrationModal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./IllustrationModal/IllustrationModal */ "./resources/js/components/Dashboard/IllustrationModal/IllustrationModal.tsx");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -39194,8 +39195,11 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
 var Dashboard = function (_a) {
     var words = _a.words, user = _a.user, config = _a.config, createWords = _a.createWords, removeWord = _a.removeWord, updateUserWordsCounts = _a.updateUserWordsCounts;
+    var _b = react__WEBPACK_IMPORTED_MODULE_0__["useState"](false), showIllustrationModal = _b[0], setShowIllustrationModal = _b[1];
+    var _c = react__WEBPACK_IMPORTED_MODULE_0__["useState"](0), currentWordIdIllustration = _c[0], setCurrentWordIdIllustration = _c[1];
     var getUserWordCounts = function () { return __awaiter(void 0, void 0, void 0, function () {
         var wordsCount, wordsCountResult, err_1;
         return __generator(this, function (_a) {
@@ -39268,13 +39272,20 @@ var Dashboard = function (_a) {
             }
         });
     }); };
+    var handleAddIllustration = function (id) {
+        console.log(["id", id]);
+        setShowIllustrationModal(true);
+        setCurrentWordIdIllustration(id);
+    };
     react__WEBPACK_IMPORTED_MODULE_0__["useEffect"](function () {
         getUserWordCounts();
         handleCheckWordsList();
     }, [user.id]);
     return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "dashboard" },
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Statistics_Statistics__WEBPACK_IMPORTED_MODULE_6__["default"], { user: user }),
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_WordsList_WordsList__WEBPACK_IMPORTED_MODULE_5__["default"], { handlePageClick: handlePageClick, handleRemoveWord: handleRemoveWord })));
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_WordsList_WordsList__WEBPACK_IMPORTED_MODULE_5__["default"], { handlePageClick: handlePageClick, handleRemoveWord: handleRemoveWord, handleAddIllustration: handleAddIllustration }),
+        showIllustrationModal &&
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_IllustrationModal_IllustrationModal__WEBPACK_IMPORTED_MODULE_7__["default"], { setShowIllustrationModal: setShowIllustrationModal, currentWordIdIllustration: currentWordIdIllustration })));
 };
 var mapStateToProps = function (state) { return ({
     user: state.user,
@@ -39287,6 +39298,198 @@ var mapDispatchToProps = function (dispatch) { return ({
     updateUserWordsCounts: function (payload) { return dispatch(_modules_actions_userActions__WEBPACK_IMPORTED_MODULE_2__["default"].updateUserWordsCounts(payload)); },
 }); };
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, mapDispatchToProps)(Dashboard));
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Dashboard/IllustrationModal/IllustrationDrawer/IllustrationDrawer.tsx":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/Dashboard/IllustrationModal/IllustrationDrawer/IllustrationDrawer.tsx ***!
+  \*******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var IllustrationDrawer = function (_a) {
+    var canvasImage = _a.canvasImage;
+    return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__drawer" },
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("canvas", { width: "400", height: "300", ref: canvasImage })));
+};
+/* harmony default export */ __webpack_exports__["default"] = (IllustrationDrawer);
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Dashboard/IllustrationModal/IllustrationModal.tsx":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/Dashboard/IllustrationModal/IllustrationModal.tsx ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _IllustrationDrawer_IllustrationDrawer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./IllustrationDrawer/IllustrationDrawer */ "./resources/js/components/Dashboard/IllustrationModal/IllustrationDrawer/IllustrationDrawer.tsx");
+/* harmony import */ var _helpers_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../helpers/api */ "./resources/js/components/helpers/api.tsx");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+var IllustrationModal = function (_a) {
+    var setShowIllustrationModal = _a.setShowIllustrationModal, currentWordIdIllustration = _a.currentWordIdIllustration, config = _a.config, user = _a.user;
+    var _b = react__WEBPACK_IMPORTED_MODULE_0__["useState"](""), leftPersonText = _b[0], setLeftPersonText = _b[1];
+    var _c = react__WEBPACK_IMPORTED_MODULE_0__["useState"](""), rightPersonText = _c[0], setRightPersonText = _c[1];
+    var canvasImage = react__WEBPACK_IMPORTED_MODULE_0__["useRef"](null);
+    var closeModal = function () {
+        setShowIllustrationModal(false);
+    };
+    var handleFormatCanvasText = function (text) {
+        return text.split(/((?:\w+ ){3})/g).filter(Boolean).join("\n");
+    };
+    var handleTextChange = function (direction) {
+        console.log(["handleTextChange", direction]);
+        var ctx = canvasImage.current.getContext('2d');
+        ctx.font = "14px Arial";
+        var lineheight = 15;
+        if (direction === "left") {
+            var lines = handleFormatCanvasText(leftPersonText).split('\n');
+            for (var i = 0; i < lines.length; i++)
+                ctx.fillText(lines[i], 30, 100 + (i * lineheight));
+        }
+        else {
+            var lines = handleFormatCanvasText(rightPersonText).split('\n');
+            for (var i = 0; i < lines.length; i++)
+                ctx.fillText(lines[i], 290, 100 + (i * lineheight));
+        }
+    };
+    var handleAddEmptyImageToCanvas = function () {
+        console.log(["canvasImage", canvasImage.current, canvasImage, canvasImage.current.getContext('2d')]);
+        var ctx = canvasImage.current.getContext('2d');
+        var imageObj1 = new Image();
+        imageObj1.src = "http://127.0.0.1:8000/images/conversation.png";
+        imageObj1.onload = function () {
+            ctx.drawImage(imageObj1, 0, 50, 400, 200);
+        };
+    };
+    var handleCanvasClear = function () {
+        var ctx = canvasImage.current.getContext('2d');
+        ctx.clearRect(0, 0, 400, 300);
+        handleAddEmptyImageToCanvas();
+    };
+    var handleSaveIllustration = function () { return __awaiter(void 0, void 0, void 0, function () {
+        var base64Canvas, saveIllustration;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    base64Canvas = canvasImage.current.toDataURL();
+                    return [4, Object(_helpers_api__WEBPACK_IMPORTED_MODULE_2__["handlePostRequest"])(config.paths.API_URL + "/words/illustartion/new", {
+                            wordId: currentWordIdIllustration,
+                            base64Image: base64Canvas,
+                        }, user.token)];
+                case 1:
+                    saveIllustration = _a.sent();
+                    console.log(["saveIllustration", saveIllustration]);
+                    return [2];
+            }
+        });
+    }); };
+    var loadSavedIllustration = function () { return __awaiter(void 0, void 0, void 0, function () {
+        var currentIllustration, ctx_1, imageObj1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4, Object(_helpers_api__WEBPACK_IMPORTED_MODULE_2__["handlePostRequest"])(config.paths.API_URL + "/words/illustartion/find", {
+                        wordId: currentWordIdIllustration,
+                    }, user.token)];
+                case 1:
+                    currentIllustration = _a.sent();
+                    if (currentIllustration.base64_image) {
+                        ctx_1 = canvasImage.current.getContext('2d');
+                        imageObj1 = new Image();
+                        imageObj1.src = currentIllustration.base64_image;
+                        imageObj1.onload = function () {
+                            ctx_1.drawImage(imageObj1, 0, 50, 400, 200);
+                        };
+                    }
+                    else {
+                        handleAddEmptyImageToCanvas();
+                    }
+                    console.log(["currentIllustration", currentIllustration, currentIllustration.base64_image]);
+                    return [2];
+            }
+        });
+    }); };
+    react__WEBPACK_IMPORTED_MODULE_0__["useEffect"](function () {
+        loadSavedIllustration();
+    }, []);
+    return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__container" },
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__wrapper" },
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__overlay", onClick: closeModal }),
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__content" },
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "close" },
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "close-icon__container" },
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { src: "/images/close.png", onClick: closeModal }))),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__content--elements" },
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_IllustrationDrawer_IllustrationDrawer__WEBPACK_IMPORTED_MODULE_1__["default"], { canvasImage: canvasImage }),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__text-container" },
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__single" },
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "text", placeholder: "Left person text", value: leftPersonText, onChange: function (e) { return setLeftPersonText(e.target.value); } }),
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: function () { return handleTextChange("left"); } }, "Add")),
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__single" },
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "text", placeholder: "Left person text", value: rightPersonText, onChange: function (e) { return setRightPersonText(e.target.value); } }),
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: function () { return handleTextChange("right"); } }, "Add")))),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__content--btns" },
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: handleCanvasClear }, "Clear all texts"),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: function () { return console.log("remove"); } }, "Remove illustration"),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: handleSaveIllustration }, "Save"))))));
+};
+var mapStateToProps = function (state) { return ({
+    config: state.config,
+    user: state.user
+}); };
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, {})(IllustrationModal));
 
 
 /***/ }),
@@ -39363,7 +39566,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var WordsList = function (_a) {
-    var handlePageClick = _a.handlePageClick, handleRemoveWord = _a.handleRemoveWord, words = _a.words;
+    var handlePageClick = _a.handlePageClick, handleAddIllustration = _a.handleAddIllustration, handleRemoveWord = _a.handleRemoveWord, words = _a.words;
     return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null,
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "table-responsive" },
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("table", { className: "table" },
@@ -39375,7 +39578,7 @@ var WordsList = function (_a) {
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("th", { scope: "col" }))),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("tbody", null, words && words.result &&
                     words.result.data.map(function (word, i) {
-                        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_WordsListRow_WordsListRow__WEBPACK_IMPORTED_MODULE_4__["default"], { key: "word-" + i, word: word, i: i, handleRemoveWord: handleRemoveWord }));
+                        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_WordsListRow_WordsListRow__WEBPACK_IMPORTED_MODULE_4__["default"], { key: "word-" + i, word: word, i: i, handleRemoveWord: handleRemoveWord, handleAddIllustration: handleAddIllustration }));
                     }))),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("nav", { "aria-label": "Page navigation example" },
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_paginate__WEBPACK_IMPORTED_MODULE_3___default.a, { previousLabel: false, nextLabell: false, forcePage: words.current_page, breakLabel: '...', breakClassName: 'break-me', pageCount: words.last_page, marginPagesDisplayed: 1, pageRangeDisplayed: 2, onPageChange: handlePageClick, containerClassName: 'pagination', subContainerClassName: 'pages pagination', activeClassName: 'active' })))));
@@ -39406,14 +39609,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 var WordsListRow = function (_a) {
-    var word = _a.word, handleRemoveWord = _a.handleRemoveWord, i = _a.i;
-    console.log(["WordsListRow", word]);
+    var word = _a.word, handleRemoveWord = _a.handleRemoveWord, handleAddIllustration = _a.handleAddIllustration, i = _a.i;
     return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("tr", { className: "tranlation__row", key: i },
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("th", { scope: "row" }, word.id),
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("td", null, word.en),
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("td", null, word.pl),
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("td", null,
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: function () { return handleRemoveWord(word.id); } }, "Remove"))));
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: function () { return handleRemoveWord(word.id); } }, "Remove")),
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("td", null,
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: function () { return handleAddIllustration(word.id); } }, "Add illustration"))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (WordsListRow);
 
@@ -39928,10 +40132,11 @@ var handleGetRequest = function (path, token) {
         });
     });
 };
-var handlePostRequest = function (path, paramsObject) {
+var handlePostRequest = function (path, paramsObject, token) {
+    if (token === void 0) { token = ""; }
     return new Promise(function (resolve) {
         console.log(["post", path, paramsObject]);
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(path, paramsObject).then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(path, paramsObject, token && { headers: { Authorization: "Bearer " + token } }).then(function (response) {
             if (response.status === 200) {
                 resolve(response.data.result);
             }

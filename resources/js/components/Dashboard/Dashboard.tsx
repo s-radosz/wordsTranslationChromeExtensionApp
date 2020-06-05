@@ -5,8 +5,12 @@ import { connect } from "react-redux";
 import { handleGetRequest, handleRemoveRequest } from "./../helpers/api"
 import WordsList from "./WordsList/WordsList"
 import Statistics from "./Statistics/Statistics"
+import IllustrationModal from "./IllustrationModal/IllustrationModal"
 
 const Dashboard = ({ words, user, config, createWords, removeWord, updateUserWordsCounts }) => {
+    const [showIllustrationModal, setShowIllustrationModal] = React.useState(false);
+    const [currentWordIdIllustration, setCurrentWordIdIllustration] = React.useState(0)
+
     const getUserWordCounts = async () => {
         if (user.id && user.token) {
             try {
@@ -55,6 +59,13 @@ const Dashboard = ({ words, user, config, createWords, removeWord, updateUserWor
         createWords(wordsResult)
     }
 
+    const handleAddIllustration = (id) => {
+        console.log(["id", id])
+
+        setShowIllustrationModal(true)
+        setCurrentWordIdIllustration(id)
+    }
+
     React.useEffect(() => {
         getUserWordCounts();
         handleCheckWordsList();
@@ -67,7 +78,15 @@ const Dashboard = ({ words, user, config, createWords, removeWord, updateUserWor
             <WordsList
                 handlePageClick={handlePageClick}
                 handleRemoveWord={handleRemoveWord}
+                handleAddIllustration={handleAddIllustration}
             />
+
+            {showIllustrationModal &&
+                <IllustrationModal
+                    setShowIllustrationModal={setShowIllustrationModal}
+                    currentWordIdIllustration={currentWordIdIllustration}
+                />
+            }
         </div>
     )
 }

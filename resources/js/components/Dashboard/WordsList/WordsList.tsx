@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import ReactPaginate from 'react-paginate';
 import WordsListRow from "./WordsListRow/WordsListRow"
 
-const WordsList = ({ handlePageClick, handleRemoveWord, words }) => {
+const WordsList = ({ handlePageClick, handleAddIllustration, handleRemoveWord, words }) => {
     return (
         <>
             <div className="table-responsive">
@@ -26,6 +26,7 @@ const WordsList = ({ handlePageClick, handleRemoveWord, words }) => {
                                         word={word}
                                         i={i}
                                         handleRemoveWord={handleRemoveWord}
+                                        handleAddIllustration={handleAddIllustration}
                                     />
                                 );
                             })}

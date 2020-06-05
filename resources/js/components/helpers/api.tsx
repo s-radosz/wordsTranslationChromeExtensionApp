@@ -18,10 +18,10 @@ export const handleGetRequest = (path, token) => {
     })
 }
 
-export const handlePostRequest = (path, paramsObject) => {
+export const handlePostRequest = (path, paramsObject, token = "") => {
     return new Promise(resolve => {
         console.log(["post", path, paramsObject])
-        axios.post(path, paramsObject).then(response => {
+        axios.post(path, paramsObject, token && { headers: { Authorization: `Bearer ${token}` } }).then(response => {
             if (response.status === 200) {
                 resolve(response.data.result);
             }
