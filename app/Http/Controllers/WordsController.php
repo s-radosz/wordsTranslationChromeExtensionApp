@@ -16,7 +16,7 @@ class WordsController extends Controller
 
         return response()->json(
             ['result' => $words
-        ], 201);
+        ], 200);
     }
 
     public function store(Request $request) {
@@ -34,19 +34,17 @@ class WordsController extends Controller
 
         return response()->json(
             ['result' => $word
-        ], 201);
+        ], 200);
     }
 
     public function remove(Request $request) {
         $id = $request->id;
-
-        var_dump($id);
 
         $word = Word::find($id);
         $word->delete();
 
         return response()->json(
             ['result' => $word
-        ], 201);
+        ], 200);
     }
 }

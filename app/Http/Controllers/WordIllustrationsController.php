@@ -21,7 +21,7 @@ class WordIllustrationsController extends Controller
             return response()->json(
                 ['result' => $updatedIllustration,
                 'message' => "Illustration updated"
-            ], 201);
+            ], 200);
         } else {
             $newWordIllustration = new WordIllustration;
             $newWordIllustration->word_id = $word_id;
@@ -31,7 +31,7 @@ class WordIllustrationsController extends Controller
             return response()->json(
                 ['result' => $newWordIllustration,
                 'message' => "New illustration added"
-            ], 201);
+            ], 200);
         }
     }
 
@@ -54,5 +54,15 @@ class WordIllustrationsController extends Controller
                 'message' => "New illustration added"
             ], 200);
         }
+    }
+
+    public function remove(Request $request) {
+        $word_id = $request->wordId;
+
+        $illustration = WordIllustration::where("word_id", $word_id)->delete();
+
+        return response()->json(
+            ['result' => $illustration
+        ], 200);
     }
 } 

@@ -39302,6 +39302,30 @@ var mapDispatchToProps = function (dispatch) { return ({
 
 /***/ }),
 
+/***/ "./resources/js/components/Dashboard/IllustrationModal/BottomBtns/BottomBtns.tsx":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/Dashboard/IllustrationModal/BottomBtns/BottomBtns.tsx ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var BottomBtns = function (_a) {
+    var handleCanvasClear = _a.handleCanvasClear, handleWordIllustrationRemove = _a.handleWordIllustrationRemove, handleSaveIllustration = _a.handleSaveIllustration;
+    return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__content--btns" },
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: handleCanvasClear }, "Clear all texts"),
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: handleWordIllustrationRemove }, "Remove illustration"),
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: handleSaveIllustration }, "Save")));
+};
+/* harmony default export */ __webpack_exports__["default"] = (BottomBtns);
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Dashboard/IllustrationModal/IllustrationDrawer/IllustrationDrawer.tsx":
 /*!*******************************************************************************************************!*\
   !*** ./resources/js/components/Dashboard/IllustrationModal/IllustrationDrawer/IllustrationDrawer.tsx ***!
@@ -39315,9 +39339,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 var IllustrationDrawer = function (_a) {
-    var canvasImage = _a.canvasImage;
-    return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__drawer" },
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("canvas", { width: "400", height: "300", ref: canvasImage })));
+    var canvasImage = _a.canvasImage, leftPersonText = _a.leftPersonText, setLeftPersonText = _a.setLeftPersonText, rightPersonText = _a.rightPersonText, setRightPersonText = _a.setRightPersonText, handleTextChange = _a.handleTextChange;
+    return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null,
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__drawer" },
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("canvas", { width: "400", height: "300", ref: canvasImage })),
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__text-container" },
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__single" },
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "text", placeholder: "Left person text", value: leftPersonText, onChange: function (e) { return setLeftPersonText(e.target.value); } }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: function () { return handleTextChange("left"); } }, "Add")),
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__single" },
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "text", placeholder: "Left person text", value: rightPersonText, onChange: function (e) { return setRightPersonText(e.target.value); } }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: function () { return handleTextChange("right"); } }, "Add")))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (IllustrationDrawer);
 
@@ -39336,8 +39368,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _IllustrationDrawer_IllustrationDrawer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./IllustrationDrawer/IllustrationDrawer */ "./resources/js/components/Dashboard/IllustrationModal/IllustrationDrawer/IllustrationDrawer.tsx");
-/* harmony import */ var _helpers_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../helpers/api */ "./resources/js/components/helpers/api.tsx");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _BottomBtns_BottomBtns__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BottomBtns/BottomBtns */ "./resources/js/components/Dashboard/IllustrationModal/BottomBtns/BottomBtns.tsx");
+/* harmony import */ var _helpers_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../helpers/api */ "./resources/js/components/helpers/api.tsx");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _helpers_ContentModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../../helpers/ContentModal */ "./resources/js/components/helpers/ContentModal.tsx");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -39374,6 +39408,8 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+
+
 
 
 
@@ -39425,7 +39461,7 @@ var IllustrationModal = function (_a) {
             switch (_a.label) {
                 case 0:
                     base64Canvas = canvasImage.current.toDataURL();
-                    return [4, Object(_helpers_api__WEBPACK_IMPORTED_MODULE_2__["handlePostRequest"])(config.paths.API_URL + "/words/illustartion/new", {
+                    return [4, Object(_helpers_api__WEBPACK_IMPORTED_MODULE_3__["handlePostRequest"])(config.paths.API_URL + "/words/illustartion/new", {
                             wordId: currentWordIdIllustration,
                             base64Image: base64Canvas,
                         }, user.token)];
@@ -39440,7 +39476,7 @@ var IllustrationModal = function (_a) {
         var currentIllustration, ctx_1, imageObj1;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4, Object(_helpers_api__WEBPACK_IMPORTED_MODULE_2__["handlePostRequest"])(config.paths.API_URL + "/words/illustartion/find", {
+                case 0: return [4, Object(_helpers_api__WEBPACK_IMPORTED_MODULE_3__["handlePostRequest"])(config.paths.API_URL + "/words/illustartion/find", {
                         wordId: currentWordIdIllustration,
                     }, user.token)];
                 case 1:
@@ -39450,7 +39486,7 @@ var IllustrationModal = function (_a) {
                         imageObj1 = new Image();
                         imageObj1.src = currentIllustration.base64_image;
                         imageObj1.onload = function () {
-                            ctx_1.drawImage(imageObj1, 0, 50, 400, 200);
+                            ctx_1.drawImage(imageObj1, 0, 0, 400, 300);
                         };
                     }
                     else {
@@ -39461,35 +39497,40 @@ var IllustrationModal = function (_a) {
             }
         });
     }); };
+    var handleWordIllustrationRemove = function () { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4, Object(_helpers_api__WEBPACK_IMPORTED_MODULE_3__["handleRemoveRequest"])(config.paths.API_URL + "/words/illustartion/remove", {
+                        data: {
+                            wordId: currentWordIdIllustration
+                        },
+                        headers: {
+                            "Authorization": "Bearer " + user.token
+                        }
+                    }).then(function (res) {
+                        console.log("illustrt removed");
+                        handleAddEmptyImageToCanvas();
+                    })];
+                case 1:
+                    _a.sent();
+                    return [2];
+            }
+        });
+    }); };
     react__WEBPACK_IMPORTED_MODULE_0__["useEffect"](function () {
         loadSavedIllustration();
     }, []);
-    return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__container" },
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__wrapper" },
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__overlay", onClick: closeModal }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__content" },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "close" },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "close-icon__container" },
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { src: "/images/close.png", onClick: closeModal }))),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__content--elements" },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_IllustrationDrawer_IllustrationDrawer__WEBPACK_IMPORTED_MODULE_1__["default"], { canvasImage: canvasImage }),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__text-container" },
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__single" },
-                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "text", placeholder: "Left person text", value: leftPersonText, onChange: function (e) { return setLeftPersonText(e.target.value); } }),
-                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: function () { return handleTextChange("left"); } }, "Add")),
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__single" },
-                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "text", placeholder: "Left person text", value: rightPersonText, onChange: function (e) { return setRightPersonText(e.target.value); } }),
-                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: function () { return handleTextChange("right"); } }, "Add")))),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__content--btns" },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: handleCanvasClear }, "Clear all texts"),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: function () { return console.log("remove"); } }, "Remove illustration"),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: handleSaveIllustration }, "Save"))))));
+    return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_helpers_ContentModal__WEBPACK_IMPORTED_MODULE_5__["default"], { setShowModal: setShowIllustrationModal },
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null,
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__content--elements" },
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_IllustrationDrawer_IllustrationDrawer__WEBPACK_IMPORTED_MODULE_1__["default"], { canvasImage: canvasImage, leftPersonText: leftPersonText, setLeftPersonText: setLeftPersonText, rightPersonText: rightPersonText, setRightPersonText: setRightPersonText, handleTextChange: handleTextChange })),
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_BottomBtns_BottomBtns__WEBPACK_IMPORTED_MODULE_2__["default"], { handleCanvasClear: handleCanvasClear, handleWordIllustrationRemove: handleWordIllustrationRemove, handleSaveIllustration: handleSaveIllustration }))));
 };
 var mapStateToProps = function (state) { return ({
     config: state.config,
     user: state.user
 }); };
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapStateToProps, {})(IllustrationModal));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapStateToProps, {})(IllustrationModal));
 
 
 /***/ }),
@@ -39847,7 +39888,7 @@ var LoginForm = function (_a) {
     return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("form", null,
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { onChange: function (e) { return setEmail(e.target.value); }, placeholder: "Email" }),
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { onChange: function (e) { return setPassword(e.target.value); }, placeholder: "password" }),
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { type: "submit", onClick: function (e) { return handleSubmit(e); } }, "Login")));
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { type: "submit", className: "btn yellow-btn", onClick: function (e) { return handleSubmit(e); } }, "Login")));
 };
 /* harmony default export */ __webpack_exports__["default"] = (LoginForm);
 
@@ -40045,6 +40086,37 @@ var mapDispatchToProps = function (dispatch) { return ({
 
 /***/ }),
 
+/***/ "./resources/js/components/helpers/ContentModal.tsx":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/helpers/ContentModal.tsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var ContentModal = function (_a) {
+    var setShowModal = _a.setShowModal, children = _a.children;
+    var closeModal = function () {
+        setShowModal(false);
+    };
+    return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__container" },
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__wrapper" },
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__overlay", onClick: closeModal }),
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__content" },
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "close" },
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "close-icon__container" },
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { src: "/images/close.png", onClick: closeModal }))),
+                children))));
+};
+/* harmony default export */ __webpack_exports__["default"] = (ContentModal);
+
+
+/***/ }),
+
 /***/ "./resources/js/components/helpers/LoginCheckMiddleware.tsx":
 /*!******************************************************************!*\
   !*** ./resources/js/components/helpers/LoginCheckMiddleware.tsx ***!
@@ -40120,7 +40192,7 @@ var handleGetRequest = function (path, token) {
     return new Promise(function (resolve) {
         axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(path, { headers: { Authorization: "Bearer " + token } }).then(function (response) {
             console.log(["status", response.status]);
-            if (response.status === 201) {
+            if (response.status === 200) {
                 resolve(response.data.result);
             }
         }).catch(function (err) {
@@ -40152,7 +40224,7 @@ var handleRemoveRequest = function (path, paramsObject) {
     return new Promise(function (resolve) {
         console.log(["remove", path, paramsObject]);
         axios__WEBPACK_IMPORTED_MODULE_0___default.a.delete(path, paramsObject).then(function (response) {
-            if (response.status === 201) {
+            if (response.status === 200) {
                 resolve(response.data.result);
             }
         }).catch(function (err) {

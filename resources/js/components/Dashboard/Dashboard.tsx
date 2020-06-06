@@ -36,7 +36,6 @@ const Dashboard = ({ words, user, config, createWords, removeWord, updateUserWor
         if (words.length === 0 && user.id && user.token) {
             let wordsResult = await handleGetRequest(`${config.paths.API_URL}/words/all/${user.id}`, user.token)
             createWords(wordsResult)
-
         }
     }
 

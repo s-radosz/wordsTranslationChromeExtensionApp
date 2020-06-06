@@ -5,7 +5,7 @@ export const handleGetRequest = (path, token) => {
     return new Promise(resolve => {
         axios.get(path, { headers: { Authorization: `Bearer ${token}` } }).then(response => {
             console.log(["status", response.status])
-            if (response.status === 201) {
+            if (response.status === 200) {
                 resolve(response.data.result);
             }
         }).catch(err => {
@@ -38,7 +38,7 @@ export const handleRemoveRequest = (path, paramsObject) => {
     return new Promise(resolve => {
         console.log(["remove", path, paramsObject])
         axios.delete(path, paramsObject).then(response => {
-            if (response.status === 201) {
+            if (response.status === 200) {
                 resolve(response.data.result);
             }
         }).catch(err => {

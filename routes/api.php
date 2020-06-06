@@ -13,11 +13,11 @@ Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('words/counts/{userId}', 'UserController@getUserWordsCounts');
     
     Route::post('words/save', 'WordsController@store');
-
     Route::delete('words/remove', 'WordsController@remove');
 
     Route::post('words/illustartion/new', 'WordIllustrationsController@store');
     Route::post('words/illustartion/find', 'WordIllustrationsController@findIllustration');
+    Route::delete('words/illustartion/remove', 'WordIllustrationsController@remove');
     
 });
 

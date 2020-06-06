@@ -1,9 +1,11 @@
 import * as React from "react";
 import IllustrationDrawer from "./IllustrationDrawer/IllustrationDrawer"
+import BottomBtns from "./BottomBtns/BottomBtns"
 //@ts-ignore
 import close from "./../../../../assets/images/close.png";
-import { handlePostRequest } from "./../../helpers/api"
+import { handlePostRequest, handleRemoveRequest } from "./../../helpers/api"
 import { connect } from "react-redux";
+import ContentModal from "./../../helpers/ContentModal"
 
 const IllustrationModal = ({ setShowIllustrationModal, currentWordIdIllustration, config, user }) => {
     const [leftPersonText, setLeftPersonText] = React.useState("");
@@ -85,8 +87,8 @@ const IllustrationModal = ({ setShowIllustrationModal, currentWordIdIllustration
             //@ts-ignore
             imageObj1.src = currentIllustration.base64_image;
             imageObj1.onload = function () {
-                ctx.drawImage(imageObj1, 0, 50
-                    , 400, 200);
+                ctx.drawImage(imageObj1, 0, 0
+                    , 400, 300);
             }
         } else {
             handleAddEmptyImageToCanvas()
@@ -96,51 +98,46 @@ const IllustrationModal = ({ setShowIllustrationModal, currentWordIdIllustration
         console.log(["currentIllustration", currentIllustration, currentIllustration.base64_image])
     }
 
+    const handleWordIllustrationRemove = async () => {
+        await handleRemoveRequest(`${config.paths.API_URL}/words/illustartion/remove`,
+            {
+                data: {
+                    wordId: currentWordIdIllustration
+                },
+                headers: {
+                    "Authorization": `Bearer ${user.token}`
+                }
+            }).then(res => {
+                console.log("illustrt removed")
+
+                handleAddEmptyImageToCanvas()
+            })
+    }
+
     React.useEffect(() => {
-        //handleAddEmptyImageToCanvas();
         loadSavedIllustration();
     }, [])
 
     return (
-        <div className="illustration__container">
-            <div className="illustration__wrapper">
-                <div className="illustration__overlay" onClick={closeModal}></div>
-                <div className="illustration__content">
-                    <div className="close">
-                        <div className="close-icon__container">
-                            <img src="/images/close.png" onClick={closeModal} />
-                        </div>
-                    </div>
-
-                    <div className="illustration__content--elements">
-                        <IllustrationDrawer canvasImage={canvasImage} />
-                        <div className="illustration__text-container">
-                            <div className="illustration__single">
-                                <input type="text" placeholder="Left person text" value={leftPersonText} onChange={e => setLeftPersonText(e.target.value)} />
-                                <button className="btn yellow-btn" onClick={() => handleTextChange("left")}>Add</button>
-                            </div>
-                            <div className="illustration__single">
-                                <input type="text" placeholder="Left person text" value={rightPersonText} onChange={e => setRightPersonText(e.target.value)} />
-                                <button className="btn yellow-btn" onClick={() => handleTextChange("right")}>Add</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="illustration__content--btns">
-                        <button className="btn yellow-btn" onClick={handleCanvasClear}>
-                            Clear all texts
-                            </button>
-                        <button className="btn yellow-btn" onClick={() => console.log("remove")}>
-                            Remove illustration
-                        </button>
-                        <button className="btn yellow-btn" onClick={handleSaveIllustration}>
-                            Save
-                        </button>
-                    </div>
+        <ContentModal setShowModal={setShowIllustrationModal}>
+            <>
+                <div className="illustration__content--elements">
+                    <IllustrationDrawer
+                        canvasImage={canvasImage}
+                        leftPersonText={leftPersonText}
+                        setLeftPersonText={setLeftPersonText}
+                        rightPersonText={rightPersonText}
+                        setRightPersonText={setRightPersonText}
+                        handleTextChange={handleTextChange}
+                    />
                 </div>
-            </div>
-
-
-        </div>
+                <BottomBtns
+                    handleCanvasClear={handleCanvasClear}
+                    handleWordIllustrationRemove={handleWordIllustrationRemove}
+                    handleSaveIllustration={handleSaveIllustration}
+                />
+            </>
+        </ContentModal>
     )
 }
 

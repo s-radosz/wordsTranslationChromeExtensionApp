@@ -456,6 +456,7 @@ a:visited {
 
   .dashboard .dashboard-statistics .dashboard-statistics__single p .number {
     font-size: 35px;
+    padding-right: 10px;
   }
 
   .dashboard .dashboard-statistics .dashboard-statistics__single p .text {

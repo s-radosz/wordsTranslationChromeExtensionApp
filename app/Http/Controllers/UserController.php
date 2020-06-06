@@ -54,7 +54,7 @@ class UserController extends Controller
 
         $token = JWTAuth::fromUser($user);
 
-        return response()->json(['result' => compact('user', 'token')], 201);
+        return response()->json(['result' => compact('user', 'token')], 200);
     }
 
     public function getAuthenticatedUser()
@@ -71,7 +71,7 @@ class UserController extends Controller
             return response()->json(['result' => 'token_absent', "token_error" => true], 401);
         }
 
-        return response()->json(['result' => compact('user')], 201);
+        return response()->json(['result' => compact('user')], 200);
     }
 
     public function checkIfEmailExists(Request $request)
@@ -81,7 +81,7 @@ class UserController extends Controller
 
             $user = User::where('email', $email)->count();
 
-            return response()->json(['result' => $user, 201]);
+            return response()->json(['result' => $user, 200]);
         } catch (\Exception $e) {
             $user = User::where('email', $email)->get();
 
@@ -109,7 +109,7 @@ class UserController extends Controller
                 "wordsOverallCount" => $wordsOverallCount,
                 "wordsWeekCount" => $wordsWeekCount,
                 "wordsTodayCount" => $wordsTodayCount
-            ]], 201);
+            ]], 200);
         } catch (\Exception $e) {
             $user = User::where('email', $email)->get();
             $this->storeErrorLog($user->id, '/checkIfEmailExists', $e->getMessage());

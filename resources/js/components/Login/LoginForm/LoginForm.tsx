@@ -6,7 +6,7 @@ const LoginForm = ({ setEmail, setPassword, handleSubmit }) => {
             <input onChange={e => setEmail(e.target.value)} placeholder="Email" />
             <input onChange={e => setPassword(e.target.value)} placeholder="password" />
 
-            <button type="submit" onClick={e => handleSubmit(e)}>Login</button>
+            <button type="submit" className="btn yellow-btn" onClick={e => handleSubmit(e)}>Login</button>
         </form>
     )
 }
