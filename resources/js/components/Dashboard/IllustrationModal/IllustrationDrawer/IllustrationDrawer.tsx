@@ -8,12 +8,12 @@ const IllustrationDrawer = ({ canvasImage, leftPersonText, setLeftPersonText, ri
             </div>
             <div className="illustration__text-container">
                 <div className="illustration__single">
-                    <input type="text" placeholder="Left person text" value={leftPersonText} onChange={e => setLeftPersonText(e.target.value)} />
-                    <button className="btn yellow-btn" onClick={() => handleTextChange("left")}>Add</button>
+                    <input type="text" placeholder="Tekst osoby po lewej stronie" value={leftPersonText} onChange={e => setLeftPersonText(e.target.value)} />
+                    <button className="btn red-btn box-shadow" onClick={() => handleTextChange("left")}>Dodaj</button>
                 </div>
                 <div className="illustration__single">
-                    <input type="text" placeholder="Left person text" value={rightPersonText} onChange={e => setRightPersonText(e.target.value)} />
-                    <button className="btn yellow-btn" onClick={() => handleTextChange("right")}>Add</button>
+                    <input type="text" placeholder="Tekst osoby po prawej stronie" value={rightPersonText} onChange={e => setRightPersonText(e.target.value)} />
+                    <button className="btn red-btn box-shadow" onClick={() => handleTextChange("right")}>Dodaj</button>
                 </div>
             </div>
         </>

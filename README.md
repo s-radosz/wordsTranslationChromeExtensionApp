@@ -1,4 +1,4 @@
-# Words translation chrome extension App
+# Praktyczny Angielski - zapisuj i ucz się słownictwa, którego nie znasz.
 
 ## Default .env
 
@@ -57,4 +57,6 @@ MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 composer install
 npm i
 php artisan jwt:secret
+php artisan migrate
+php artisan db:seed
 ```

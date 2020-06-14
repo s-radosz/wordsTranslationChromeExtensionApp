@@ -15,8 +15,8 @@ const Menu = ({ user, logoutUser, handleChangePath }) => {
             <div className="menu-container">
                 <Link to="/">
                     <div className="menu__logo">
-                        <p className="menu__logo--main"><span>English</span>Pragmatic</p>
-                        <p className="menu__logo--description">Practice vocabulary you really need!</p>
+                        <p className="menu__logo--main"><span className="menu__logo--red">Praktyczny</span><span className="menu__logo--blue">Angielski</span></p>
+                        <p className="menu__logo--description">Ucz się angielskiego jakiego potrzebujesz!</p>
                     </div>
                 </Link>
 
@@ -25,14 +25,14 @@ const Menu = ({ user, logoutUser, handleChangePath }) => {
                     <div className="menu__right-routes">
                         {user && user.email ?
                             <>
-                                <Link to="/dashboard" className="menu-link">Practice</Link>
-                                <p className="menu-link">Hi, {user.email}</p>
-                                <button className="menu-btn yellow-btn" onClick={handleLogout}>Logout</button>
+                                <Link to="/dashboard" className="menu-link">Rozpocznij dzisiejszą naukę</Link>
+                                <p className="menu-link">Cześć, {user.email}</p>
+                                <button className="menu-btn blue-btn" onClick={handleLogout}>Wyloguj</button>
                             </>
                             :
                             <>
-                                <Link to="/login" className="menu-link">Sign in</Link>
-                                <Link to="/register"><button className="yellow-btn box-shadow">Sign up</button></Link>
+                                <Link to="/login" className="menu-link">Logowanie</Link>
+                                <Link to="/register"><button className="red-btn box-shadow">Rejestracja</button></Link>
                             </>
                         }
                     </div>

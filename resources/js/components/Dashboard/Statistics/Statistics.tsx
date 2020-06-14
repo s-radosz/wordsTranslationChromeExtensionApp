@@ -14,17 +14,17 @@ const Statistics = ({ user }: userType) => {
         <div className="dashboard-statistics">
             <SingleStat
                 number={user.countSavedWordsOverall}
-                text="overall saved"
+                text="zapisanych ogółem"
             />
 
             <SingleStat
                 number={user.countSavedWordsLastWeek}
-                text="weekly saved"
+                text="w tym tygodniu"
             />
 
             <SingleStat
                 number={user.countSavedWordsToday}
-                text="today saved"
+                text="zapisanych dzisiaj"
             />
         </div>
     )

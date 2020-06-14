@@ -16,13 +16,13 @@ const WordsListRow = ({
                 {word.pl}
             </td>
             <td>
-                <button className="btn yellow-btn" onClick={() => handleRemoveWord(word.id)}>
-                    Remove
+                <button className="btn red-btn box-shadow" onClick={() => handleRemoveWord(word.id)}>
+                    Usuń
                 </button>
             </td>
             <td>
-                <button className="btn yellow-btn" onClick={() => handleAddIllustration(word.id)}>
-                    Add illustration
+                <button className="btn blue-btn box-shadow" onClick={() => handleAddIllustration(word.id)}>
+                    Dodaj ilustrację
                 </button>
             </td>
         </tr>

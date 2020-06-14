@@ -5,29 +5,60 @@ import { connect } from "react-redux";
 
 const Register = ({ user, createUser }) => {
     const [email, setEmail] = React.useState("");
+    const [name, setName] = React.useState("");
     const [password, setPassword] = React.useState("");
+    const [levelList, setLevelList] = React.useState([]);
+    const [selectedLevelId, setSelectedLevelId] = React.useState(null)
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.post(`http://127.0.0.1:8000/api/register`, {
+        console.log({
             email: email,
-            password: password
-        }).then(res => {
-            console.log(res)
-            createUser(res.data.result.user.email);
+            password: password,
+            name: name,
+            user_level_id: selectedLevelId
         })
 
-        //console.log([email, password])
+        axios.post(`http://127.0.0.1:8000/api/register`, {
+            email: email,
+            password: password,
+            name: name,
+            user_level_id: selectedLevelId
+        }).then(res => {
+            console.log(res)
+            createUser(res.data.result);
+        })
     }
+
+    const getUserLevels = () => {
+        axios.get(`http://127.0.0.1:8000/api/user-levels/all`).then(res => {
+            console.log(["getUserLevels", res])
+            setLevelList(res.data.result);
+        })
+    }
+
+    React.useEffect(() => {
+        getUserLevels();
+    }, [])
 
     return (
         <div className="container__one-page--center">
             <form>
+                <input onChange={e => setName(e.target.value)} placeholder="Imię" />
                 <input onChange={e => setEmail(e.target.value)} placeholder="Email" />
-                <input onChange={e => setPassword(e.target.value)} placeholder="password" />
+                <input onChange={e => setPassword(e.target.value)} type="password" placeholder="Hasło" />
+                <label>Jak oceniasz swój poziom angielskiego?</label>
+                <select onChange={e => setSelectedLevelId(e.target.value)}>
+                    {levelList.map((level, i) => {
+                        return (
+                            //@ts-ignore
+                            <option value={level.id}>{level.level}</option>
+                        )
+                    })}
+                </select>
 
-                <button type="submit" onClick={e => handleSubmit(e)}>Register</button>
+                <button className="btn red-btn box-shadow" type="submit" onClick={e => handleSubmit(e)}>Zarejestruj</button>
             </form>
         </div>
 

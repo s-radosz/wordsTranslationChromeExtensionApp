@@ -6,9 +6,12 @@ import { handleGetRequest, handleRemoveRequest } from "./../helpers/api"
 import WordsList from "./WordsList/WordsList"
 import Statistics from "./Statistics/Statistics"
 import IllustrationModal from "./IllustrationModal/IllustrationModal"
+import PracticeWordsSection from "./PracticeWordsSection/PracticeWordsSection"
+import PracticeWordsModal from "./PracticeWordsModal/PracticeWordsModal"
 
 const Dashboard = ({ words, user, config, createWords, removeWord, updateUserWordsCounts }) => {
     const [showIllustrationModal, setShowIllustrationModal] = React.useState(false);
+    const [showPracticeWordsModal, setShowPracticeWordsModal] = React.useState(false);
     const [currentWordIdIllustration, setCurrentWordIdIllustration] = React.useState(0)
 
     const getUserWordCounts = async () => {
@@ -84,6 +87,15 @@ const Dashboard = ({ words, user, config, createWords, removeWord, updateUserWor
                 <IllustrationModal
                     setShowIllustrationModal={setShowIllustrationModal}
                     currentWordIdIllustration={currentWordIdIllustration}
+                />
+            }
+
+            <PracticeWordsSection setShowPracticeWordsModal={setShowPracticeWordsModal} allowPracticeWords={words.length > 0 ? true : false} />
+
+            {words && words.length > 0 && showPracticeWordsModal &&
+                <PracticeWordsModal
+                    setShowPracticeWordsModal={setShowPracticeWordsModal}
+                    handleRemoveWord={handleRemoveWord}
                 />
             }
         </div>

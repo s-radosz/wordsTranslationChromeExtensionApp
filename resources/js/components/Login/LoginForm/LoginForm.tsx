@@ -4,9 +4,9 @@ const LoginForm = ({ setEmail, setPassword, handleSubmit }) => {
     return (
         <form>
             <input onChange={e => setEmail(e.target.value)} placeholder="Email" />
-            <input onChange={e => setPassword(e.target.value)} placeholder="password" />
+            <input onChange={e => setPassword(e.target.value)} placeholder="Hasło" />
 
-            <button type="submit" className="btn yellow-btn" onClick={e => handleSubmit(e)}>Login</button>
+            <button type="submit" className="btn red-btn box-shadow" onClick={e => handleSubmit(e)}>Zaloguj</button>
         </form>
     )
 }

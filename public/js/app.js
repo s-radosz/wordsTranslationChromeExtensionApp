@@ -39059,6 +39059,19 @@ module.exports = function(originalModule) {
 
 /***/ }),
 
+/***/ "./resources/assets/images/poster.png":
+/*!********************************************!*\
+  !*** ./resources/assets/images/poster.png ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("/images/poster.png?4b92292c45723d215c160b46c34f5353");
+
+/***/ }),
+
 /***/ "./resources/assets/images/works1.svg":
 /*!********************************************!*\
   !*** ./resources/assets/images/works1.svg ***!
@@ -39068,7 +39081,7 @@ module.exports = function(originalModule) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("/images/works1.svg?78f3676254feb0a41825a1500363a238");
+/* harmony default export */ __webpack_exports__["default"] = ("/images/works1.svg?e7b457b1647fee0a92448eb2cf330f26");
 
 /***/ }),
 
@@ -39081,7 +39094,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("/images/works2.svg?d5c3756d89472e21842c58c3bb88ba3a");
+/* harmony default export */ __webpack_exports__["default"] = ("/images/works2.svg?d385c2af3b305cdf70f66921012aa583");
 
 /***/ }),
 
@@ -39094,7 +39107,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("/images/works3.svg?598a50dc255931dd52164951380e033d");
+/* harmony default export */ __webpack_exports__["default"] = ("/images/works3.svg?d76d49e7696855a9104df465fa4325a7");
 
 /***/ }),
 
@@ -39107,7 +39120,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("/images/works4.svg?8bd23a261a82ad7ca87c1b4763aa0368");
+/* harmony default export */ __webpack_exports__["default"] = ("/images/works4.svg?afe803ab7e8de31bbe2adddb66fa0a8b");
+
+/***/ }),
+
+/***/ "./resources/assets/videos/video.mp4":
+/*!*******************************************!*\
+  !*** ./resources/assets/videos/video.mp4 ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "videos/video.mp4");
 
 /***/ }),
 
@@ -39152,6 +39178,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _WordsList_WordsList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./WordsList/WordsList */ "./resources/js/components/Dashboard/WordsList/WordsList.tsx");
 /* harmony import */ var _Statistics_Statistics__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Statistics/Statistics */ "./resources/js/components/Dashboard/Statistics/Statistics.tsx");
 /* harmony import */ var _IllustrationModal_IllustrationModal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./IllustrationModal/IllustrationModal */ "./resources/js/components/Dashboard/IllustrationModal/IllustrationModal.tsx");
+/* harmony import */ var _PracticeWordsSection_PracticeWordsSection__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./PracticeWordsSection/PracticeWordsSection */ "./resources/js/components/Dashboard/PracticeWordsSection/PracticeWordsSection.tsx");
+/* harmony import */ var _PracticeWordsModal_PracticeWordsModal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./PracticeWordsModal/PracticeWordsModal */ "./resources/js/components/Dashboard/PracticeWordsModal/PracticeWordsModal.tsx");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -39196,10 +39224,13 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
+
 var Dashboard = function (_a) {
     var words = _a.words, user = _a.user, config = _a.config, createWords = _a.createWords, removeWord = _a.removeWord, updateUserWordsCounts = _a.updateUserWordsCounts;
     var _b = react__WEBPACK_IMPORTED_MODULE_0__["useState"](false), showIllustrationModal = _b[0], setShowIllustrationModal = _b[1];
-    var _c = react__WEBPACK_IMPORTED_MODULE_0__["useState"](0), currentWordIdIllustration = _c[0], setCurrentWordIdIllustration = _c[1];
+    var _c = react__WEBPACK_IMPORTED_MODULE_0__["useState"](false), showPracticeWordsModal = _c[0], setShowPracticeWordsModal = _c[1];
+    var _d = react__WEBPACK_IMPORTED_MODULE_0__["useState"](0), currentWordIdIllustration = _d[0], setCurrentWordIdIllustration = _d[1];
     var getUserWordCounts = function () { return __awaiter(void 0, void 0, void 0, function () {
         var wordsCount, wordsCountResult, err_1;
         return __generator(this, function (_a) {
@@ -39285,7 +39316,10 @@ var Dashboard = function (_a) {
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Statistics_Statistics__WEBPACK_IMPORTED_MODULE_6__["default"], { user: user }),
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_WordsList_WordsList__WEBPACK_IMPORTED_MODULE_5__["default"], { handlePageClick: handlePageClick, handleRemoveWord: handleRemoveWord, handleAddIllustration: handleAddIllustration }),
         showIllustrationModal &&
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_IllustrationModal_IllustrationModal__WEBPACK_IMPORTED_MODULE_7__["default"], { setShowIllustrationModal: setShowIllustrationModal, currentWordIdIllustration: currentWordIdIllustration })));
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_IllustrationModal_IllustrationModal__WEBPACK_IMPORTED_MODULE_7__["default"], { setShowIllustrationModal: setShowIllustrationModal, currentWordIdIllustration: currentWordIdIllustration }),
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_PracticeWordsSection_PracticeWordsSection__WEBPACK_IMPORTED_MODULE_8__["default"], { setShowPracticeWordsModal: setShowPracticeWordsModal, allowPracticeWords: words.length > 0 ? true : false }),
+        words && words.length > 0 && showPracticeWordsModal &&
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_PracticeWordsModal_PracticeWordsModal__WEBPACK_IMPORTED_MODULE_9__["default"], { setShowPracticeWordsModal: setShowPracticeWordsModal, handleRemoveWord: handleRemoveWord })));
 };
 var mapStateToProps = function (state) { return ({
     user: state.user,
@@ -39317,9 +39351,9 @@ __webpack_require__.r(__webpack_exports__);
 var BottomBtns = function (_a) {
     var handleCanvasClear = _a.handleCanvasClear, handleWordIllustrationRemove = _a.handleWordIllustrationRemove, handleSaveIllustration = _a.handleSaveIllustration;
     return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__content--btns" },
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: handleCanvasClear }, "Clear all texts"),
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: handleWordIllustrationRemove }, "Remove illustration"),
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: handleSaveIllustration }, "Save")));
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn red-btn box-shadow", onClick: handleCanvasClear }, "Wyczy\u015B\u0107 wszystkie teksty"),
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn red-btn box-shadow", onClick: handleWordIllustrationRemove }, "Usu\u0144 ilustracje"),
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn red-btn box-shadow", onClick: handleSaveIllustration }, "Zapisz")));
 };
 /* harmony default export */ __webpack_exports__["default"] = (BottomBtns);
 
@@ -39345,11 +39379,11 @@ var IllustrationDrawer = function (_a) {
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("canvas", { width: "400", height: "300", ref: canvasImage })),
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__text-container" },
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__single" },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "text", placeholder: "Left person text", value: leftPersonText, onChange: function (e) { return setLeftPersonText(e.target.value); } }),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: function () { return handleTextChange("left"); } }, "Add")),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "text", placeholder: "Tekst osoby po lewej stronie", value: leftPersonText, onChange: function (e) { return setLeftPersonText(e.target.value); } }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn red-btn box-shadow", onClick: function () { return handleTextChange("left"); } }, "Dodaj")),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__single" },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "text", placeholder: "Left person text", value: rightPersonText, onChange: function (e) { return setRightPersonText(e.target.value); } }),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: function () { return handleTextChange("right"); } }, "Add")))));
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "text", placeholder: "Tekst osoby po prawej stronie", value: rightPersonText, onChange: function (e) { return setRightPersonText(e.target.value); } }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn red-btn box-shadow", onClick: function () { return handleTextChange("right"); } }, "Dodaj")))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (IllustrationDrawer);
 
@@ -39535,6 +39569,268 @@ var mapStateToProps = function (state) { return ({
 
 /***/ }),
 
+/***/ "./resources/js/components/Dashboard/PracticeWordsModal/BottomBtns/BottomBtns.tsx":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/Dashboard/PracticeWordsModal/BottomBtns/BottomBtns.tsx ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var BottomBtns = function (_a) {
+    var handleWordRemove = _a.handleWordRemove, handleNextWord = _a.handleNextWord;
+    return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__content--btns" },
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn red-btn box-shadow", onClick: handleWordRemove }, "Usu\u0144"),
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn red-btn box-shadow", onClick: handleNextWord }, "Nast\u0119pne")));
+};
+/* harmony default export */ __webpack_exports__["default"] = (BottomBtns);
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Dashboard/PracticeWordsModal/PracticeWordsModal.tsx":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/Dashboard/PracticeWordsModal/PracticeWordsModal.tsx ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _helpers_ContentModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../helpers/ContentModal */ "./resources/js/components/helpers/ContentModal.tsx");
+/* harmony import */ var _BottomBtns_BottomBtns__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BottomBtns/BottomBtns */ "./resources/js/components/Dashboard/PracticeWordsModal/BottomBtns/BottomBtns.tsx");
+/* harmony import */ var _SelectWord_SelectWord__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SelectWord/SelectWord */ "./resources/js/components/Dashboard/PracticeWordsModal/SelectWord/SelectWord.tsx");
+/* harmony import */ var _helpers_api__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../../helpers/api */ "./resources/js/components/helpers/api.tsx");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+
+var PracticeWordsModal = function (_a) {
+    var config = _a.config, user = _a.user, setShowPracticeWordsModal = _a.setShowPracticeWordsModal, handleRemoveWord = _a.handleRemoveWord;
+    var _b = react__WEBPACK_IMPORTED_MODULE_0__["useState"]([]), drawnWord = _b[0], setDrawnWord = _b[1];
+    var _c = react__WEBPACK_IMPORTED_MODULE_0__["useState"]([]), randomWordsList = _c[0], setRandomWordsList = _c[1];
+    var _d = react__WEBPACK_IMPORTED_MODULE_0__["useState"](""), wordAnswerStatus = _d[0], setWordAnswerStatus = _d[1];
+    var _e = react__WEBPACK_IMPORTED_MODULE_0__["useState"](false), blockSelect = _e[0], setBlockSelect = _e[1];
+    var _f = react__WEBPACK_IMPORTED_MODULE_0__["useState"](false), showWordTranslation = _f[0], setShoWordTranslation = _f[1];
+    var getDrawnWord = function () { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4, Object(_helpers_api__WEBPACK_IMPORTED_MODULE_4__["handleGetRequest"])(config.paths.API_URL + "/words/random/new/1/" + user.id, user.token).then(function (res) {
+                        setWordAnswerStatus("");
+                        setBlockSelect(false);
+                        setDrawnWord(res[0]);
+                        getRandomWords();
+                        setShoWordTranslation(false);
+                    })];
+                case 1:
+                    _a.sent();
+                    return [2];
+            }
+        });
+    }); };
+    var getRandomWords = function () { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4, Object(_helpers_api__WEBPACK_IMPORTED_MODULE_4__["handleGetRequest"])(config.paths.API_URL + "/words/random/new/3/" + user.id, user.token).then(function (res) {
+                        setRandomWordsList(res);
+                    })];
+                case 1:
+                    _a.sent();
+                    return [2];
+            }
+        });
+    }); };
+    var checkWordSelection = function (selectedTranslation) { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (!!blockSelect) return [3, 2];
+                    return [4, Object(_helpers_api__WEBPACK_IMPORTED_MODULE_4__["handlePostRequest"])(config.paths.API_URL + "/words/check", {
+                            wordId: drawnWord.id,
+                            selectedTranslation: selectedTranslation,
+                        }, user.token).then(function (res) {
+                            console.log(["check", res]);
+                            setBlockSelect(true);
+                            setWordAnswerStatus(res);
+                            setShoWordTranslation(true);
+                        })];
+                case 1:
+                    _a.sent();
+                    return [3, 3];
+                case 2:
+                    console.log("already selected");
+                    _a.label = 3;
+                case 3: return [2];
+            }
+        });
+    }); };
+    react__WEBPACK_IMPORTED_MODULE_0__["useEffect"](function () {
+        getDrawnWord();
+    }, []);
+    return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_helpers_ContentModal__WEBPACK_IMPORTED_MODULE_1__["default"], { setShowModal: setShowPracticeWordsModal },
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null,
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "select-word__container" },
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_SelectWord_SelectWord__WEBPACK_IMPORTED_MODULE_3__["default"], { drawnWord: drawnWord, randomWordsList: randomWordsList, checkWordSelection: checkWordSelection, wordAnswerStatus: wordAnswerStatus, showWordTranslation: showWordTranslation })),
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_BottomBtns_BottomBtns__WEBPACK_IMPORTED_MODULE_2__["default"], { handleWordRemove: handleRemoveWord, handleNextWord: getDrawnWord }))));
+};
+var mapStateToProps = function (state) { return ({
+    user: state.user,
+    config: state.config
+}); };
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_5__["connect"])(mapStateToProps, {})(PracticeWordsModal));
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Dashboard/PracticeWordsModal/SelectWord/SelectWord.tsx":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/Dashboard/PracticeWordsModal/SelectWord/SelectWord.tsx ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _SingleOption_SingleOption__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SingleOption/SingleOption */ "./resources/js/components/Dashboard/PracticeWordsModal/SelectWord/SingleOption/SingleOption.tsx");
+
+
+var SelectWord = function (_a) {
+    var drawnWord = _a.drawnWord, randomWordsList = _a.randomWordsList, checkWordSelection = _a.checkWordSelection, wordAnswerStatus = _a.wordAnswerStatus, showWordTranslation = _a.showWordTranslation;
+    var _b = react__WEBPACK_IMPORTED_MODULE_0__["useState"]([]), allWordsList = _b[0], setAllWordsList = _b[1];
+    var _c = react__WEBPACK_IMPORTED_MODULE_0__["useState"](false), showIllustration = _c[0], setShowIllustration = _c[1];
+    react__WEBPACK_IMPORTED_MODULE_0__["useEffect"](function () {
+        var combinedWordList = randomWordsList.concat(drawnWord);
+        var shuffledWordList = shuffleArray(combinedWordList);
+        setAllWordsList(shuffledWordList);
+        setShowIllustration(false);
+    }, [randomWordsList]);
+    var shuffleArray = function (array) {
+        console.log(array);
+        return array.sort(function () { return Math.random() - 0.5; });
+    };
+    var handleShowIllustration = function () {
+        setShowIllustration(true);
+    };
+    return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null,
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: "select-word__translation-header" },
+            drawnWord && drawnWord.en && drawnWord.en.toLowerCase(),
+            " ",
+            showWordTranslation && " - " + (drawnWord && drawnWord.pl && drawnWord.pl.toLowerCase())),
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "select-word__options" }, allWordsList && allWordsList.length > 0 && allWordsList.map(function (singleOption, i) {
+            return react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_SingleOption_SingleOption__WEBPACK_IMPORTED_MODULE_1__["default"], { checkWordSelection: checkWordSelection, singleOption: singleOption, wordAnswerStatus: wordAnswerStatus, key: (singleOption && singleOption.pl) + "-" + i });
+        })),
+        drawnWord && drawnWord.illustration &&
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "red-btn box-shadow", onClick: handleShowIllustration }, "Poka\u017C ilustracj\u0119"),
+        showIllustration &&
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { src: drawnWord.illustration.base64_image, className: "select-word__illustration" })));
+};
+/* harmony default export */ __webpack_exports__["default"] = (SelectWord);
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Dashboard/PracticeWordsModal/SelectWord/SingleOption/SingleOption.tsx":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/Dashboard/PracticeWordsModal/SelectWord/SingleOption/SingleOption.tsx ***!
+  \*******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var SingleOption = function (_a) {
+    var checkWordSelection = _a.checkWordSelection, singleOption = _a.singleOption, wordAnswerStatus = _a.wordAnswerStatus;
+    var _b = react__WEBPACK_IMPORTED_MODULE_0__["useState"](false), wordSelected = _b[0], setWordSelected = _b[1];
+    var handleWordSelect = function () {
+        if (!wordAnswerStatus) {
+            checkWordSelection(singleOption.pl);
+            setWordSelected(true);
+        }
+    };
+    react__WEBPACK_IMPORTED_MODULE_0__["useEffect"](function () {
+        console.log(["singleOption", singleOption]);
+        setWordSelected(false);
+    }, [singleOption]);
+    return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "select-word__options--btn " + (wordSelected && wordAnswerStatus && "select-word__options--btn-" + wordAnswerStatus), onClick: function () { return handleWordSelect(); } }, singleOption && singleOption.pl && singleOption.pl.toLowerCase()));
+};
+/* harmony default export */ __webpack_exports__["default"] = (SingleOption);
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Dashboard/PracticeWordsSection/PracticeWordsSection.tsx":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/Dashboard/PracticeWordsSection/PracticeWordsSection.tsx ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var PracticeWordsSection = function (_a) {
+    var setShowPracticeWordsModal = _a.setShowPracticeWordsModal, allowPracticeWords = _a.allowPracticeWords;
+    return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "dashboard__practice-words-section--container" },
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, allowPracticeWords ? "Powtarzaj zapisane słownictwo" : "Nie masz jeszcze żadnych zapisanych słów"),
+        allowPracticeWords && react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn red-btn box-shadow", onClick: function () { return setShowPracticeWordsModal(true); } }, "Zaczynajmy")));
+};
+/* harmony default export */ __webpack_exports__["default"] = (PracticeWordsSection);
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Dashboard/Statistics/SingleStat/SingleStat.tsx":
 /*!********************************************************************************!*\
   !*** ./resources/js/components/Dashboard/Statistics/SingleStat/SingleStat.tsx ***!
@@ -39576,9 +39872,9 @@ __webpack_require__.r(__webpack_exports__);
 var Statistics = function (_a) {
     var user = _a.user;
     return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "dashboard-statistics" },
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_SingleStat_SingleStat__WEBPACK_IMPORTED_MODULE_1__["default"], { number: user.countSavedWordsOverall, text: "overall saved" }),
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_SingleStat_SingleStat__WEBPACK_IMPORTED_MODULE_1__["default"], { number: user.countSavedWordsLastWeek, text: "weekly saved" }),
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_SingleStat_SingleStat__WEBPACK_IMPORTED_MODULE_1__["default"], { number: user.countSavedWordsToday, text: "today saved" })));
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_SingleStat_SingleStat__WEBPACK_IMPORTED_MODULE_1__["default"], { number: user.countSavedWordsOverall, text: "zapisanych og\u00F3\u0142em" }),
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_SingleStat_SingleStat__WEBPACK_IMPORTED_MODULE_1__["default"], { number: user.countSavedWordsLastWeek, text: "w tym tygodniu" }),
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_SingleStat_SingleStat__WEBPACK_IMPORTED_MODULE_1__["default"], { number: user.countSavedWordsToday, text: "zapisanych dzisiaj" })));
 };
 /* harmony default export */ __webpack_exports__["default"] = (Statistics);
 
@@ -39608,21 +39904,20 @@ __webpack_require__.r(__webpack_exports__);
 
 var WordsList = function (_a) {
     var handlePageClick = _a.handlePageClick, handleAddIllustration = _a.handleAddIllustration, handleRemoveWord = _a.handleRemoveWord, words = _a.words;
-    return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null,
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "table-responsive" },
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("table", { className: "table" },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("thead", null,
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("tr", null,
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("th", { scope: "col" }, "#"),
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("th", { scope: "col" }, "EN"),
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("th", { scope: "col" }, "PL"),
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("th", { scope: "col" }))),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("tbody", null, words && words.result &&
-                    words.result.data.map(function (word, i) {
-                        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_WordsListRow_WordsListRow__WEBPACK_IMPORTED_MODULE_4__["default"], { key: "word-" + i, word: word, i: i, handleRemoveWord: handleRemoveWord, handleAddIllustration: handleAddIllustration }));
-                    }))),
+    return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, words && words.length > 0 && react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "table-responsive" },
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("table", { className: "table" },
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("thead", null,
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("tr", null,
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("th", { scope: "col" }, "#"),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("th", { scope: "col" }, "EN"),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("th", { scope: "col" }, "PL"),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("th", { scope: "col" }))),
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("tbody", null, words && words.result &&
+                words.result.data.map(function (word, i) {
+                    return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_WordsListRow_WordsListRow__WEBPACK_IMPORTED_MODULE_4__["default"], { key: "word-" + i, word: word, i: i, handleRemoveWord: handleRemoveWord, handleAddIllustration: handleAddIllustration }));
+                })),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("nav", { "aria-label": "Page navigation example" },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_paginate__WEBPACK_IMPORTED_MODULE_3___default.a, { previousLabel: false, nextLabell: false, forcePage: words.current_page, breakLabel: '...', breakClassName: 'break-me', pageCount: words.last_page, marginPagesDisplayed: 1, pageRangeDisplayed: 2, onPageChange: handlePageClick, containerClassName: 'pagination', subContainerClassName: 'pages pagination', activeClassName: 'active' })))));
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_paginate__WEBPACK_IMPORTED_MODULE_3___default.a, { previousLabel: false, nextLabell: false, forcePage: words.current_page, breakLabel: '...', breakClassName: 'break-me', pageCount: words.last_page, marginPagesDisplayed: 1, pageRangeDisplayed: 2, onPageChange: handlePageClick, containerClassName: 'pagination', subContainerClassName: 'pages pagination', activeClassName: 'active' }))))));
 };
 var mapStateToProps = function (state) { return ({
     user: state.user,
@@ -39656,9 +39951,9 @@ var WordsListRow = function (_a) {
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("td", null, word.en),
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("td", null, word.pl),
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("td", null,
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: function () { return handleRemoveWord(word.id); } }, "Remove")),
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn red-btn box-shadow", onClick: function () { return handleRemoveWord(word.id); } }, "Usu\u0144")),
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("td", null,
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn yellow-btn", onClick: function () { return handleAddIllustration(word.id); } }, "Add illustration"))));
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn blue-btn box-shadow", onClick: function () { return handleAddIllustration(word.id); } }, "Dodaj ilustracj\u0119"))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (WordsListRow);
 
@@ -39699,6 +39994,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_images_works2_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../../../assets/images/works2.svg */ "./resources/assets/images/works2.svg");
 /* harmony import */ var _assets_images_works3_svg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../../../assets/images/works3.svg */ "./resources/assets/images/works3.svg");
 /* harmony import */ var _assets_images_works4_svg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../../../assets/images/works4.svg */ "./resources/assets/images/works4.svg");
+/* harmony import */ var _assets_images_poster_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./../../../assets/images/poster.png */ "./resources/assets/images/poster.png");
+/* harmony import */ var _assets_videos_video_mp4__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./../../../assets/videos/video.mp4 */ "./resources/assets/videos/video.mp4");
+
+
 
 
 
@@ -39713,33 +40012,38 @@ var Home = function () {
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "container landing" },
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__main" },
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__main--wrapper" },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h1", null, "Feeling bored learning useless vocabulary or words you already know?"),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h2", null, "With EnglishPragmatic you can save vocabulary you see on websites/articles in the internet and practice them lately."),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__main--btn" },
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], { to: "/login" },
-                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "yellow-border-btn landing__single-btn landing__single-btn--sign-in box-shadow" }, "Sign In")),
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], { to: "/register" },
-                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "yellow-btn landing__single-btn landing__single-btn--register box-shadow" }, "Register"))))),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("video", { width: "100%", height: "100vh", preload: 'auto', poster: _assets_images_poster_png__WEBPACK_IMPORTED_MODULE_8__["default"], loop: true, autoPlay: true, muted: true },
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("source", { src: _assets_videos_video_mp4__WEBPACK_IMPORTED_MODULE_9__["default"], type: "video/mp4" })),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "video__overlay" }),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "video__content" },
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h1", null, "Masz do\u015B\u0107 tracenia czasu na przypadkowe powtarzanie s\u0142ownictwa, kt\u00F3re ju\u017C doskonale znasz z przygotowanych plan\u00F3w?"),
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h2", null, "Z Praktycznym Angielskim mo\u017Cesz zapisywa\u0107 w wyszukiwarce s\u0142owa, kt\u00F3rych znaczenia nie wiesz i uczy\u0107 ich si\u0119 p\u00F3\u017Aniej."),
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__main--btn" },
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], { to: "/login" },
+                                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "red-border-btn landing__single-btn landing__single-btn--sign-in" }, "Logowanie")),
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], { to: "/register" },
+                                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "red-btn landing__single-btn landing__single-btn--register" }, "Rejestracja")))))),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__works" },
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__works--single" },
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__works--text-container" },
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "Install extension to your chrome browser"),
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Visit download page")),
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "Zainstaluj wtyczk\u0119 na przegl\u0105darce Google Chrome"),
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Odwied\u017A stron\u0119 pobierania")),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { src: _assets_images_works1_svg__WEBPACK_IMPORTED_MODULE_4__["default"] })),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__works--single" },
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { src: _assets_images_works2_svg__WEBPACK_IMPORTED_MODULE_5__["default"] }),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__works--text-container" },
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "Save words for your account"),
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Mark interesting phrase, right click on selected text and click 'Save to words translations'"))),
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "Zaloguj si\u0119 do wtyczki"),
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "W pasku przegl\u0105darki kliknij w ikon\u0119 PK i zaloguj si\u0119 do swojego konta, aby m\u00F3c zapisywa\u0107 s\u0142owa/zwroty"))),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__works--single" },
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__works--text-container" },
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "Manage words to exercises"),
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "If you save some words to learn, come back to the dashboard and prepare rules to learn new words")),
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "Zapisuj s\u0142ownictwo"),
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Czytaj\u0105c teksty w j\u0119zyku angielskim, zaznacz interseuj\u0105c\u0105 Ci\u0119 fraz\u0119, kliknij prawym klawiszem na zaznaczony tekst i wybierz 'Zapisz w Praktycznym Angielskim'")),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { src: _assets_images_works3_svg__WEBPACK_IMPORTED_MODULE_6__["default"] })),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__works--single" },
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { src: _assets_images_works4_svg__WEBPACK_IMPORTED_MODULE_7__["default"] }),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__works--text-container" },
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "Practice, practice, practice ..."))))),
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "Ucz si\u0119 s\u0142ownictwa"),
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "W dowolnym momencie odwied\u017A nasz\u0105 stron\u0119 i po zalogowaniu si\u0119 na stronie mo\u017Cesz zacz\u0105\u0107 uczy\u0107 si\u0119 zapisanych s\u0142\u00F3w i zwrot\u00F3w"))))),
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utils_Footer_Footer__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
 };
 /* harmony default export */ __webpack_exports__["default"] = (Home);
@@ -39887,8 +40191,8 @@ var LoginForm = function (_a) {
     var setEmail = _a.setEmail, setPassword = _a.setPassword, handleSubmit = _a.handleSubmit;
     return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("form", null,
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { onChange: function (e) { return setEmail(e.target.value); }, placeholder: "Email" }),
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { onChange: function (e) { return setPassword(e.target.value); }, placeholder: "password" }),
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { type: "submit", className: "btn yellow-btn", onClick: function (e) { return handleSubmit(e); } }, "Login")));
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { onChange: function (e) { return setPassword(e.target.value); }, placeholder: "Has\u0142o" }),
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { type: "submit", className: "btn red-btn box-shadow", onClick: function (e) { return handleSubmit(e); } }, "Zaloguj")));
 };
 /* harmony default export */ __webpack_exports__["default"] = (LoginForm);
 
@@ -40058,22 +40362,47 @@ __webpack_require__.r(__webpack_exports__);
 var Register = function (_a) {
     var user = _a.user, createUser = _a.createUser;
     var _b = react__WEBPACK_IMPORTED_MODULE_0__["useState"](""), email = _b[0], setEmail = _b[1];
-    var _c = react__WEBPACK_IMPORTED_MODULE_0__["useState"](""), password = _c[0], setPassword = _c[1];
+    var _c = react__WEBPACK_IMPORTED_MODULE_0__["useState"](""), name = _c[0], setName = _c[1];
+    var _d = react__WEBPACK_IMPORTED_MODULE_0__["useState"](""), password = _d[0], setPassword = _d[1];
+    var _e = react__WEBPACK_IMPORTED_MODULE_0__["useState"]([]), levelList = _e[0], setLevelList = _e[1];
+    var _f = react__WEBPACK_IMPORTED_MODULE_0__["useState"](null), selectedLevelId = _f[0], setSelectedLevelId = _f[1];
     var handleSubmit = function (e) {
         e.preventDefault();
+        console.log({
+            email: email,
+            password: password,
+            name: name,
+            user_level_id: selectedLevelId
+        });
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("http://127.0.0.1:8000/api/register", {
             email: email,
-            password: password
+            password: password,
+            name: name,
+            user_level_id: selectedLevelId
         }).then(function (res) {
             console.log(res);
-            createUser(res.data.result.user.email);
+            createUser(res.data.result);
         });
     };
+    var getUserLevels = function () {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("http://127.0.0.1:8000/api/user-levels/all").then(function (res) {
+            console.log(["getUserLevels", res]);
+            setLevelList(res.data.result);
+        });
+    };
+    react__WEBPACK_IMPORTED_MODULE_0__["useEffect"](function () {
+        getUserLevels();
+    }, []);
     return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "container__one-page--center" },
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("form", null,
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { onChange: function (e) { return setName(e.target.value); }, placeholder: "Imi\u0119" }),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { onChange: function (e) { return setEmail(e.target.value); }, placeholder: "Email" }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { onChange: function (e) { return setPassword(e.target.value); }, placeholder: "password" }),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { type: "submit", onClick: function (e) { return handleSubmit(e); } }, "Register"))));
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { onChange: function (e) { return setPassword(e.target.value); }, type: "password", placeholder: "Has\u0142o" }),
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Jak oceniasz sw\u00F3j poziom angielskiego?"),
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("select", { onChange: function (e) { return setSelectedLevelId(e.target.value); } }, levelList.map(function (level, i) {
+                return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("option", { value: level.id }, level.level));
+            })),
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn red-btn box-shadow", type: "submit", onClick: function (e) { return handleSubmit(e); } }, "Zarejestruj"))));
 };
 var mapStateToProps = function (state) { return ({
     user: state.user
@@ -40346,22 +40675,22 @@ var Menu = function (_a) {
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { to: "/" },
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "menu__logo" },
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: "menu__logo--main" },
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, "English"),
-                        "Pragmatic"),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: "menu__logo--description" }, "Practice vocabulary you really need!"))),
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: "menu__logo--red" }, "Praktyczny"),
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: "menu__logo--blue" }, "Angielski")),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: "menu__logo--description" }, "Ucz si\u0119 angielskiego jakiego potrzebujesz!"))),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "menu__right" },
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "menu__right-routes" }, user && user.email ?
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null,
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { to: "/dashboard", className: "menu-link" }, "Practice"),
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { to: "/dashboard", className: "menu-link" }, "Rozpocznij dzisiejsz\u0105 nauk\u0119"),
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: "menu-link" },
-                            "Hi, ",
+                            "Cze\u015B\u0107, ",
                             user.email),
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "menu-btn yellow-btn", onClick: handleLogout }, "Logout"))
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "menu-btn blue-btn", onClick: handleLogout }, "Wyloguj"))
                     :
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null,
-                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { to: "/login", className: "menu-link" }, "Sign in"),
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { to: "/login", className: "menu-link" }, "Logowanie"),
                             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { to: "/register" },
-                                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "yellow-btn box-shadow" }, "Sign up"))))))));
+                                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "red-btn box-shadow" }, "Rejestracja"))))))));
 };
 var mapStateToProps = function (state) { return ({
     user: state.user

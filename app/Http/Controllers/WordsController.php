@@ -29,6 +29,8 @@ class WordsController extends Controller
         $word->user_id = $userId;
         $word->en = $en;
         $word->pl = $pl;
+        $word->success_answers_count = 0;
+        $word->failure_answers_count = 0;
 
         $word->save();
 
@@ -46,5 +48,45 @@ class WordsController extends Controller
         return response()->json(
             ['result' => $word
         ], 200);
+    }
+
+    public function getRandomWordToTest(Request $request) {
+        $status = $request->status;
+        $count = $request->count;
+        $userId = $request->userId;
+
+        $words = Word::where([['status', $status], ['user_id', $userId]])
+                        ->with('illustration')
+                        ->inRandomOrder()
+                        ->take($count)
+                        ->get();
+
+        return response()->json(
+            ['result' => $words
+        ], 200);
+    }
+
+    public function checkSelectedOption(Request $request) {
+        $word_id = $request->wordId;
+        $translation = $request->selectedTranslation;
+
+        $word = Word::where('id', $word_id)
+                        ->first();
+
+        if($word->pl === $translation) {
+            Word::where('id', $word_id)
+                    ->increment('success_answers_count');
+
+            return response()->json(
+                ['result' => "success"
+            ], 200);
+        } else {
+            Word::where('id', $word_id)
+                    ->increment('failure_answers_count');
+
+            return response()->json(
+                ['result' => "failure"
+            ], 200);
+        }
     }
 }

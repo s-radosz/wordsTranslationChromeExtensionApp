@@ -16,7 +16,7 @@
          * @var array
          */
         protected $fillable = [
-            'name', 'email', 'password',
+            'name', 'email', 'password', 'user_level_id'
         ];
 
         /**
@@ -40,5 +40,9 @@
         public function words()
         {
             return $this->hasMany('App\Word', 'user_id');
+        }
+
+        public function level(){
+            return $this->hasOne('App\UserLevel', 'user_level_id');
         }
     }

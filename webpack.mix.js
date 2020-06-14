@@ -12,6 +12,10 @@ mix.js("resources/js/app.js", "public/js")
                     exclude: /node_modules/
                 },
                 {
+                    test: /\.mp4$/,
+                    use: 'file-loader?name=videos/[name].[ext]'
+                },
+                {
                     test: /\.(png|jpg|gif)$/i,
                     use: [
                         {

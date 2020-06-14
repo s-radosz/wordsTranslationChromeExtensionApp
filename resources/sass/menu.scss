@@ -17,8 +17,11 @@
         .menu__logo--main {
             font-weight: 800;
 
-            span {
-                color: $yellow;
+            .menu__logo--red {
+                color: $red;
+            }
+            .menu__logo--blue {
+                color: $blue;
             }
         }
         .menu__logo--description {
@@ -92,7 +95,7 @@
             padding: 20px 0;
     
             .menu__logo--main {
-                font-size: 19px;
+                font-size: 20px;
                 line-height: 19px;
                 margin: 0 0 5px 0;
             }

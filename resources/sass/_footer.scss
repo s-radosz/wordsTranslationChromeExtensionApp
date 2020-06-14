@@ -1,0 +1,14 @@
+.homepage__footer--container {
+    background-color: $black;
+
+    .homepage__footer--wrapper {
+        display: flex;
+        justify-content: space-between;
+        max-width: 90vw;
+        margin: 0 auto;
+
+        p, a{
+            color: $white;
+        }
+    }
+}
