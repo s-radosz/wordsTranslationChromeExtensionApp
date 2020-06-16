@@ -90,9 +90,9 @@ const Dashboard = ({ words, user, config, createWords, removeWord, updateUserWor
                 />
             }
 
-            <PracticeWordsSection setShowPracticeWordsModal={setShowPracticeWordsModal} allowPracticeWords={words.length > 0 ? true : false} />
+            <PracticeWordsSection setShowPracticeWordsModal={setShowPracticeWordsModal} allowPracticeWords={words && words.result && words.result.data && words.result.data.length > 0 ? true : false} />
 
-            {words && words.length > 0 && showPracticeWordsModal &&
+            {words && words.result && words.result.data && words.result.data.length > 0 && showPracticeWordsModal &&
                 <PracticeWordsModal
                     setShowPracticeWordsModal={setShowPracticeWordsModal}
                     handleRemoveWord={handleRemoveWord}

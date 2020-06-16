@@ -3,7 +3,7 @@ import axios from "axios";
 import ACTIONS from "../../modules/actions/userActions";
 import { connect } from "react-redux";
 
-const Register = ({ user, createUser }) => {
+const Register = ({ user, config, createUser }) => {
     const [email, setEmail] = React.useState("");
     const [name, setName] = React.useState("");
     const [password, setPassword] = React.useState("");
@@ -20,7 +20,7 @@ const Register = ({ user, createUser }) => {
             user_level_id: selectedLevelId
         })
 
-        axios.post(`http://127.0.0.1:8000/api/register`, {
+        axios.post(`${config.paths.API_URL}/register`, {
             email: email,
             password: password,
             name: name,
@@ -32,7 +32,7 @@ const Register = ({ user, createUser }) => {
     }
 
     const getUserLevels = () => {
-        axios.get(`http://127.0.0.1:8000/api/user-levels/all`).then(res => {
+        axios.get(`${config.paths.API_URL}/user-levels/all`).then(res => {
             console.log(["getUserLevels", res])
             setLevelList(res.data.result);
         })
@@ -53,7 +53,7 @@ const Register = ({ user, createUser }) => {
                     {levelList.map((level, i) => {
                         return (
                             //@ts-ignore
-                            <option value={level.id}>{level.level}</option>
+                            <option value={level.id} key={level.id}>{level.level}</option>
                         )
                     })}
                 </select>
@@ -65,7 +65,8 @@ const Register = ({ user, createUser }) => {
     )
 }
 const mapStateToProps = state => ({
-    user: state.user
+    user: state.user,
+    config: state.config
 });
 
 const mapDispatchToProps = dispatch => ({

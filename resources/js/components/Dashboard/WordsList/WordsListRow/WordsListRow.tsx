@@ -10,10 +10,10 @@ const WordsListRow = ({
         <tr className="tranlation__row" key={i}>
             <th scope="row">{word.id}</th>
             <td>
-                {word.en}
+                <p>{word.en}</p>
             </td>
             <td>
-                {word.pl}
+                <p>{word.pl}</p>
             </td>
             <td>
                 <button className="btn red-btn box-shadow" onClick={() => handleRemoveWord(word.id)}>

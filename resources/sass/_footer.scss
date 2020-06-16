@@ -12,3 +12,12 @@
         }
     }
 }
+
+@media (max-width: 480px) {
+    .homepage__footer--wrapper {
+        p {
+            width: 100%;
+            text-align: center;
+        }
+    }
+}

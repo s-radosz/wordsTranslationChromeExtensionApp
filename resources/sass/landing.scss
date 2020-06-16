@@ -16,6 +16,15 @@
                 .landing__works--text-container {
                     max-width: 40%;
                     margin: 0 5%;
+
+                    .P-letter {
+                        font-weight: 800;
+                        color: $red;
+                    }
+                    .A-letter {
+                        font-weight: 800;
+                        color: $blue;
+                    }
                 }
             }
         }
@@ -50,6 +59,7 @@
     .video__content {
         z-index: 3;
         position: absolute;
+        width: 90%;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
@@ -76,9 +86,23 @@
         text-align: center;
 
         .landing__works {
+            margin-top: 100px;
             .landing__works--single {
                 img {
-                    max-width: 50%
+                    max-width: 50%;
+                    margin-bottom: 50px;
+                }
+            }
+
+            .landing__works--text-container {
+                margin-bottom: 35px;
+            }
+        }
+        .landing__main {
+            .landing__main--wrapper {
+                .video__content {
+                    width: 90%;
+                    margin-top: 60px;
                 }
             }
         }
@@ -91,6 +115,9 @@
 }
 
 @media (min-width: 481px) and (max-width: 980px) {
+    .landing__works {
+        padding-top: 50px;
+    }
     .landing__main--btn {
         button {
             margin: 0 6px;

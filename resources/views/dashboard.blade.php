@@ -5,7 +5,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>Dashboard</title>
+        <meta name="description" content="Praktyczny Angielski - Ucz się angielskiego jakiego potrzebujesz!"/>
+        <meta name="author" content="Szymon Radosz" />
+        <meta name="keywords" content="angielski, nauka angielskiego, nauka angielskiego online, nauka angielskiego dla dzieci, nauka angielskiego online za darmo, nauka angielskiego w domu"/>
+        <title>Praktyczny Angielski</title>
         <!-- <link rel="icon" type="image/png" href="images/favicon.png" /> -->
         <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
         <link rel="stylesheet" type="text/css" href="{{mix('css/app.css')}}?v=<?php echo date('Y-m-d H:i:s') ?>">
@@ -13,9 +16,9 @@
     <body>
         <div id="app"></div>
 
-        <!-- <script>
+        <script>
             window.__REACT_DEVTOOLS_GLOBAL_HOOK__.inject = function () {}
-        </script> -->
+        </script>
 
         <link href="https://fonts.googleapis.com/css?family=Notable&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap" rel="stylesheet">

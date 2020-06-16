@@ -8,11 +8,11 @@ const Head = ({ title }) => {
             <meta name="author" content="Szymon Radosz" />
             <meta
                 name="description"
-                content="Land Of Mine - Build Your Own City"
+                content="Praktyczny Angielski - Ucz się angielskiego jakiego potrzebujesz!"
             />
             <meta
                 name="keywords"
-                content="game, citites, gaming, web browser game"
+                content="angielski, nauka angielskiego, nauka angielskiego online, nauka angielskiego dla dzieci, nauka angielskiego online za darmo, nauka angielskiego w domu"
             />
             <meta http-equiv="x-ua-compatible" content="ie=edge" />
             <meta
@@ -20,7 +20,7 @@ const Head = ({ title }) => {
                 content="width=device-width, initial-scale=1.0"
             />
 
-            <title>{title}</title>
+            <title>Praktyczny Angielski - {title}</title>
 
             <link
                 href="https://fonts.googleapis.com/css?family=Nunito:200,600"

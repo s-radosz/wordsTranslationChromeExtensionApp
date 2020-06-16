@@ -1,6 +1,5 @@
 import * as React from "react";
 import Head from "./../utils/Head/Head";
-import Footer from "./../utils/Footer/Footer";
 import {
     Link
 } from 'react-router-dom';
@@ -20,7 +19,7 @@ import video from "./../../../assets/videos/video.mp4"
 const Home = () => {
     return (
         <>
-            <Head title="Words Translations" />
+            <Head title="Praktyczny Angielski - Ucz się angielskiego jakiego potrzebujesz!" />
 
             <div className="container landing">
                 <div className="landing__main">
@@ -52,37 +51,53 @@ const Home = () => {
                     <div className="landing__works--single">
                         <div className="landing__works--text-container">
                             <h3>Zainstaluj wtyczkę na przeglądarce Google Chrome</h3>
-                            <p>Odwiedź stronę pobierania</p>
+                            <p>Odwiedź stronę pobierania.</p>
                         </div>
                         <img src={works1} />
                     </div>
 
-                    <div className="landing__works--single">
+                    <div className="landing__works--single display-desktop">
                         <img src={works2} />
                         <div className="landing__works--text-container">
                             <h3>Zaloguj się do wtyczki</h3>
-                            <p>W pasku przeglądarki kliknij w ikonę PK i zaloguj się do swojego konta, aby móc zapisywać słowa/zwroty</p>
+                            <p>W pasku przeglądarki kliknij w ikonę <span className="P-letter">P</span><span className="A-letter">A</span> i zaloguj się do swojego konta, aby móc zapisywać słowa/zwroty.</p>
                         </div>
+                    </div>
+
+                    <div className="landing__works--single display-mobile">
+                        <div className="landing__works--text-container">
+                            <h3>Zaloguj się do wtyczki</h3>
+                            <p>W pasku przeglądarki kliknij w ikonę <span className="P-letter">P</span><span className="A-letter">A</span> i zaloguj się do swojego konta, aby móc zapisywać słowa/zwroty.</p>
+                        </div>
+                        <img src={works2} />
                     </div>
 
                     <div className="landing__works--single">
                         <div className="landing__works--text-container">
                             <h3>Zapisuj słownictwo</h3>
-                            <p>Czytając teksty w języku angielskim, zaznacz interseującą Cię frazę, kliknij prawym klawiszem na zaznaczony tekst i wybierz 'Zapisz w Praktycznym Angielskim'</p>
+                            <p>Czytając teksty w języku angielskim, zaznacz interseującą Cię frazę, kliknij prawym klawiszem na zaznaczony tekst i wybierz 'Zapisz do Praktycznego Angielskiego'.</p>
                         </div>
                         <img src={works3} />
                     </div>
 
-                    <div className="landing__works--single">
+                    <div className="landing__works--single display-desktop">
                         <img src={works4} />
                         <div className="landing__works--text-container">
                             <h3>Ucz się słownictwa</h3>
-                            <p>W dowolnym momencie odwiedź naszą stronę i po zalogowaniu się na stronie możesz zacząć uczyć się zapisanych słów i zwrotów</p>
+                            <p>W dowolnym momencie odwiedź naszą stronę i po zalogowaniu się na stronie możesz zacząć uczyć się zapisanych słów i zwrotów.</p>
                         </div>
+                    </div>
+
+                    <div className="landing__works--single display-mobile">
+                        <div className="landing__works--text-container">
+                            <h3>Ucz się słownictwa</h3>
+                            <p>W dowolnym momencie odwiedź naszą stronę i po zalogowaniu się na stronie możesz zacząć uczyć się zapisanych słów i zwrotów.</p>
+                        </div>
+                        <img src={works4} />
                     </div>
                 </div>
             </div>
-            <Footer />
+
         </>
     );
 };

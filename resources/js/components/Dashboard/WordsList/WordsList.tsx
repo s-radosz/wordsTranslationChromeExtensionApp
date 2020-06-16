@@ -7,7 +7,7 @@ import WordsListRow from "./WordsListRow/WordsListRow"
 const WordsList = ({ handlePageClick, handleAddIllustration, handleRemoveWord, words }) => {
     return (
         <>
-            {words && words.length > 0 && <div className="table-responsive">
+            {words && words.result && words.result.data && words.result.data.length > 0 && <div className="table-responsive">
                 <table className="table">
                     <thead>
                         <tr>

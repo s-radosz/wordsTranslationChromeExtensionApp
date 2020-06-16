@@ -47,7 +47,7 @@ const IllustrationModal = ({ setShowIllustrationModal, currentWordIdIllustration
         const ctx = canvasImage.current.getContext('2d');
 
         var imageObj1 = new Image();
-        imageObj1.src = `http://127.0.0.1:8000/images/conversation.png`
+        imageObj1.src = `${config.paths.APP_URL}/images/conversation.png`
         imageObj1.onload = function () {
             ctx.drawImage(imageObj1, 0, 50
                 , 400, 200);

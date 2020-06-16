@@ -9,6 +9,7 @@ import {
 import history from "./History";
 import Alert from "./utils/Alert/Alert";
 import Menu from "./utils/Menu/Menu";
+import Footer from "./utils/Footer/Footer";
 import Home from "./Home/Home";
 import Register from "./Register/Register";
 import Dashboard from "./Dashboard/Dashboard"
@@ -148,6 +149,8 @@ class Main extends Component<MainProps, MainState> {
                             )}
                         </Switch>
                     </div>
+
+                    <Footer />
                 </Router>
             </ReduxProvider>
         );

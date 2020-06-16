@@ -91,19 +91,31 @@ button, a {
     border: 2px solid $blue;
 }
 @media (max-width: 480px) {
+    .display-mobile {
+        display: block;
+    }
+    .display-desktop {
+        display: none;
+    }
     .red-btn, .red-border-btn {
         font-size: 12px;
-        padding: 3px 25px !important;
+        padding: 6px 25px !important;
         line-height: 15px;
     }
     .blue-btn, .blue-border-btn {
         font-size: 12px;
-        padding: 3px 25px !important;
+        padding: 6px 25px !important;
         line-height: 15px;
     }
 }
 
 @media (min-width: 481px) and (max-width: 980px) {
+    .display-mobile {
+        display: block;
+    }
+    .display-desktop {
+        display: none!important;
+    }
     .red-btn, .red-border-btn {
         font-size: 15px;
         padding: 4px 25px !important;
@@ -117,6 +129,12 @@ button, a {
 }
 
 @media (min-width: 981px) {
+    .display-mobile {
+        display: none !important;
+    }
+    .display-desktop {
+        display: block;
+    }
     .red-btn, .red-border-btn {
         font-size: 16px;
         padding: 5px 25px !important;

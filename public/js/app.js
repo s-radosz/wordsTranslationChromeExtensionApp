@@ -39317,8 +39317,8 @@ var Dashboard = function (_a) {
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_WordsList_WordsList__WEBPACK_IMPORTED_MODULE_5__["default"], { handlePageClick: handlePageClick, handleRemoveWord: handleRemoveWord, handleAddIllustration: handleAddIllustration }),
         showIllustrationModal &&
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_IllustrationModal_IllustrationModal__WEBPACK_IMPORTED_MODULE_7__["default"], { setShowIllustrationModal: setShowIllustrationModal, currentWordIdIllustration: currentWordIdIllustration }),
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_PracticeWordsSection_PracticeWordsSection__WEBPACK_IMPORTED_MODULE_8__["default"], { setShowPracticeWordsModal: setShowPracticeWordsModal, allowPracticeWords: words.length > 0 ? true : false }),
-        words && words.length > 0 && showPracticeWordsModal &&
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_PracticeWordsSection_PracticeWordsSection__WEBPACK_IMPORTED_MODULE_8__["default"], { setShowPracticeWordsModal: setShowPracticeWordsModal, allowPracticeWords: words && words.result && words.result.data && words.result.data.length > 0 ? true : false }),
+        words && words.result && words.result.data && words.result.data.length > 0 && showPracticeWordsModal &&
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_PracticeWordsModal_PracticeWordsModal__WEBPACK_IMPORTED_MODULE_9__["default"], { setShowPracticeWordsModal: setShowPracticeWordsModal, handleRemoveWord: handleRemoveWord })));
 };
 var mapStateToProps = function (state) { return ({
@@ -39379,10 +39379,10 @@ var IllustrationDrawer = function (_a) {
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("canvas", { width: "400", height: "300", ref: canvasImage })),
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__text-container" },
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__single" },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "text", placeholder: "Tekst osoby po lewej stronie", value: leftPersonText, onChange: function (e) { return setLeftPersonText(e.target.value); } }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "text", placeholder: "Tekst osoby po lewej", value: leftPersonText, onChange: function (e) { return setLeftPersonText(e.target.value); } }),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn red-btn box-shadow", onClick: function () { return handleTextChange("left"); } }, "Dodaj")),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "illustration__single" },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "text", placeholder: "Tekst osoby po prawej stronie", value: rightPersonText, onChange: function (e) { return setRightPersonText(e.target.value); } }),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { type: "text", placeholder: "Tekst osoby po prawej", value: rightPersonText, onChange: function (e) { return setRightPersonText(e.target.value); } }),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn red-btn box-shadow", onClick: function () { return handleTextChange("right"); } }, "Dodaj")))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (IllustrationDrawer);
@@ -39479,7 +39479,7 @@ var IllustrationModal = function (_a) {
         console.log(["canvasImage", canvasImage.current, canvasImage, canvasImage.current.getContext('2d')]);
         var ctx = canvasImage.current.getContext('2d');
         var imageObj1 = new Image();
-        imageObj1.src = "http://127.0.0.1:8000/images/conversation.png";
+        imageObj1.src = config.paths.APP_URL + "/images/conversation.png";
         imageObj1.onload = function () {
             ctx.drawImage(imageObj1, 0, 50, 400, 200);
         };
@@ -39904,7 +39904,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var WordsList = function (_a) {
     var handlePageClick = _a.handlePageClick, handleAddIllustration = _a.handleAddIllustration, handleRemoveWord = _a.handleRemoveWord, words = _a.words;
-    return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, words && words.length > 0 && react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "table-responsive" },
+    return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, words && words.result && words.result.data && words.result.data.length > 0 && react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "table-responsive" },
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("table", { className: "table" },
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("thead", null,
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("tr", null,
@@ -39948,8 +39948,10 @@ var WordsListRow = function (_a) {
     var word = _a.word, handleRemoveWord = _a.handleRemoveWord, handleAddIllustration = _a.handleAddIllustration, i = _a.i;
     return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("tr", { className: "tranlation__row", key: i },
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("th", { scope: "row" }, word.id),
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("td", null, word.en),
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("td", null, word.pl),
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("td", null,
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, word.en)),
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("td", null,
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, word.pl)),
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("td", null,
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn red-btn box-shadow", onClick: function () { return handleRemoveWord(word.id); } }, "Usu\u0144")),
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("td", null,
@@ -39988,15 +39990,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _utils_Head_Head__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../utils/Head/Head */ "./resources/js/components/utils/Head/Head.tsx");
-/* harmony import */ var _utils_Footer_Footer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../utils/Footer/Footer */ "./resources/js/components/utils/Footer/Footer.tsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _assets_images_works1_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../../../assets/images/works1.svg */ "./resources/assets/images/works1.svg");
-/* harmony import */ var _assets_images_works2_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../../../assets/images/works2.svg */ "./resources/assets/images/works2.svg");
-/* harmony import */ var _assets_images_works3_svg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../../../assets/images/works3.svg */ "./resources/assets/images/works3.svg");
-/* harmony import */ var _assets_images_works4_svg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../../../assets/images/works4.svg */ "./resources/assets/images/works4.svg");
-/* harmony import */ var _assets_images_poster_png__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./../../../assets/images/poster.png */ "./resources/assets/images/poster.png");
-/* harmony import */ var _assets_videos_video_mp4__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./../../../assets/videos/video.mp4 */ "./resources/assets/videos/video.mp4");
-
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _assets_images_works1_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../../assets/images/works1.svg */ "./resources/assets/images/works1.svg");
+/* harmony import */ var _assets_images_works2_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../../../assets/images/works2.svg */ "./resources/assets/images/works2.svg");
+/* harmony import */ var _assets_images_works3_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../../../assets/images/works3.svg */ "./resources/assets/images/works3.svg");
+/* harmony import */ var _assets_images_works4_svg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../../../assets/images/works4.svg */ "./resources/assets/images/works4.svg");
+/* harmony import */ var _assets_images_poster_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../../../assets/images/poster.png */ "./resources/assets/images/poster.png");
+/* harmony import */ var _assets_videos_video_mp4__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./../../../assets/videos/video.mp4 */ "./resources/assets/videos/video.mp4");
 
 
 
@@ -40008,43 +40008,60 @@ __webpack_require__.r(__webpack_exports__);
 
 var Home = function () {
     return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null,
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utils_Head_Head__WEBPACK_IMPORTED_MODULE_1__["default"], { title: "Words Translations" }),
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utils_Head_Head__WEBPACK_IMPORTED_MODULE_1__["default"], { title: "Praktyczny Angielski - Ucz si\u0119 angielskiego jakiego potrzebujesz!" }),
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "container landing" },
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__main" },
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__main--wrapper" },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("video", { width: "100%", height: "100vh", preload: 'auto', poster: _assets_images_poster_png__WEBPACK_IMPORTED_MODULE_8__["default"], loop: true, autoPlay: true, muted: true },
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("source", { src: _assets_videos_video_mp4__WEBPACK_IMPORTED_MODULE_9__["default"], type: "video/mp4" })),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("video", { width: "100%", height: "100vh", preload: 'auto', poster: _assets_images_poster_png__WEBPACK_IMPORTED_MODULE_7__["default"], loop: true, autoPlay: true, muted: true },
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("source", { src: _assets_videos_video_mp4__WEBPACK_IMPORTED_MODULE_8__["default"], type: "video/mp4" })),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "video__overlay" }),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "video__content" },
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h1", null, "Masz do\u015B\u0107 tracenia czasu na przypadkowe powtarzanie s\u0142ownictwa, kt\u00F3re ju\u017C doskonale znasz z przygotowanych plan\u00F3w?"),
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h2", null, "Z Praktycznym Angielskim mo\u017Cesz zapisywa\u0107 w wyszukiwarce s\u0142owa, kt\u00F3rych znaczenia nie wiesz i uczy\u0107 ich si\u0119 p\u00F3\u017Aniej."),
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__main--btn" },
-                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], { to: "/login" },
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { to: "/login" },
                                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "red-border-btn landing__single-btn landing__single-btn--sign-in" }, "Logowanie")),
-                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], { to: "/register" },
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { to: "/register" },
                                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "red-btn landing__single-btn landing__single-btn--register" }, "Rejestracja")))))),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__works" },
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__works--single" },
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__works--text-container" },
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "Zainstaluj wtyczk\u0119 na przegl\u0105darce Google Chrome"),
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Odwied\u017A stron\u0119 pobierania")),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { src: _assets_images_works1_svg__WEBPACK_IMPORTED_MODULE_4__["default"] })),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__works--single" },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { src: _assets_images_works2_svg__WEBPACK_IMPORTED_MODULE_5__["default"] }),
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Odwied\u017A stron\u0119 pobierania.")),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { src: _assets_images_works1_svg__WEBPACK_IMPORTED_MODULE_3__["default"] })),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__works--single display-desktop" },
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { src: _assets_images_works2_svg__WEBPACK_IMPORTED_MODULE_4__["default"] }),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__works--text-container" },
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "Zaloguj si\u0119 do wtyczki"),
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "W pasku przegl\u0105darki kliknij w ikon\u0119 PK i zaloguj si\u0119 do swojego konta, aby m\u00F3c zapisywa\u0107 s\u0142owa/zwroty"))),
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null,
+                            "W pasku przegl\u0105darki kliknij w ikon\u0119 ",
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: "P-letter" }, "P"),
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: "A-letter" }, "A"),
+                            " i zaloguj si\u0119 do swojego konta, aby m\u00F3c zapisywa\u0107 s\u0142owa/zwroty."))),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__works--single display-mobile" },
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__works--text-container" },
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "Zaloguj si\u0119 do wtyczki"),
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null,
+                            "W pasku przegl\u0105darki kliknij w ikon\u0119 ",
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: "P-letter" }, "P"),
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", { className: "A-letter" }, "A"),
+                            " i zaloguj si\u0119 do swojego konta, aby m\u00F3c zapisywa\u0107 s\u0142owa/zwroty.")),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { src: _assets_images_works2_svg__WEBPACK_IMPORTED_MODULE_4__["default"] })),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__works--single" },
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__works--text-container" },
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "Zapisuj s\u0142ownictwo"),
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Czytaj\u0105c teksty w j\u0119zyku angielskim, zaznacz interseuj\u0105c\u0105 Ci\u0119 fraz\u0119, kliknij prawym klawiszem na zaznaczony tekst i wybierz 'Zapisz w Praktycznym Angielskim'")),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { src: _assets_images_works3_svg__WEBPACK_IMPORTED_MODULE_6__["default"] })),
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__works--single" },
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { src: _assets_images_works4_svg__WEBPACK_IMPORTED_MODULE_7__["default"] }),
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "Czytaj\u0105c teksty w j\u0119zyku angielskim, zaznacz interseuj\u0105c\u0105 Ci\u0119 fraz\u0119, kliknij prawym klawiszem na zaznaczony tekst i wybierz 'Zapisz do Praktycznego Angielskiego'.")),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { src: _assets_images_works3_svg__WEBPACK_IMPORTED_MODULE_5__["default"] })),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__works--single display-desktop" },
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { src: _assets_images_works4_svg__WEBPACK_IMPORTED_MODULE_6__["default"] }),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__works--text-container" },
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "Ucz si\u0119 s\u0142ownictwa"),
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "W dowolnym momencie odwied\u017A nasz\u0105 stron\u0119 i po zalogowaniu si\u0119 na stronie mo\u017Cesz zacz\u0105\u0107 uczy\u0107 si\u0119 zapisanych s\u0142\u00F3w i zwrot\u00F3w"))))),
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utils_Footer_Footer__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "W dowolnym momencie odwied\u017A nasz\u0105 stron\u0119 i po zalogowaniu si\u0119 na stronie mo\u017Cesz zacz\u0105\u0107 uczy\u0107 si\u0119 zapisanych s\u0142\u00F3w i zwrot\u00F3w."))),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__works--single display-mobile" },
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "landing__works--text-container" },
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h3", null, "Ucz si\u0119 s\u0142ownictwa"),
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "W dowolnym momencie odwied\u017A nasz\u0105 stron\u0119 i po zalogowaniu si\u0119 na stronie mo\u017Cesz zacz\u0105\u0107 uczy\u0107 si\u0119 zapisanych s\u0142\u00F3w i zwrot\u00F3w.")),
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", { src: _assets_images_works4_svg__WEBPACK_IMPORTED_MODULE_6__["default"] }))))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (Home);
 
@@ -40191,7 +40208,7 @@ var LoginForm = function (_a) {
     var setEmail = _a.setEmail, setPassword = _a.setPassword, handleSubmit = _a.handleSubmit;
     return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("form", null,
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { onChange: function (e) { return setEmail(e.target.value); }, placeholder: "Email" }),
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { onChange: function (e) { return setPassword(e.target.value); }, placeholder: "Has\u0142o" }),
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { onChange: function (e) { return setPassword(e.target.value); }, placeholder: "Has\u0142o", type: "password" }),
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { type: "submit", className: "btn red-btn box-shadow", onClick: function (e) { return handleSubmit(e); } }, "Zaloguj")));
 };
 /* harmony default export */ __webpack_exports__["default"] = (LoginForm);
@@ -40214,13 +40231,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _History__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./History */ "./resources/js/components/History.tsx");
 /* harmony import */ var _utils_Alert_Alert__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/Alert/Alert */ "./resources/js/components/utils/Alert/Alert.tsx");
 /* harmony import */ var _utils_Menu_Menu__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils/Menu/Menu */ "./resources/js/components/utils/Menu/Menu.tsx");
-/* harmony import */ var _Home_Home__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Home/Home */ "./resources/js/components/Home/Home.tsx");
-/* harmony import */ var _Register_Register__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Register/Register */ "./resources/js/components/Register/Register.tsx");
-/* harmony import */ var _Dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Dashboard/Dashboard */ "./resources/js/components/Dashboard/Dashboard.tsx");
-/* harmony import */ var _Login_Login__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Login/Login */ "./resources/js/components/Login/Login.tsx");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _modules_store__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./../modules/store */ "./resources/js/modules/store.js");
-/* harmony import */ var _helpers_LoginCheckMiddleware__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./helpers/LoginCheckMiddleware */ "./resources/js/components/helpers/LoginCheckMiddleware.tsx");
+/* harmony import */ var _utils_Footer_Footer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./utils/Footer/Footer */ "./resources/js/components/utils/Footer/Footer.tsx");
+/* harmony import */ var _Home_Home__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Home/Home */ "./resources/js/components/Home/Home.tsx");
+/* harmony import */ var _Register_Register__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Register/Register */ "./resources/js/components/Register/Register.tsx");
+/* harmony import */ var _Dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Dashboard/Dashboard */ "./resources/js/components/Dashboard/Dashboard.tsx");
+/* harmony import */ var _Login_Login__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Login/Login */ "./resources/js/components/Login/Login.tsx");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _modules_store__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./../modules/store */ "./resources/js/modules/store.js");
+/* harmony import */ var _helpers_LoginCheckMiddleware__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./helpers/LoginCheckMiddleware */ "./resources/js/components/helpers/LoginCheckMiddleware.tsx");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -40247,7 +40265,8 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
-var reduxStore = Object(_modules_store__WEBPACK_IMPORTED_MODULE_10__["default"])(window.REDUX_INITIAL_DATA);
+
+var reduxStore = Object(_modules_store__WEBPACK_IMPORTED_MODULE_11__["default"])(window.REDUX_INITIAL_DATA);
 var Main = (function (_super) {
     __extends(Main, _super);
     function Main(props) {
@@ -40297,22 +40316,22 @@ var Main = (function (_super) {
             {
                 path: "/register",
                 name: "Register",
-                Component: _Register_Register__WEBPACK_IMPORTED_MODULE_6__["default"]
+                Component: _Register_Register__WEBPACK_IMPORTED_MODULE_7__["default"]
             },
             {
                 path: "/login",
                 name: "Login",
-                Component: _Login_Login__WEBPACK_IMPORTED_MODULE_8__["default"]
+                Component: _Login_Login__WEBPACK_IMPORTED_MODULE_9__["default"]
             },
             {
                 path: "/dashboard",
                 name: "Dashboard",
-                Component: _Dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_7__["default"]
+                Component: _Dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_8__["default"]
             },
             {
                 path: "/",
                 name: "Home",
-                Component: _Home_Home__WEBPACK_IMPORTED_MODULE_5__["default"]
+                Component: _Home_Home__WEBPACK_IMPORTED_MODULE_6__["default"]
             }
         ];
         return _this;
@@ -40320,10 +40339,10 @@ var Main = (function (_super) {
     Main.prototype.render = function () {
         var _this = this;
         var _a = this.state, showLoader = _a.showLoader, alertMessage = _a.alertMessage, alertStatus = _a.alertStatus, allowRedirect = _a.allowRedirect, redirectedPath = _a.redirectedPath;
-        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_redux__WEBPACK_IMPORTED_MODULE_9__["Provider"], { store: reduxStore },
+        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_redux__WEBPACK_IMPORTED_MODULE_10__["Provider"], { store: reduxStore },
             alertMessage && alertStatus && (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utils_Alert_Alert__WEBPACK_IMPORTED_MODULE_3__["default"], { message: alertMessage, status: alertStatus })),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], { history: _History__WEBPACK_IMPORTED_MODULE_2__["default"] },
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_helpers_LoginCheckMiddleware__WEBPACK_IMPORTED_MODULE_11__["default"], null),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_helpers_LoginCheckMiddleware__WEBPACK_IMPORTED_MODULE_12__["default"], null),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utils_Menu_Menu__WEBPACK_IMPORTED_MODULE_4__["default"], { handleChangePath: this.handleChangePath }),
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "container" },
                     allowRedirect && redirectedPath && (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], { to: redirectedPath })),
@@ -40331,7 +40350,8 @@ var Main = (function (_super) {
                         var path = _a.path, name = _a.name, Component = _a.Component;
                         return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], { exact: true, key: "path-" + name, path: path },
                             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](Component, { handleChangePath: _this.handleChangePath })));
-                    }))))));
+                    }))),
+                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_utils_Footer_Footer__WEBPACK_IMPORTED_MODULE_5__["default"], null))));
     };
     return Main;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]));
@@ -40360,7 +40380,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Register = function (_a) {
-    var user = _a.user, createUser = _a.createUser;
+    var user = _a.user, config = _a.config, createUser = _a.createUser;
     var _b = react__WEBPACK_IMPORTED_MODULE_0__["useState"](""), email = _b[0], setEmail = _b[1];
     var _c = react__WEBPACK_IMPORTED_MODULE_0__["useState"](""), name = _c[0], setName = _c[1];
     var _d = react__WEBPACK_IMPORTED_MODULE_0__["useState"](""), password = _d[0], setPassword = _d[1];
@@ -40374,7 +40394,7 @@ var Register = function (_a) {
             name: name,
             user_level_id: selectedLevelId
         });
-        axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("http://127.0.0.1:8000/api/register", {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.post(config.paths.API_URL + "/register", {
             email: email,
             password: password,
             name: name,
@@ -40385,7 +40405,7 @@ var Register = function (_a) {
         });
     };
     var getUserLevels = function () {
-        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("http://127.0.0.1:8000/api/user-levels/all").then(function (res) {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(config.paths.API_URL + "/user-levels/all").then(function (res) {
             console.log(["getUserLevels", res]);
             setLevelList(res.data.result);
         });
@@ -40400,12 +40420,13 @@ var Register = function (_a) {
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { onChange: function (e) { return setPassword(e.target.value); }, type: "password", placeholder: "Has\u0142o" }),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Jak oceniasz sw\u00F3j poziom angielskiego?"),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("select", { onChange: function (e) { return setSelectedLevelId(e.target.value); } }, levelList.map(function (level, i) {
-                return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("option", { value: level.id }, level.level));
+                return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("option", { value: level.id, key: level.id }, level.level));
             })),
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "btn red-btn box-shadow", type: "submit", onClick: function (e) { return handleSubmit(e); } }, "Zarejestruj"))));
 };
 var mapStateToProps = function (state) { return ({
-    user: state.user
+    user: state.user,
+    config: state.config
 }); };
 var mapDispatchToProps = function (dispatch) { return ({
     createUser: function (user) { return dispatch(_modules_actions_userActions__WEBPACK_IMPORTED_MODULE_2__["default"].createUser(user)); },
@@ -40605,9 +40626,7 @@ __webpack_require__.r(__webpack_exports__);
 var Footer = function () {
     return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "homepage__footer--container" },
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "homepage__footer--wrapper" },
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "2020"),
-            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null,
-                react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("a", { href: "https://tech-bulb.com/", title: "Odwied\u017A mojego bloga", target: "_blank" }, "Created by Szymon Radosz")))));
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "\u00A9 2020 praktyczny-angielski.pl "))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (Footer);
 
@@ -40634,11 +40653,13 @@ var Head = function (_a) {
     return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_helmet__WEBPACK_IMPORTED_MODULE_1__["Helmet"], null,
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("meta", { charSet: "utf-8" }),
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("meta", { name: "author", content: "Szymon Radosz" }),
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("meta", { name: "description", content: "Land Of Mine - Build Your Own City" }),
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("meta", { name: "keywords", content: "game, citites, gaming, web browser game" }),
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("meta", { name: "description", content: "Praktyczny Angielski - Ucz si\u0119 angielskiego jakiego potrzebujesz!" }),
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("meta", { name: "keywords", content: "angielski, nauka angielskiego, nauka angielskiego online, nauka angielskiego dla dzieci, nauka angielskiego online za darmo, nauka angielskiego w domu" }),
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("meta", { "http-equiv": "x-ua-compatible", content: "ie=edge" }),
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("meta", { name: "viewport", content: "width=device-width, initial-scale=1.0" }),
-        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("title", null, title),
+        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("title", null,
+            "Praktyczny Angielski - ",
+            title),
         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("link", { href: "https://fonts.googleapis.com/css?family=Nunito:200,600", rel: "stylesheet", type: "text/css" })));
 };
 /* harmony default export */ __webpack_exports__["default"] = (Head);
@@ -40681,14 +40702,16 @@ var Menu = function (_a) {
             react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "menu__right" },
                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "menu__right-routes" }, user && user.email ?
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null,
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { to: "/dashboard", className: "menu-link" }, "Rozpocznij dzisiejsz\u0105 nauk\u0119"),
-                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: "menu-link" },
-                            "Cze\u015B\u0107, ",
-                            user.email),
+                        react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "menu__right-routes--top" },
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { to: "/dashboard", className: "menu-link" }, "Rozpocznij nauk\u0119"),
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", { className: "menu-link" },
+                                "Cze\u015B\u0107, ",
+                                user.email)),
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "menu-btn blue-btn", onClick: handleLogout }, "Wyloguj"))
                     :
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null,
-                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { to: "/login", className: "menu-link" }, "Logowanie"),
+                            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "menu__right-routes--top" },
+                                react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { to: "/login", className: "menu-link" }, "Logowanie")),
                             react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], { to: "/register" },
                                 react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", { className: "red-btn box-shadow" }, "Rejestracja"))))))));
 };
@@ -40835,8 +40858,10 @@ __webpack_require__.r(__webpack_exports__);
 
 var defaultState = {
   paths: {
-    APP_URL: "http://127.0.0.1:8000",
-    API_URL: "http://127.0.0.1:8000/api"
+    // APP_URL: "http://127.0.0.1:8000",
+    // API_URL: "http://127.0.0.1:8000/api"
+    APP_URL: "http://praktyczny-angielski.pl",
+    API_URL: "http://praktyczny-angielski.pl/api"
   },
   showLoader: false,
   alert: {
