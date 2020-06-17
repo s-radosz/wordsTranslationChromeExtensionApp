@@ -7,7 +7,7 @@ import { handlePostRequest, handleRemoveRequest } from "./../../helpers/api"
 import { connect } from "react-redux";
 import ContentModal from "./../../helpers/ContentModal"
 
-const IllustrationModal = ({ setShowIllustrationModal, currentWordIdIllustration, config, user }) => {
+const IllustrationModal = ({ handleShowAlert, setShowIllustrationModal, currentWordIdIllustration, config, user }) => {
     const [leftPersonText, setLeftPersonText] = React.useState("");
     const [rightPersonText, setRightPersonText] = React.useState("");
 
@@ -69,33 +69,34 @@ const IllustrationModal = ({ setShowIllustrationModal, currentWordIdIllustration
             wordId: currentWordIdIllustration,
             base64Image: base64Canvas,
 
-        }, user.token)
+        }, user.token).then(res => {
+            handleShowAlert("Poprawnie zapisano", "success")
+        }).catch(err => {
+            handleShowAlert("Wystąpił błąd przy zapisie", "danger")
+        })
 
         console.log(["saveIllustration", saveIllustration])
     }
 
     const loadSavedIllustration = async () => {
-        let currentIllustration = await handlePostRequest(`${config.paths.API_URL}/words/illustartion/find`, {
+        await handlePostRequest(`${config.paths.API_URL}/words/illustartion/find`, {
             wordId: currentWordIdIllustration,
-        }, user.token)
+        }, user.token).then((res: {
+            base64_image: string
+        }) => {
+            if (res.base64_image) {
+                const ctx = canvasImage.current.getContext('2d');
+                var imageObj1 = new Image();
 
-        //@ts-ignore
-        if (currentIllustration.base64_image) {
-            const ctx = canvasImage.current.getContext('2d');
-
-            var imageObj1 = new Image();
-            //@ts-ignore
-            imageObj1.src = currentIllustration.base64_image;
-            imageObj1.onload = function () {
-                ctx.drawImage(imageObj1, 0, 0
-                    , 400, 300);
+                imageObj1.src = res.base64_image;
+                imageObj1.onload = function () {
+                    ctx.drawImage(imageObj1, 0, 0
+                        , 400, 300);
+                }
+            } else {
+                handleAddEmptyImageToCanvas()
             }
-        } else {
-            handleAddEmptyImageToCanvas()
-        }
-
-        //@ts-ignore
-        console.log(["currentIllustration", currentIllustration, currentIllustration.base64_image])
+        })
     }
 
     const handleWordIllustrationRemove = async () => {
@@ -108,9 +109,10 @@ const IllustrationModal = ({ setShowIllustrationModal, currentWordIdIllustration
                     "Authorization": `Bearer ${user.token}`
                 }
             }).then(res => {
-                console.log("illustrt removed")
-
                 handleAddEmptyImageToCanvas()
+                handleShowAlert("Poprawnie usunięto", "success")
+            }).catch(err => {
+                handleShowAlert("Wystąpił błąd przy usunięciu", "danger")
             })
     }
 

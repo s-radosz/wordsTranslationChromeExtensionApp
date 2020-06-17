@@ -64,7 +64,7 @@ class Main extends Component<MainProps, MainState> {
         ];
     }
 
-    checkAllowedPath = (path) => {
+    checkAllowedPath = (path: string) => {
         const allowedPaths = this.state.allowedPaths;
 
         if (allowedPaths.includes(path.split("/")[1])) {
@@ -75,7 +75,7 @@ class Main extends Component<MainProps, MainState> {
         }
     };
 
-    handleChangePath = (path) => {
+    handleChangePath = (path: string) => {
 
         const { allowedPaths } = this.state;
 
@@ -87,12 +87,11 @@ class Main extends Component<MainProps, MainState> {
             console.log(["chandleChangePath1", path]);
             this.setState({ allowRedirect: true, redirectedPath: "/" });
         }
-        // } else {
-        //     this.history.push({ pathname: path, state: {} });
-        // }
     };
 
-    handleShowAlert = (message, status) => {
+    handleShowAlert = (message: string, status: string) => {
+        console.log(["handleShowAlert", message])
+
         this.setState({ alertMessage: message, alertStatus: status });
 
         setTimeout(() => {
@@ -100,7 +99,7 @@ class Main extends Component<MainProps, MainState> {
         }, 4000);
     };
 
-    handleShowLoader = (status) => {
+    handleShowLoader = (status: boolean) => {
         this.setState({ showLoader: status });
     };
 
@@ -142,14 +141,16 @@ class Main extends Component<MainProps, MainState> {
                                             key={`path-${name}`}
                                             path={path}
                                         >
-                                            <Component handleChangePath={this.handleChangePath} />
+                                            <Component
+                                                handleChangePath={this.handleChangePath}
+                                                handleShowAlert={this.handleShowAlert}
+                                            />
                                         </Route>
                                     );
                                 }
                             )}
                         </Switch>
                     </div>
-
                     <Footer />
                 </Router>
             </ReduxProvider>

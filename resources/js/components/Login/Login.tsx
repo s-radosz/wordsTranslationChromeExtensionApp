@@ -5,35 +5,46 @@ import { connect } from "react-redux";
 import LoginForm from "./LoginForm/LoginForm"
 import { handlePostRequest, handleGetRequest } from "./../helpers/api"
 
+interface test {
+    token: string
+}
 
-const Login = ({ config, createUser, createWords, handleChangePath }) => {
+const Login = ({ handleShowAlert, config, createUser, createWords, handleChangePath }) => {
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        if (email && password) {
+            await handlePostRequest(`${config.paths.API_URL}/login`, {
+                email: email,
+                password: password
+            }).then(async (res: {
+                token: string,
+                user: {
+                    id: number,
+                    name: string
+                }
+            }) => {
+                createUser(res);
 
-        let userResult = await handlePostRequest(`${config.paths.API_URL}/login`, {
-            email: email,
-            password: password
-        })
+                localStorage.setItem("token", res.token);
 
-        console.log(["userResult", userResult])
+                localStorage.setItem("user", JSON.stringify(res.user));
 
-        createUser(userResult);
+                handleShowAlert(`Witaj, ${res.user && res.user.name ? res.user.name : ""}`, "success")
 
-        //@ts-ignore
-        localStorage.setItem("token", userResult.token);
-        //@ts-ignore
-        localStorage.setItem("user", JSON.stringify(userResult.user));
+                let wordsResult = await handleGetRequest(`${config.paths.API_URL}/words/all/${res.user.id}`, res.token)
 
-        //@ts-ignore
-        let wordsResult = await handleGetRequest(`${config.paths.API_URL}/words/all/${userResult.user.id}`, userResult.token)
+                createWords(wordsResult)
 
-        createWords(wordsResult)
+                handleChangePath("dashboard")
+            })
 
-        handleChangePath("dashboard")
+        } else {
+            handleShowAlert(`Wszystkie pola są wymagane`, "danger")
+        }
     }
 
     return (

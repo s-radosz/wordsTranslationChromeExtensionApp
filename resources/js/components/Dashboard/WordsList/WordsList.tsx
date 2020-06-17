@@ -32,23 +32,24 @@ const WordsList = ({ handlePageClick, handleAddIllustration, handleRemoveWord, w
                             })}
                     </tbody>
 
-                    <nav aria-label="Page navigation example">
-                        <ReactPaginate
-                            previousLabel={false}
-                            nextLabell={false}
-                            forcePage={words.current_page}
-                            breakLabel={'...'}
-                            breakClassName={'break-me'}
-                            pageCount={words.last_page}
-                            marginPagesDisplayed={1}
-                            pageRangeDisplayed={2}
-                            onPageChange={handlePageClick}
-                            containerClassName={'pagination'}
-                            subContainerClassName={'pages pagination'}
-                            activeClassName={'active'}
-                        />
-                    </nav>
+
                 </table>
+                <nav aria-label="Page navigation example">
+                    <ReactPaginate
+                        previousLabel={false}
+                        nextLabell={false}
+                        forcePage={words.current_page}
+                        breakLabel={'...'}
+                        breakClassName={'break-me'}
+                        pageCount={words.last_page}
+                        marginPagesDisplayed={1}
+                        pageRangeDisplayed={2}
+                        onPageChange={handlePageClick}
+                        containerClassName={'pagination'}
+                        subContainerClassName={'pages pagination'}
+                        activeClassName={'active'}
+                    />
+                </nav>
             </div>}
         </>
     )

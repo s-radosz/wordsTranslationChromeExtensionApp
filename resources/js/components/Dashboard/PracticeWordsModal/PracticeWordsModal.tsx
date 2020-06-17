@@ -5,8 +5,12 @@ import SelectWord from "./SelectWord/SelectWord"
 import { handleGetRequest, handlePostRequest } from "./../../helpers/api"
 import { connect } from "react-redux";
 
+interface IDrawnWord {
+    id: number
+}
+
 const PracticeWordsModal = ({ config, user, setShowPracticeWordsModal, handleRemoveWord }) => {
-    const [drawnWord, setDrawnWord] = React.useState([]);
+    const [drawnWord, setDrawnWord] = React.useState<IDrawnWord | undefined>(undefined);
     const [randomWordsList, setRandomWordsList] = React.useState([])
     const [wordAnswerStatus, setWordAnswerStatus] = React.useState("");
     const [blockSelect, setBlockSelect] = React.useState(false)
@@ -16,7 +20,6 @@ const PracticeWordsModal = ({ config, user, setShowPracticeWordsModal, handleRem
         await handleGetRequest(`${config.paths.API_URL}/words/random/new/1/${user.id}`, user.token).then(res => {
             setWordAnswerStatus("")
             setBlockSelect(false)
-            //@ts-ignore
             setDrawnWord(res[0]);
             getRandomWords();
             setShoWordTranslation(false)
@@ -25,8 +28,7 @@ const PracticeWordsModal = ({ config, user, setShowPracticeWordsModal, handleRem
     }
 
     const getRandomWords = async () => {
-        await handleGetRequest(`${config.paths.API_URL}/words/random/new/3/${user.id}`, user.token).then(res => {
-            //@ts-ignore
+        await handleGetRequest(`${config.paths.API_URL}/words/random/new/3/${user.id}`, user.token).then((res: any) => {
             setRandomWordsList(res);
         })
     }
@@ -34,15 +36,14 @@ const PracticeWordsModal = ({ config, user, setShowPracticeWordsModal, handleRem
     const checkWordSelection = async (selectedTranslation) => {
         if (!blockSelect) {
             await handlePostRequest(`${config.paths.API_URL}/words/check`, {
-                //@ts-ignore
+
                 wordId: drawnWord.id,
                 selectedTranslation: selectedTranslation,
 
-            }, user.token).then(res => {
+            }, user.token).then((res: string) => {
                 console.log(["check", res])
 
                 setBlockSelect(true)
-                //@ts-ignore
                 setWordAnswerStatus(res)
 
                 setShoWordTranslation(true)

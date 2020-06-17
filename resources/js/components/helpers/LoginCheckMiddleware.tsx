@@ -14,7 +14,7 @@ const LoginCheckMiddleware = ({ user, createUser }) => {
             let token = localStorage.getItem("token");
             let user = JSON.parse(localStorage.getItem("user"));
 
-            console.log(["token", token, user])
+            //console.log(["token", token, user])
 
             createUser({
                 token: token,

@@ -24,9 +24,10 @@ const Home = () => {
             <div className="container landing">
                 <div className="landing__main">
                     <div className="landing__main--wrapper">
-                        <video width="100%" height="100vh" preload='auto' poster={poster} loop autoPlay muted>
-                            <source src={video} type="video/mp4" />
-                        </video>
+                        {window.innerWidth > 481 ?
+                            <video width="100%" height="100vh" preload='auto' poster={poster} loop autoPlay muted>
+                                <source src={video} type="video/mp4" />
+                            </video> : <img className="videoImg" src={works1} />}
 
                         <div className="video__overlay"></div>
 

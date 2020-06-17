@@ -4,7 +4,6 @@ import { Link } from "react-router-dom"
 import USERACTIONS from "../../../modules/actions/userActions";
 
 const Menu = ({ user, logoutUser, handleChangePath }) => {
-
     const handleLogout = () => {
         logoutUser();
         handleChangePath("")

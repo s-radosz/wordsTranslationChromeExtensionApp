@@ -9,7 +9,7 @@ import IllustrationModal from "./IllustrationModal/IllustrationModal"
 import PracticeWordsSection from "./PracticeWordsSection/PracticeWordsSection"
 import PracticeWordsModal from "./PracticeWordsModal/PracticeWordsModal"
 
-const Dashboard = ({ words, user, config, createWords, removeWord, updateUserWordsCounts }) => {
+const Dashboard = ({ handleShowAlert, words, user, config, createWords, removeWord, updateUserWordsCounts }) => {
     const [showIllustrationModal, setShowIllustrationModal] = React.useState(false);
     const [showPracticeWordsModal, setShowPracticeWordsModal] = React.useState(false);
     const [currentWordIdIllustration, setCurrentWordIdIllustration] = React.useState(0)
@@ -17,18 +17,19 @@ const Dashboard = ({ words, user, config, createWords, removeWord, updateUserWor
     const getUserWordCounts = async () => {
         if (user.id && user.token) {
             try {
-                let wordsCount = await handleGetRequest(`${config.paths.API_URL}/words/counts/${user.id}`, user.token)
+                await handleGetRequest(`${config.paths.API_URL}/words/counts/${user.id}`, user.token).then((res: {
+                    wordsOverallCount: number,
+                    wordsWeekCount: number,
+                    wordsTodayCount: number
+                }) => {
+                    let wordsCountResult = {
+                        wordsOverallCount: res.wordsOverallCount,
+                        wordsWeekCount: res.wordsWeekCount,
+                        wordsTodayCount: res.wordsTodayCount
+                    }
 
-                let wordsCountResult = {
-                    //@ts-ignore
-                    wordsOverallCount: wordsCount.wordsOverallCount,
-                    //@ts-ignore
-                    wordsWeekCount: wordsCount.wordsWeekCount,
-                    //@ts-ignore
-                    wordsTodayCount: wordsCount.wordsTodayCount
-                }
-
-                updateUserWordsCounts(wordsCountResult)
+                    updateUserWordsCounts(wordsCountResult)
+                })
             } catch (err) {
                 console.log(err)
             }
@@ -54,6 +55,8 @@ const Dashboard = ({ words, user, config, createWords, removeWord, updateUserWor
             })
 
         removeWord(id)
+
+        handleShowAlert("Prawidłowo usunięto.", "success");
     }
 
     const handlePageClick = async (pageData, searchData) => {
@@ -62,7 +65,7 @@ const Dashboard = ({ words, user, config, createWords, removeWord, updateUserWor
     }
 
     const handleAddIllustration = (id) => {
-        console.log(["id", id])
+        //console.log(["id", id])
 
         setShowIllustrationModal(true)
         setCurrentWordIdIllustration(id)
@@ -87,6 +90,7 @@ const Dashboard = ({ words, user, config, createWords, removeWord, updateUserWor
                 <IllustrationModal
                     setShowIllustrationModal={setShowIllustrationModal}
                     currentWordIdIllustration={currentWordIdIllustration}
+                    handleShowAlert={handleShowAlert}
                 />
             }
 

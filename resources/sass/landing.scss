@@ -47,6 +47,15 @@
         object-fit: fill;
         z-index: 1;
     }
+    .videoImg {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: fill;
+        z-index: 1;
+    }
     .video__overlay {
         z-index: 2;
         position: absolute;

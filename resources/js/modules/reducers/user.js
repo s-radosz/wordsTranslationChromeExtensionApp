@@ -12,7 +12,7 @@ const defaultState = {
 export default function user(state = defaultState, action) {
     switch (action.type) {
         case actionTypes.CREATE_USER: {
-            console.log(["action.payload", action.payload]);
+            //console.log(["action.payload", action.payload]);
             return {
                 ...state,
                 email: action.payload.user.email,
@@ -28,7 +28,7 @@ export default function user(state = defaultState, action) {
         }
 
         case actionTypes.UPDATE_USER_WORDS_COUNTS: {
-            console.log(["action.payload UPDATE_USER_WORDS_COUNTS", action.payload]);
+            //console.log(["action.payload UPDATE_USER_WORDS_COUNTS", action.payload]);
             return {
                 ...state,
                 countSavedWordsOverall: action.payload.wordsOverallCount,

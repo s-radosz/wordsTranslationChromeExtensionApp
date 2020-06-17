@@ -90,6 +90,28 @@ button, a {
     font-weight: 600;
     border: 2px solid $blue;
 }
+.alert {
+    position: absolute;
+    top: 22px;
+    right: 0;
+    z-index: 100;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 10px 10px;
+    border-radius: 5px;
+    color: #fff;
+    left: 0;
+    margin: auto;
+    width: 90%;
+    max-width: 200px;
+    text-align: center;
+}
+.alert-success {
+    background-color: rgb(119, 185, 119);
+}
+.alert-danger {
+    background-color: rgb(255, 61, 61);
+}
 @media (max-width: 480px) {
     .display-mobile {
         display: block;

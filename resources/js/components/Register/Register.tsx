@@ -3,7 +3,7 @@ import axios from "axios";
 import ACTIONS from "../../modules/actions/userActions";
 import { connect } from "react-redux";
 
-const Register = ({ user, config, createUser }) => {
+const Register = ({ handleShowAlert, user, config, createUser }) => {
     const [email, setEmail] = React.useState("");
     const [name, setName] = React.useState("");
     const [password, setPassword] = React.useState("");
@@ -13,22 +13,23 @@ const Register = ({ user, config, createUser }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log({
-            email: email,
-            password: password,
-            name: name,
-            user_level_id: selectedLevelId
-        })
+        if (email && password && name && selectedLevelId) {
+            axios.post(`${config.paths.API_URL}/register`, {
+                email: email,
+                password: password,
+                name: name,
+                user_level_id: selectedLevelId
+            }).then(res => {
+                console.log(res)
+                createUser(res.data.result);
+                handleShowAlert(`Poprawnie utowrzono nowego użytkownika`, "success")
+            }).catch(err => {
+                handleShowAlert(`Wystąpił błąd przy rejestracji`, "danger")
+            })
+        } else {
+            handleShowAlert(`Wszystkie pola są wymagane`, "danger")
+        }
 
-        axios.post(`${config.paths.API_URL}/register`, {
-            email: email,
-            password: password,
-            name: name,
-            user_level_id: selectedLevelId
-        }).then(res => {
-            console.log(res)
-            createUser(res.data.result);
-        })
     }
 
     const getUserLevels = () => {
@@ -52,7 +53,6 @@ const Register = ({ user, config, createUser }) => {
                 <select onChange={e => setSelectedLevelId(e.target.value)}>
                     {levelList.map((level, i) => {
                         return (
-                            //@ts-ignore
                             <option value={level.id} key={level.id}>{level.level}</option>
                         )
                     })}
