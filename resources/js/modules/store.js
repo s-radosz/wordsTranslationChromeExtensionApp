@@ -12,6 +12,8 @@ export default function configureStore(initialState) {
     const store = createStore(
         reducer,
         initialState,
-        composeEnhancer(applyMiddleware(logger)));
+        composeEnhancer(
+            // applyMiddleware(logger)
+        ));
     return store;
 }
