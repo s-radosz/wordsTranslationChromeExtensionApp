@@ -16,7 +16,7 @@ import poster from "./../../../assets/images/poster.png"
 //@ts-ignore
 import video from "./../../../assets/videos/video.mp4"
 //@ts-ignore
-import mobileHeader from "./../../../assets/images/mobileHeader.png"
+import mobileHeader from "./../../../assets/images/mobileHeader.png?v=1"
 
 
 const Home = () => {
