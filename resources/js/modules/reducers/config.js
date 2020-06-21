@@ -4,8 +4,8 @@ const defaultState = {
     paths: {
         // APP_URL: "http://127.0.0.1:8000",
         // API_URL: "http://127.0.0.1:8000/api"
-        APP_URL: "http://www.praktyczny-angielski.pl",
-        API_URL: "http://www.praktyczny-angielski.pl/api"
+        APP_URL: "https://www.praktyczny-angielski.pl",
+        API_URL: "https://www.praktyczny-angielski.pl/api"
     },
     showLoader: false,
     alert: {

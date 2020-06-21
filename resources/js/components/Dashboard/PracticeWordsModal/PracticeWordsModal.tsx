@@ -41,15 +41,13 @@ const PracticeWordsModal = ({ config, user, setShowPracticeWordsModal, handleRem
                 selectedTranslation: selectedTranslation,
 
             }, user.token).then((res: string) => {
-                console.log(["check", res])
+                //console.log(["check", res])
 
                 setBlockSelect(true)
                 setWordAnswerStatus(res)
 
                 setShoWordTranslation(true)
             })
-        } else {
-            console.log("already selected")
         }
 
     }

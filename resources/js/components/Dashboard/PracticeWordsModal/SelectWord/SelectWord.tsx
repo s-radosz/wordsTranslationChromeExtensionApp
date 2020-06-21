@@ -16,7 +16,7 @@ const SelectWord = ({ drawnWord, randomWordsList, checkWordSelection, wordAnswer
     }, [randomWordsList])
 
     const shuffleArray = (array) => {
-        console.log(array)
+        //console.log(array)
         return array.sort(() => Math.random() - 0.5);
     }
 

@@ -91,7 +91,7 @@ button, a {
     border: 2px solid $blue;
 }
 .alert {
-    position: absolute;
+    position: fixed;
     top: 22px;
     right: 0;
     z-index: 100;
@@ -110,7 +110,7 @@ button, a {
     background-color: rgb(119, 185, 119);
 }
 .alert-danger {
-    background-color: rgb(255, 61, 61);
+    background-color: rgb(255, 29, 29);
 }
 @media (max-width: 480px) {
     .display-mobile {

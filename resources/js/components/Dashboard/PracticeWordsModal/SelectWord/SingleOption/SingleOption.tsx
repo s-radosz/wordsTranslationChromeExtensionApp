@@ -11,7 +11,7 @@ const SingleOption = ({ checkWordSelection, singleOption, wordAnswerStatus }) =>
     }
 
     React.useEffect(() => {
-        console.log(["singleOption", singleOption])
+        //console.log(["singleOption", singleOption])
         setWordSelected(false)
     }, [singleOption]);
 

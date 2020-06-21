@@ -15,6 +15,9 @@ import works4 from "./../../../assets/images/works4.svg"
 import poster from "./../../../assets/images/poster.png"
 //@ts-ignore
 import video from "./../../../assets/videos/video.mp4"
+//@ts-ignore
+import mobileHeader from "./../../../assets/images/mobileHeader.png"
+
 
 const Home = () => {
     return (
@@ -27,7 +30,7 @@ const Home = () => {
                         {window.innerWidth > 481 ?
                             <video width="100%" height="100vh" preload='auto' poster={poster} loop autoPlay muted>
                                 <source src={video} type="video/mp4" />
-                            </video> : <img className="videoImg" src={works1} />}
+                            </video> : <img className="videoImg" src={mobileHeader} />}
 
                         <div className="video__overlay"></div>
 
@@ -36,12 +39,9 @@ const Home = () => {
                             <h2>Z Praktycznym Angielskim możesz zapisywać w wyszukiwarce słowa, których znaczenia nie wiesz i uczyć ich się później.</h2>
 
                             <div className="landing__main--btn">
-                                <Link to="/login">
-                                    <button className="red-border-btn landing__single-btn landing__single-btn--sign-in">Logowanie</button>
-                                </Link>
-                                <Link to="/register">
-                                    <button className="red-btn landing__single-btn landing__single-btn--register">Rejestracja</button>
-                                </Link>
+                                <a href="https://chrome.google.com/webstore/detail/praktyczny-angielski/fnachmfibcpiakmjhgkaopgbifnkeljd?hl=pl" title="Zainstaluj wtyczkę" target="_blank">
+                                    <button className="red-btn landing__single-btn landing__single-btn--register">Zainstaluj na przeglądarce</button>
+                                </a>
                             </div>
                         </div>
 
@@ -49,10 +49,31 @@ const Home = () => {
                 </div>
 
                 <div className="landing__works">
+                    <div className="landing__works--single display-desktop">
+                        <img src={works2} />
+                        <div className="landing__works--text-container">
+                            <h3>Załóż konto na naszej stronie</h3>
+                            <p>Wejdź na stronę rejestracji klikając przycisk <Link to="/rejestracja">
+                                <strong>Rejestracja</strong>
+                            </Link> w pasku menu.</p>
+                        </div>
+                    </div>
+
+                    <div className="landing__works--single display-mobile">
+
+                        <div className="landing__works--text-container">
+                            <h3>Załóż konto na naszej stronie</h3>
+                            <p>Wejdź na stronę rejestracji klikając przycisk <Link to="/rejestracja">
+                                <strong>Rejestracja</strong>
+                            </Link> w pasku menu.</p>
+                        </div>
+                        <img src={works2} />
+                    </div>
+
                     <div className="landing__works--single">
                         <div className="landing__works--text-container">
                             <h3>Zainstaluj wtyczkę na przeglądarce Google Chrome</h3>
-                            <p>Odwiedź stronę pobierania.</p>
+                            <p><strong><a href="https://chrome.google.com/webstore/detail/praktyczny-angielski/fnachmfibcpiakmjhgkaopgbifnkeljd?hl=pl" title="Zainstaluj wtyczkę" target="_blank">Odwiedź stronę pobierania.</a></strong></p>
                         </div>
                         <img src={works1} />
                     </div>
@@ -61,14 +82,14 @@ const Home = () => {
                         <img src={works2} />
                         <div className="landing__works--text-container">
                             <h3>Zaloguj się do wtyczki</h3>
-                            <p>W pasku przeglądarki kliknij w ikonę <span className="P-letter">P</span><span className="A-letter">A</span> i zaloguj się do swojego konta, aby móc zapisywać słowa/zwroty.</p>
+                            <p>Po instalacji w pasku przeglądarki kliknij w ikonę <span className="P-letter">P</span><span className="A-letter">A</span> i zaloguj się do swojego konta, aby móc zapisywać słowa/zwroty.</p>
                         </div>
                     </div>
 
                     <div className="landing__works--single display-mobile">
                         <div className="landing__works--text-container">
                             <h3>Zaloguj się do wtyczki</h3>
-                            <p>W pasku przeglądarki kliknij w ikonę <span className="P-letter">P</span><span className="A-letter">A</span> i zaloguj się do swojego konta, aby móc zapisywać słowa/zwroty.</p>
+                            <p>Po instalacji w pasku przeglądarki kliknij w ikonę <span className="P-letter">P</span><span className="A-letter">A</span> i zaloguj się do swojego konta, aby móc zapisywać słowa/zwroty.</p>
                         </div>
                         <img src={works2} />
                     </div>
@@ -76,7 +97,7 @@ const Home = () => {
                     <div className="landing__works--single">
                         <div className="landing__works--text-container">
                             <h3>Zapisuj słownictwo</h3>
-                            <p>Czytając teksty w języku angielskim, zaznacz interseującą Cię frazę, kliknij prawym klawiszem na zaznaczony tekst i wybierz 'Zapisz do Praktycznego Angielskiego'.</p>
+                            <p>Odwiedź dowolną stronę w języku angielskim, zaznacz interesującą Cię frazę, kliknij prawym klawiszem myszy na zaznaczony tekst i wybierz opcję 'Zapisz do Praktycznego Angielskiego'.</p>
                         </div>
                         <img src={works3} />
                     </div>
@@ -85,14 +106,14 @@ const Home = () => {
                         <img src={works4} />
                         <div className="landing__works--text-container">
                             <h3>Ucz się słownictwa</h3>
-                            <p>W dowolnym momencie odwiedź naszą stronę i po zalogowaniu się na stronie możesz zacząć uczyć się zapisanych słów i zwrotów.</p>
+                            <p>W dowolnym momencie wróć na naszą stronę i po zalogowaniu się możesz zacząć uczyć się zapisanych słów wybierając z menu na stronie opcję 'Rozpocznij naukę'.</p>
                         </div>
                     </div>
 
                     <div className="landing__works--single display-mobile">
                         <div className="landing__works--text-container">
                             <h3>Ucz się słownictwa</h3>
-                            <p>W dowolnym momencie odwiedź naszą stronę i po zalogowaniu się na stronie możesz zacząć uczyć się zapisanych słów i zwrotów.</p>
+                            <p>W dowolnym momencie wróć na naszą stronę i po zalogowaniu się możesz zacząć uczyć się zapisanych słów wybierając z menu na stronie opcję 'Rozpocznij naukę'.</p>
                         </div>
                         <img src={works4} />
                     </div>

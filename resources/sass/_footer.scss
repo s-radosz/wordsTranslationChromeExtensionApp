@@ -10,6 +10,17 @@
         p, a{
             color: $white;
         }
+
+        .homepage__footer--right {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            img {
+                height: 25px;
+                margin-left: 10px;
+            }
+        }
     }
 }
 
@@ -17,7 +28,8 @@
     .homepage__footer--wrapper {
         p {
             width: 100%;
-            text-align: center;
+            font-size: 12px;
+            margin: 15px 0px;
         }
     }
 }

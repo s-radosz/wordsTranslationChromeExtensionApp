@@ -33,7 +33,7 @@ class Main extends Component<MainProps, MainState> {
             showLoader: false,
             alertMessage: "",
             alertStatus: "",
-            allowedPaths: ["dashboard"],
+            allowedPaths: ["panel"],
             allowRedirect: false,
             redirectedPath: ""
         };
@@ -42,17 +42,17 @@ class Main extends Component<MainProps, MainState> {
 
         this.routes = [
             {
-                path: "/register",
+                path: "/rejestracja",
                 name: "Register",
                 Component: Register
             },
             {
-                path: "/login",
+                path: "/logowanie",
                 name: "Login",
                 Component: Login
             },
             {
-                path: "/dashboard",
+                path: "/panel",
                 name: "Dashboard",
                 Component: Dashboard
             },
@@ -81,16 +81,16 @@ class Main extends Component<MainProps, MainState> {
 
         // if (!userLoggedIn) {
         if (allowedPaths.includes(path.split("/")[0])) {
-            console.log(["chandleChangePath1", path]);
+            //console.log(["chandleChangePath1", path]);
             this.setState({ allowRedirect: true, redirectedPath: path });
         } else {
-            console.log(["chandleChangePath1", path]);
+            //console.log(["chandleChangePath1", path]);
             this.setState({ allowRedirect: true, redirectedPath: "/" });
         }
     };
 
     handleShowAlert = (message: string, status: string) => {
-        console.log(["handleShowAlert", message])
+        //console.log(["handleShowAlert", message])
 
         this.setState({ alertMessage: message, alertStatus: status });
 

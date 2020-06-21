@@ -23,7 +23,7 @@ const IllustrationModal = ({ handleShowAlert, setShowIllustrationModal, currentW
     }
 
     const handleTextChange = (direction) => {
-        console.log(["handleTextChange", direction])
+        //console.log(["handleTextChange", direction])
 
         const ctx = canvasImage.current.getContext('2d');
         ctx.font = "14px Arial";
@@ -43,7 +43,7 @@ const IllustrationModal = ({ handleShowAlert, setShowIllustrationModal, currentW
     }
 
     const handleAddEmptyImageToCanvas = () => {
-        console.log(["canvasImage", canvasImage.current, canvasImage, canvasImage.current.getContext('2d')])
+        //console.log(["canvasImage", canvasImage.current, canvasImage, canvasImage.current.getContext('2d')])
         const ctx = canvasImage.current.getContext('2d');
 
         var imageObj1 = new Image();
@@ -75,7 +75,7 @@ const IllustrationModal = ({ handleShowAlert, setShowIllustrationModal, currentW
             handleShowAlert("Wystąpił błąd przy zapisie", "danger")
         })
 
-        console.log(["saveIllustration", saveIllustration])
+        //console.log(["saveIllustration", saveIllustration])
     }
 
     const loadSavedIllustration = async () => {

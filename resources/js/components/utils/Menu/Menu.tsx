@@ -25,7 +25,7 @@ const Menu = ({ user, logoutUser, handleChangePath }) => {
                         {user && user.email ?
                             <>
                                 <div className="menu__right-routes--top">
-                                    <Link to="/dashboard" className="menu-link">Rozpocznij naukę</Link>
+                                    <Link to="/panel" className="menu-link">Rozpocznij naukę</Link>
                                     <p className="menu-link">Cześć, {user.email}</p>
                                 </div>
                                 <button className="menu-btn blue-btn" onClick={handleLogout}>Wyloguj</button>
@@ -33,9 +33,9 @@ const Menu = ({ user, logoutUser, handleChangePath }) => {
                             :
                             <>
                                 <div className="menu__right-routes--top">
-                                    <Link to="/login" className="menu-link">Logowanie</Link>
+                                    <Link to="/logowanie" className="menu-link">Logowanie</Link>
                                 </div>
-                                <Link to="/register"><button className="red-btn box-shadow">Rejestracja</button></Link>
+                                <Link to="/rejestracja"><button className="red-btn box-shadow">Rejestracja</button></Link>
                             </>
                         }
                     </div>

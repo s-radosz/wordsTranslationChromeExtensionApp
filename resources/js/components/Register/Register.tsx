@@ -20,7 +20,7 @@ const Register = ({ handleShowAlert, user, config, createUser }) => {
                 name: name,
                 user_level_id: selectedLevelId
             }).then(res => {
-                console.log(res)
+                //console.log(res)
                 createUser(res.data.result);
                 handleShowAlert(`Poprawnie utowrzono nowego użytkownika`, "success")
             }).catch(err => {
@@ -34,7 +34,7 @@ const Register = ({ handleShowAlert, user, config, createUser }) => {
 
     const getUserLevels = () => {
         axios.get(`${config.paths.API_URL}/user-levels/all`).then(res => {
-            console.log(["getUserLevels", res])
+            //console.log(["getUserLevels", res])
             setLevelList(res.data.result);
         })
     }
