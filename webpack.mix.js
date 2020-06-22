@@ -15,17 +15,17 @@ mix.js("resources/js/app.js", "public/js")
                     test: /\.mp4$/,
                     use: 'file-loader?name=videos/[name].[ext]'
                 },
-                {
-                    test: /\.(png|jpg|gif)$/i,
-                    use: [
-                        {
-                            loader: "url-loader",
-                            options: {
-                                limit: 8192
-                            }
-                        }
-                    ]
-                }
+                // {
+                //     test: /\.(png|jpg|gif)$/i,
+                //     use: [
+                //         {
+                //             loader: "url-loader",
+                //             // options: {
+                //             //     limit: 8192
+                //             // }
+                //         }
+                //     ]
+                // }
             ]
         },
         resolve: {

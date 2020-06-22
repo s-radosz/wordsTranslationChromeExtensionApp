@@ -14,7 +14,7 @@ const Register = ({ handleShowAlert, user, config, createUser }) => {
         e.preventDefault();
 
         if (email && password && name && selectedLevelId) {
-            axios.post(`${config.paths.API_URL}/register`, {
+            axios.post(`${config && config.paths && config.paths.API_URL && config.paths.API_URL}/register`, {
                 email: email,
                 password: password,
                 name: name,
@@ -33,7 +33,7 @@ const Register = ({ handleShowAlert, user, config, createUser }) => {
     }
 
     const getUserLevels = () => {
-        axios.get(`${config.paths.API_URL}/user-levels/all`).then(res => {
+        axios.get(`${config && config.paths && config.paths.API_URL && config.paths.API_URL}/user-levels/all`).then(res => {
             //console.log(["getUserLevels", res])
             setLevelList(res.data.result);
         })

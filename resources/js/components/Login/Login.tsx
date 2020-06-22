@@ -17,7 +17,7 @@ const Login = ({ handleShowAlert, config, createUser, createWords, handleChangeP
         e.preventDefault();
 
         if (email && password) {
-            await handlePostRequest(`${config.paths.API_URL}/login`, {
+            await handlePostRequest(`${config && config.paths && config.paths.API_URL && config.paths.API_URL}/login`, {
                 email: email,
                 password: password
             }).then(async (res: {

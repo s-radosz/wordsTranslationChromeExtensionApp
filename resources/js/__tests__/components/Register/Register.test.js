@@ -21,7 +21,8 @@ describe('<Register />', () => {
         const { wrapper } = setup();
 
         expect(wrapper.find('form').exists()).toBe(true);
-        expect(wrapper.find('form > input')).toHaveLength(2);
+        expect(wrapper.find('form > input')).toHaveLength(3);
+        expect(wrapper.find('form > select')).toHaveLength(1);
         expect(wrapper.find('form > button')).toHaveLength(1);
     });
 });

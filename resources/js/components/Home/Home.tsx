@@ -3,21 +3,13 @@ import Head from "./../utils/Head/Head";
 import {
     Link
 } from 'react-router-dom';
-//@ts-ignore
 import works1 from "./../../../assets/images/works1.svg"
-//@ts-ignore
 import works2 from "./../../../assets/images/works2.svg"
-//@ts-ignore
 import works3 from "./../../../assets/images/works3.svg"
-//@ts-ignore
 import works4 from "./../../../assets/images/works4.svg"
-//@ts-ignore
 import poster from "./../../../assets/images/poster.png"
-//@ts-ignore
 import video from "./../../../assets/videos/video.mp4"
-//@ts-ignore
-import mobileHeader from "./../../../assets/images/mobileHeader.png?v=1"
-
+import mobileHeader from "./../../../assets/images/mobileHeader.png"
 
 const Home = () => {
     return (

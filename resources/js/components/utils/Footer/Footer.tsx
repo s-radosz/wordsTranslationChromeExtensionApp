@@ -1,8 +1,6 @@
 import * as React from "react";
-//@ts-ignore
-import facebook from "./../../../../assets/images/facebook.png?v=1"
-//@ts-ignore
-import instagram from "./../../../../assets/images/instagram.png?v=1"
+import facebook from "./../../../../assets/images/facebook.png"
+import instagram from "./../../../../assets/images/instagram.png"
 
 const Footer = () => {
     return (
