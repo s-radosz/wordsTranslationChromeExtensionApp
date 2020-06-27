@@ -23,7 +23,7 @@ form {
         margin-top: 20px;
     }
     label {
-        font-size: 12px;
+        font-size: 10px;
         margin: 12px 0 5px 0;
     }
     select {
@@ -111,6 +111,19 @@ button, a {
 }
 .alert-danger {
     background-color: rgb(255, 29, 29);
+}
+.invalid-feedback {
+    color: $red;
+    font-weight: 600;
+    font-size: 10px;
+}
+.form-group {
+    input {
+        width: 93%;
+    }
+    button {
+        width: 100%;
+    }
 }
 @media (max-width: 480px) {
     .display-mobile {

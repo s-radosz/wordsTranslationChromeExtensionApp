@@ -33,23 +33,17 @@ const PracticeWordsModal = ({ config, user, setShowPracticeWordsModal, handleRem
         })
     }
 
-    const checkWordSelection = async (selectedTranslation) => {
+    const checkWordSelection = async (selectedTranslation: string) => {
         if (!blockSelect) {
             await handlePostRequest(`${config.paths.API_URL}/words/check`, {
-
                 wordId: drawnWord.id,
                 selectedTranslation: selectedTranslation,
-
             }, user.token).then((res: string) => {
-                //console.log(["check", res])
-
                 setBlockSelect(true)
                 setWordAnswerStatus(res)
-
                 setShoWordTranslation(true)
             })
         }
-
     }
 
     React.useEffect(() => {

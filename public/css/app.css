@@ -173,7 +173,7 @@ form button {
 }
 
 form label {
-  font-size: 12px;
+  font-size: 10px;
   margin: 12px 0 5px 0;
 }
 
@@ -276,6 +276,20 @@ a:visited {
 
 .alert-danger {
   background-color: #ff1d1d;
+}
+
+.invalid-feedback {
+  color: #cf142b;
+  font-weight: 600;
+  font-size: 10px;
+}
+
+.form-group input {
+  width: 93%;
+}
+
+.form-group button {
+  width: 100%;
 }
 
 @media (max-width: 480px) {

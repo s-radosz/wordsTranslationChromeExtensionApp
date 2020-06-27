@@ -28,6 +28,9 @@ mix.js("resources/js/app.js", "public/js")
                 // }
             ]
         },
+        node: {
+            fs: "empty"
+        },
         resolve: {
             extensions: ["*", ".js", ".jsx", ".vue", ".ts", ".tsx"]
         }

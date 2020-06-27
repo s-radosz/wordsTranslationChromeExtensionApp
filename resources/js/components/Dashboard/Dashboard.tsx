@@ -43,7 +43,7 @@ const Dashboard = ({ handleShowAlert, words, user, config, createWords, removeWo
         }
     }
 
-    const handleRemoveWord = async (id) => {
+    const handleRemoveWord = async (id: number) => {
         await handleRemoveRequest(`${config.paths.API_URL}/words/remove`,
             {
                 data: {
@@ -59,14 +59,12 @@ const Dashboard = ({ handleShowAlert, words, user, config, createWords, removeWo
         handleShowAlert("Prawidłowo usunięto.", "success");
     }
 
-    const handlePageClick = async (pageData, searchData) => {
+    const handlePageClick = async (pageData: { selected: number }) => {
         let wordsResult = await handleGetRequest(`${config.paths.API_URL}/words/all/${user.id}?page=${pageData.selected + 1}`, user.token)
         createWords(wordsResult)
     }
 
-    const handleAddIllustration = (id) => {
-        //console.log(["id", id])
-
+    const handleAddIllustration = (id: number) => {
         setShowIllustrationModal(true)
         setCurrentWordIdIllustration(id)
     }

@@ -1,7 +1,6 @@
 import * as React from "react";
 import IllustrationDrawer from "./IllustrationDrawer/IllustrationDrawer"
 import BottomBtns from "./BottomBtns/BottomBtns"
-//@ts-ignore
 import close from "./../../../../assets/images/close.png";
 import { handlePostRequest, handleRemoveRequest } from "./../../helpers/api"
 import { connect } from "react-redux";
@@ -17,12 +16,12 @@ const IllustrationModal = ({ handleShowAlert, setShowIllustrationModal, currentW
         setShowIllustrationModal(false);
     }
 
-    const handleFormatCanvasText = (text) => {
+    const handleFormatCanvasText = (text: string) => {
         //add \n every 3 third word
         return text.split(/((?:\w+ ){3})/g).filter(Boolean).join("\n");
     }
 
-    const handleTextChange = (direction) => {
+    const handleTextChange = (direction: string) => {
         //console.log(["handleTextChange", direction])
 
         const ctx = canvasImage.current.getContext('2d');
@@ -65,7 +64,7 @@ const IllustrationModal = ({ handleShowAlert, setShowIllustrationModal, currentW
     const handleSaveIllustration = async () => {
         let base64Canvas = canvasImage.current.toDataURL();
 
-        let saveIllustration = await handlePostRequest(`${config.paths.API_URL}/words/illustartion/new`, {
+        await handlePostRequest(`${config.paths.API_URL}/words/illustartion/new`, {
             wordId: currentWordIdIllustration,
             base64Image: base64Canvas,
 
@@ -74,8 +73,6 @@ const IllustrationModal = ({ handleShowAlert, setShowIllustrationModal, currentW
         }).catch(err => {
             handleShowAlert("Wystąpił błąd przy zapisie", "danger")
         })
-
-        //console.log(["saveIllustration", saveIllustration])
     }
 
     const loadSavedIllustration = async () => {

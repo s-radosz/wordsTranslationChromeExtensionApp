@@ -1,13 +1,37 @@
 import * as React from "react";
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
-const LoginForm = ({ setEmail, setPassword, handleSubmit }) => {
+const LoginForm = ({ handleSubmit }) => {
     return (
-        <form>
-            <input onChange={e => setEmail(e.target.value)} placeholder="Email" />
-            <input onChange={e => setPassword(e.target.value)} placeholder="Hasło" type="password" />
-
-            <button type="submit" className="btn red-btn box-shadow" onClick={e => handleSubmit(e)}>Zaloguj</button>
-        </form>
+        <Formik
+            initialValues={{ email: '', password: '' }}
+            validationSchema={Yup.object().shape({
+                email: Yup.string()
+                    .email('Email jest nieprawidłowy')
+                    .required('Email jest wymagany'),
+                password: Yup.string()
+                    .required('Hasło jest wymagane')
+            })}
+            onSubmit={(fields: { email: string, password: string }) => {
+                handleSubmit(fields.email, fields.password)
+            }}
+            render={({ errors, touched }) => (
+                <Form>
+                    <div className="form-group">
+                        <Field name="email" placeholder="Email" type="text" className={'form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
+                        <ErrorMessage name="email" component="div" className="invalid-feedback" />
+                    </div>
+                    <div className="form-group">
+                        <Field name="password" placeholder="Hasło" type="password" className={'form-control' + (errors.password && touched.password ? ' is-invalid' : '')} />
+                        <ErrorMessage name="password" component="div" className="invalid-feedback" />
+                    </div>
+                    <div className="form-group">
+                        <button type="submit" className="btn red-btn box-shadow">Zaloguj</button>
+                    </div>
+                </Form>
+            )}
+        />
     )
 }
 export default LoginForm;

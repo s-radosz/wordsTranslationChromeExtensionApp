@@ -63,7 +63,9 @@
         "@types/react-dom": "^16.9.8",
         "babel-jest": "^24.9.0",
         "babel-preset-env": "^1.7.0",
+        "dotenv": "^8.2.0",
         "enzyme": "^3.11.0",
+        "formik": "^2.1.4",
         "geojson-world-map": "0.0.2",
         "gltf-webpack-loader": "^1.0.6",
         "laravel-mix-react-typescript-extension": "^1.0.0",
@@ -94,6 +96,7 @@
         "three.interaction": "^0.2.2",
         "typescript": "^3.8.3",
         "underscore": "^1.9.1",
-        "uuid": "^3.3.3"
+        "uuid": "^3.3.3",
+        "yup": "^0.29.1"
     }
 }

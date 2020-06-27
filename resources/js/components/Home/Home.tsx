@@ -12,6 +12,9 @@ import video from "./../../../assets/videos/video.mp4"
 import mobileHeader from "./../../../assets/images/mobileHeader.png"
 
 const Home = () => {
+    React.useEffect(() => {
+        console.log(process.env)
+    }, [])
     return (
         <>
             <Head title="Praktyczny Angielski - Ucz się angielskiego jakiego potrzebujesz!" />

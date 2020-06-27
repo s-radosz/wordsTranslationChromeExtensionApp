@@ -21,7 +21,7 @@ class UserController extends Controller
 
         try {
             if (!$token = JWTAuth::attempt($credentials)) {
-                return response()->json(['result' => 'invalid_credentials'], 401);
+                return response()->json(['result' => 'invalid_credentials'], 200);
             } else {
                 $user = User::where('email', $request->email)
                     ->first();

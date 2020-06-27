@@ -5,17 +5,9 @@ import { connect } from "react-redux";
 import LoginForm from "./LoginForm/LoginForm"
 import { handlePostRequest, handleGetRequest } from "./../helpers/api"
 
-interface test {
-    token: string
-}
 
 const Login = ({ handleShowAlert, config, createUser, createWords, handleChangePath }) => {
-    const [email, setEmail] = React.useState("");
-    const [password, setPassword] = React.useState("");
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
+    const handleSubmit = async (email, password) => {
         if (email && password) {
             await handlePostRequest(`${config && config.paths && config.paths.API_URL && config.paths.API_URL}/login`, {
                 email: email,
@@ -27,6 +19,10 @@ const Login = ({ handleShowAlert, config, createUser, createWords, handleChangeP
                     name: string
                 }
             }) => {
+                if (!res.user) {
+                    console.log(res)
+                    return handleShowAlert("Nieprawidłowe dane", "danger")
+                }
                 createUser(res);
 
                 localStorage.setItem("token", res.token);
@@ -39,9 +35,8 @@ const Login = ({ handleShowAlert, config, createUser, createWords, handleChangeP
 
                 createWords(wordsResult)
 
-                handleChangePath("dashboard")
+                handleChangePath("panel")
             })
-
         } else {
             handleShowAlert(`Wszystkie pola są wymagane`, "danger")
         }
@@ -50,8 +45,6 @@ const Login = ({ handleShowAlert, config, createUser, createWords, handleChangeP
     return (
         <div className="container__one-page--center">
             <LoginForm
-                setEmail={setEmail}
-                setPassword={setPassword}
                 handleSubmit={handleSubmit}
             />
         </div>
