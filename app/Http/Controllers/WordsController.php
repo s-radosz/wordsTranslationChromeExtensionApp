@@ -19,24 +19,39 @@ class WordsController extends Controller
         ], 200);
     }
 
+    private function checkWordAssignedToUser($userId, $word) {
+        $wordExisted = Word::where([['user_id', $userId], ['en', $word]])->count();
+
+        return $wordExisted;
+    }
+
     public function store(Request $request) {
         $userId = $request->userId;
         $en = $request->en;
         $pl = $request->pl;
 
-        $word = new Word;
+        $checkWordAssigned = $this->checkWordAssignedToUser($userId, $en);
 
-        $word->user_id = $userId;
-        $word->en = $en;
-        $word->pl = $pl;
-        $word->success_answers_count = 0;
-        $word->failure_answers_count = 0;
+        if($checkWordAssigned === 0) {
+            $word = new Word;
 
-        $word->save();
-
-        return response()->json(
-            ['result' => $word
-        ], 200);
+            $word->user_id = $userId;
+            $word->en = $en;
+            $word->pl = $pl;
+            $word->success_answers_count = 0;
+            $word->failure_answers_count = 0;
+    
+            $word->save();
+    
+            return response()->json(
+                ['result' => $word
+            ], 200);
+        } else {
+            return response()->json(
+                ['result' => "Exist"
+            ], 200);
+        }
+        
     }
 
     public function remove(Request $request) {

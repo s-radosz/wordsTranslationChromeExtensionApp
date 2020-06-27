@@ -8,6 +8,7 @@ import Statistics from "./Statistics/Statistics"
 import IllustrationModal from "./IllustrationModal/IllustrationModal"
 import PracticeWordsSection from "./PracticeWordsSection/PracticeWordsSection"
 import PracticeWordsModal from "./PracticeWordsModal/PracticeWordsModal"
+import AddCustomWord from "./AddCustomWord/AddCustomWord"
 
 const Dashboard = ({ handleShowAlert, words, user, config, createWords, removeWord, updateUserWordsCounts }) => {
     const [showIllustrationModal, setShowIllustrationModal] = React.useState(false);
@@ -77,6 +78,8 @@ const Dashboard = ({ handleShowAlert, words, user, config, createWords, removeWo
     return (
         <div className="dashboard">
             <Statistics user={user} />
+
+            <AddCustomWord handleShowAlert={handleShowAlert} />
 
             <WordsList
                 handlePageClick={handlePageClick}
