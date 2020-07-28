@@ -76,15 +76,11 @@ class Main extends Component<MainProps, MainState> {
     };
 
     handleChangePath = (path: string) => {
-
         const { allowedPaths } = this.state;
 
-        // if (!userLoggedIn) {
         if (allowedPaths.includes(path.split("/")[0])) {
-            //console.log(["chandleChangePath1", path]);
             this.setState({ allowRedirect: true, redirectedPath: path });
         } else {
-            //console.log(["chandleChangePath1", path]);
             this.setState({ allowRedirect: true, redirectedPath: "/" });
         }
     };
