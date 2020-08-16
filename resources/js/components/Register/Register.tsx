@@ -30,6 +30,7 @@ const Register = ({ handleShowAlert, user, config, createUser, handleChangePath 
     }
 
     const getUserLevels = () => {
+        console.log(["config.paths.API_URL", config.paths.API_URL])
         axios.get(`${config && config.paths && config.paths.API_URL && config.paths.API_URL}/user-levels/all`).then(res => {
             setLevelList(res.data.result);
         })
@@ -71,7 +72,7 @@ const Register = ({ handleShowAlert, user, config, createUser, handleChangePath 
                         </div>
                         <label>Jak oceniasz swój poziom angielskiego?</label>
                         <select onChange={e => setSelectedLevelId(e.target.value)}>
-                            {levelList.map((level, i) => {
+                            {levelList && levelList.length > 0 && levelList.map((level, i) => {
                                 return (
                                     <option value={level.id} key={level.id}>{level.level}</option>
                                 )

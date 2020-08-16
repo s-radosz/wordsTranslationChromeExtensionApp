@@ -54239,9 +54239,9 @@ __webpack_require__.r(__webpack_exports__);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-__webpack_require__(/*! ./components/Index */ "./resources/js/components/Index.tsx");
-
 __webpack_require__(/*! dotenv */ "./node_modules/dotenv/lib/main.js").config();
+
+__webpack_require__(/*! ./components/Index */ "./resources/js/components/Index.tsx");
 
 /***/ }),
 
@@ -55673,6 +55673,7 @@ var Register = function (_a) {
         }
     };
     var getUserLevels = function () {
+        console.log(["config.paths.API_URL", config.paths.API_URL]);
         axios__WEBPACK_IMPORTED_MODULE_1___default.a.get((config && config.paths && config.paths.API_URL && config.paths.API_URL) + "/user-levels/all").then(function (res) {
             setLevelList(res.data.result);
         });
@@ -55704,7 +55705,7 @@ var Register = function (_a) {
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"](formik__WEBPACK_IMPORTED_MODULE_4__["Field"], { name: "password", placeholder: "Has\u0142o", type: "password", className: 'form-control' + (errors.password && touched.password ? ' is-invalid' : '') }),
                         react__WEBPACK_IMPORTED_MODULE_0__["createElement"](formik__WEBPACK_IMPORTED_MODULE_4__["ErrorMessage"], { name: "password", component: "div", className: "invalid-feedback" })),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("label", null, "Jak oceniasz sw\u00F3j poziom angielskiego?"),
-                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("select", { onChange: function (e) { return setSelectedLevelId(e.target.value); } }, levelList.map(function (level, i) {
+                    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("select", { onChange: function (e) { return setSelectedLevelId(e.target.value); } }, levelList && levelList.length > 0 && levelList.map(function (level, i) {
                         return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("option", { value: level.id, key: level.id }, level.level));
                     })),
                     react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "form-group" },
@@ -56147,8 +56148,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var defaultState = {
   paths: {
-    APP_URL: "http://127.0.0.1:8000",
-    API_URL: "http://127.0.0.1:8000/api" // APP_URL: "https://www.praktyczny-angielski.pl",
+    APP_URL:  true ? "http://www.praktyczny-angielski.pl" : undefined,
+    API_URL:  true ? "".concat("http://www.praktyczny-angielski.pl", "/api") : undefined // APP_URL: "https://www.praktyczny-angielski.pl",
     // API_URL: "https://www.praktyczny-angielski.pl/api"
 
   },
@@ -56168,7 +56169,6 @@ function words() {
       return state;
   }
 }
-;
 
 /***/ }),
 
@@ -56340,8 +56340,8 @@ function configureStore(initialState) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\szymon\Desktop\projects\wordsTranslationChromeExtensionApp\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\szymon\Desktop\projects\wordsTranslationChromeExtensionApp\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/ubuntu/Desktop/projects/wordsTranslationChromeExtensionApp/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/ubuntu/Desktop/projects/wordsTranslationChromeExtensionApp/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
