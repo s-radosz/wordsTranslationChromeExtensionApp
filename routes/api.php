@@ -2,14 +2,14 @@
 
 use Illuminate\Http\Request;
 
-Route::group(['middleware' => ['cors']], function () {
-    Route::post('login', 'UserController@authenticate');
-    Route::post('register', 'UserController@register');
-    Route::post('checkIfEmailExists', 'UserController@checkIfEmailExists');
-    Route::get('user-levels/all', 'UserLevelsController@index');
-});
 
-Route::group(['middleware' => ['jwt.verify', 'cors']], function () {
+Route::post('login', 'UserController@authenticate');
+Route::post('register', 'UserController@register');
+Route::post('checkIfEmailExists', 'UserController@checkIfEmailExists');
+Route::get('user-levels/all', 'UserLevelsController@index');
+
+
+Route::group(['middleware' => ['jwt.verify']], function () {
     Route::get('user', 'UserController@getAuthenticatedUser');
 
     Route::get('words/all/{userId}', 'WordsController@index');
