@@ -11,19 +11,11 @@ class UserLevelsController extends Controller
 {
     public function index(Request $request) {
         try {
-            if (!$user = JWTAuth::parseToken()->authenticate()) {
-                $response = [
-                    'status' => 'ERROR',
-                    'message' => 'user not found',
-                ];
-                return response()->json($response, 403);
-            } else {
-                $userLevels = UserLevel::all();
+            $userLevels = UserLevel::all();
 
-                return response()->json(
-                    ['result' => $userLevels
-                ], 200); 
-            }
+            return response()->json(
+                ['result' => $userLevels
+            ], 200); 
         } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
             $response = [
                 'status' => 'ERROR',
