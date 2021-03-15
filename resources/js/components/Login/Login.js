@@ -12,13 +12,7 @@ const Login = ({ handleShowAlert, config, createUser, createWords, handleChangeP
             await handlePostRequest(`${config && config.paths && config.paths.API_URL && config.paths.API_URL}/login`, {
                 email: email,
                 password: password
-            }).then(async (res: {
-                token: string,
-                user: {
-                    id: number,
-                    name: string
-                }
-            }) => {
+            }).then(async (res) => {
                 if (!res.user) {
                     console.log(res)
                     return handleShowAlert("Nieprawidłowe dane", "danger")

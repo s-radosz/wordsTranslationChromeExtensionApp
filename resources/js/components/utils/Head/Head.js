@@ -1,11 +1,7 @@
 import * as React from "react";
 import { Helmet } from "react-helmet";
 
-type headType = {
-    title: string
-}
-
-const Head = ({ title }: headType) => {
+const Head = ({ title }) => {
     return (
         <Helmet>
             <meta charSet="utf-8" />

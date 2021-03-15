@@ -1,4 +1,3 @@
-
 let mix = require("laravel-mix");
 
 mix.js("resources/js/app.js", "public/js")
@@ -6,11 +5,11 @@ mix.js("resources/js/app.js", "public/js")
     .webpackConfig({
         module: {
             rules: [
-                {
-                    test: /\.tsx?$/,
-                    loader: "ts-loader",
-                    exclude: /node_modules/
-                },
+                // {
+                //     test: /\.tsx?$/,
+                //     loader: "ts-loader",
+                //     exclude: /node_modules/
+                // },
                 {
                     test: /\.mp4$/,
                     use: 'file-loader?name=videos/[name].[ext]'

@@ -18,11 +18,7 @@ const Dashboard = ({ handleShowAlert, words, user, config, createWords, removeWo
     const getUserWordCounts = async () => {
         if (user.id && user.token) {
             try {
-                await handleGetRequest(`${config.paths.API_URL}/words/counts/${user.id}`, user.token).then((res: {
-                    wordsOverallCount: number,
-                    wordsWeekCount: number,
-                    wordsTodayCount: number
-                }) => {
+                await handleGetRequest(`${config.paths.API_URL}/words/counts/${user.id}`, user.token).then((res) => {
                     let wordsCountResult = {
                         wordsOverallCount: res.wordsOverallCount,
                         wordsWeekCount: res.wordsWeekCount,
@@ -44,7 +40,7 @@ const Dashboard = ({ handleShowAlert, words, user, config, createWords, removeWo
         }
     }
 
-    const handleRemoveWord = async (id: number) => {
+    const handleRemoveWord = async (id) => {
         await handleRemoveRequest(`${config.paths.API_URL}/words/remove`,
             {
                 data: {
@@ -60,12 +56,12 @@ const Dashboard = ({ handleShowAlert, words, user, config, createWords, removeWo
         handleShowAlert("Prawidłowo usunięto.", "success");
     }
 
-    const handlePageClick = async (pageData: { selected: number }) => {
+    const handlePageClick = async (pageData) => {
         let wordsResult = await handleGetRequest(`${config.paths.API_URL}/words/all/${user.id}?page=${pageData.selected + 1}`, user.token)
         createWords(wordsResult)
     }
 
-    const handleAddIllustration = (id: number) => {
+    const handleAddIllustration = (id) => {
         setShowIllustrationModal(true)
         setCurrentWordIdIllustration(id)
     }

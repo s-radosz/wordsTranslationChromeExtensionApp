@@ -13,7 +13,7 @@ const LoginForm = ({ handleSubmit }) => {
                 password: Yup.string()
                     .required('Hasło jest wymagane')
             })}
-            onSubmit={(fields: { email: string, password: string }) => {
+            onSubmit={() => {
                 handleSubmit(fields.email, fields.password)
             }}
             render={({ errors, touched }) => (

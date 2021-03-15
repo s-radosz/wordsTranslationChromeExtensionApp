@@ -53,7 +53,7 @@ const Register = ({ handleShowAlert, user, config, createUser, handleChangePath 
                     password: Yup.string()
                         .required('Hasło jest wymagane')
                 })}
-                onSubmit={(fields: { name: string, email: string, password: string, setSelectedLevelId: string }) => {
+                onSubmit={() => {
                     handleSubmit(fields.email, fields.password, fields.name)
                 }}
                 render={({ errors, touched }) => (

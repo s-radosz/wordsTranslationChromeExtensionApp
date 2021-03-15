@@ -14,18 +14,13 @@ import Home from "./Home/Home";
 import Register from "./Register/Register";
 import Dashboard from "./Dashboard/Dashboard"
 import Login from "./Login/Login";
-import { MainProps, MainState } from "./Main.interface";
 import { Provider as ReduxProvider } from "react-redux";
 import configureStore from "./../modules/store";
 import LoginCheckMiddleware from "./helpers/LoginCheckMiddleware"
 
-//@ts-ignore
 const reduxStore = configureStore(window.REDUX_INITIAL_DATA);
 
-class Main extends Component<MainProps, MainState> {
-    history: any;
-    routes: any;
-
+class Main extends Component {
     constructor(props) {
         super(props);
 
@@ -64,7 +59,7 @@ class Main extends Component<MainProps, MainState> {
         ];
     }
 
-    checkAllowedPath = (path: string) => {
+    checkAllowedPath = (path) => {
         const allowedPaths = this.state.allowedPaths;
 
         if (allowedPaths.includes(path.split("/")[1])) {
@@ -75,7 +70,7 @@ class Main extends Component<MainProps, MainState> {
         }
     };
 
-    handleChangePath = (path: string) => {
+    handleChangePath = (path) => {
         const { allowedPaths } = this.state;
 
         if (allowedPaths.includes(path.split("/")[0])) {
@@ -85,7 +80,7 @@ class Main extends Component<MainProps, MainState> {
         }
     };
 
-    handleShowAlert = (message: string, status: string) => {
+    handleShowAlert = (message, status) => {
         //console.log(["handleShowAlert", message])
 
         this.setState({ alertMessage: message, alertStatus: status });
@@ -95,7 +90,7 @@ class Main extends Component<MainProps, MainState> {
         }, 4000);
     };
 
-    handleShowLoader = (status: boolean) => {
+    handleShowLoader = (status) => {
         this.setState({ showLoader: status });
     };
 

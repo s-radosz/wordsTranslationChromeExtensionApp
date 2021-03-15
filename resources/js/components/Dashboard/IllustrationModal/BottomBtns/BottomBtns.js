@@ -1,12 +1,6 @@
 import * as React from "react";
 
-type bottomBtnsType = {
-    handleCanvasClear: () => void,
-    handleWordIllustrationRemove: () => void,
-    handleSaveIllustration: () => void,
-}
-
-const BottomBtns = ({ handleCanvasClear, handleWordIllustrationRemove, handleSaveIllustration }: bottomBtnsType) => {
+const BottomBtns = ({ handleCanvasClear, handleWordIllustrationRemove, handleSaveIllustration }) => {
     return (
         <div className="illustration__content--btns">
             <button className="btn red-btn box-shadow" onClick={handleCanvasClear}>

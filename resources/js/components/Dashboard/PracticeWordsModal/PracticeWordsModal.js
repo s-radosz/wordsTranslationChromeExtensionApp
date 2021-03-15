@@ -5,12 +5,8 @@ import SelectWord from "./SelectWord/SelectWord"
 import { handleGetRequest, handlePostRequest } from "./../../helpers/api"
 import { connect } from "react-redux";
 
-interface IDrawnWord {
-    id: number
-}
-
 const PracticeWordsModal = ({ config, user, setShowPracticeWordsModal, handleRemoveWord }) => {
-    const [drawnWord, setDrawnWord] = React.useState<IDrawnWord | undefined>(undefined);
+    const [drawnWord, setDrawnWord] = React.useState(undefined);
     const [randomWordsList, setRandomWordsList] = React.useState([])
     const [wordAnswerStatus, setWordAnswerStatus] = React.useState("");
     const [blockSelect, setBlockSelect] = React.useState(false)
@@ -28,17 +24,17 @@ const PracticeWordsModal = ({ config, user, setShowPracticeWordsModal, handleRem
     }
 
     const getRandomWords = async () => {
-        await handleGetRequest(`${config.paths.API_URL}/words/random/new/3/${user.id}`, user.token).then((res: any) => {
+        await handleGetRequest(`${config.paths.API_URL}/words/random/new/3/${user.id}`, user.token).then((res) => {
             setRandomWordsList(res);
         })
     }
 
-    const checkWordSelection = async (selectedTranslation: string) => {
+    const checkWordSelection = async (selectedTranslation) => {
         if (!blockSelect) {
             await handlePostRequest(`${config.paths.API_URL}/words/check`, {
                 wordId: drawnWord.id,
                 selectedTranslation: selectedTranslation,
-            }, user.token).then((res: string) => {
+            }, user.token).then((res) => {
                 setBlockSelect(true)
                 setWordAnswerStatus(res)
                 setShoWordTranslation(true)
