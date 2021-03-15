@@ -30,7 +30,7 @@ const Register = ({ handleShowAlert, user, config, createUser, handleChangePath 
     }
 
     const getUserLevels = () => {
-        console.log(["config.paths.API_URL", config.paths.API_URL])
+        // console.log(["config.paths.API_URL", config.paths.API_URL])
         axios.get(`${config && config.paths && config.paths.API_URL && config.paths.API_URL}/user-levels/all`).then(res => {
             setLevelList(res.data.result);
         })

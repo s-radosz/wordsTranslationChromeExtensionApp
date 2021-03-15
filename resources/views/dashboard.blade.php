@@ -7,7 +7,6 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="description" content="Praktyczny Angielski - Ucz się angielskiego jakiego potrzebujesz!"/>
         <meta name="author" content="Szymon Radosz" />
-        <meta name="keywords" content="angielski, nauka angielskiego, nauka angielskiego online, nauka angielskiego dla dzieci, nauka angielskiego online za darmo, nauka angielskiego w domu"/>
         <link rel="icon" type="images/png" href="/images/favicon.png"/>
         <title>Praktyczny Angielski - Ucz się angielskiego jakiego potrzebujesz!</title>
         <!-- <link rel="icon" type="image/png" href="images/favicon.png" /> -->
@@ -28,9 +27,9 @@
     <body>
         <div id="app"></div>
 
-        <!-- <script>
+        <script>
             window.__REACT_DEVTOOLS_GLOBAL_HOOK__.inject = function () {}
-        </script> -->
+        </script>
 
         <link href="https://fonts.googleapis.com/css?family=Notable&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap" rel="stylesheet">
