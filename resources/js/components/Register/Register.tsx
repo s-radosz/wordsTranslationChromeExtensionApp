@@ -30,7 +30,6 @@ const Register = ({ handleShowAlert, user, config, createUser, handleChangePath 
     }
 
     const getUserLevels = () => {
-        // console.log(["config.paths.API_URL", config.paths.API_URL])
         axios.get(`${config && config.paths && config.paths.API_URL && config.paths.API_URL}/user-levels/all`).then(res => {
             setLevelList(res.data.result);
         })
@@ -53,7 +52,7 @@ const Register = ({ handleShowAlert, user, config, createUser, handleChangePath 
                     password: Yup.string()
                         .required('Hasło jest wymagane')
                 })}
-                onSubmit={(fields) => {
+                onSubmit={(fields: { name: string, email: string, password: string, setSelectedLevelId: string }) => {
                     handleSubmit(fields.email, fields.password, fields.name)
                 }}
                 render={({ errors, touched }) => (
@@ -72,7 +71,7 @@ const Register = ({ handleShowAlert, user, config, createUser, handleChangePath 
                         </div>
                         <label>Jak oceniasz swój poziom angielskiego?</label>
                         <select onChange={e => setSelectedLevelId(e.target.value)}>
-                            {levelList && levelList.length > 0 && levelList.map((level, i) => {
+                            {levelList.map((level, i) => {
                                 return (
                                     <option value={level.id} key={level.id}>{level.level}</option>
                                 )

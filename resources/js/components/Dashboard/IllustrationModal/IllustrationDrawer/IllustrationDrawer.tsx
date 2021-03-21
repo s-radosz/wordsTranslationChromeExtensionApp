@@ -1,6 +1,15 @@
 import * as React from "react";
 
-const IllustrationDrawer = ({ canvasImage, leftPersonText, setLeftPersonText, rightPersonText, setRightPersonText, handleTextChange }) => {
+type illustrationDrawerType = {
+    canvasImage: any,
+    leftPersonText: string,
+    setLeftPersonText: (text: string) => void,
+    rightPersonText: string,
+    setRightPersonText: (text: string) => void,
+    handleTextChange: (text: string) => void,
+}
+
+const IllustrationDrawer = ({ canvasImage, leftPersonText, setLeftPersonText, rightPersonText, setRightPersonText, handleTextChange }: illustrationDrawerType) => {
     return (
         <>
             <div className="illustration__drawer">

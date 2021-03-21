@@ -45,6 +45,8 @@
         "sass": "^1.23.3",
         "sass-loader": "^8.0.0",
         "sinon": "^8.1.1",
+        "ts-loader": "^8.0.18",
+        "typescript": "^4.2.3",
         "url-loader": "^2.3.0",
         "vue-template-compiler": "^2.6.10",
         "webpack-obj-loader": "^1.0.4"

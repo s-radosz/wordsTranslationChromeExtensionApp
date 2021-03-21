@@ -12,8 +12,6 @@
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-// require('dotenv').config()
-
 require("./components/Index");
 
-
+require('dotenv').config()
