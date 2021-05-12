@@ -1,5 +1,9 @@
 # Praktyczny Angielski - zapisuj i ucz się słownictwa, którego nie znasz.
 
+## Preview
+
+https://www.praktyczny-angielski.pl/
+
 ## Default .env
 
 ```
