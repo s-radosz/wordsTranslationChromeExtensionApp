@@ -1,7 +1,15 @@
 import * as React from "react";
 import SingleStat from "./SingleStat/SingleStat"
 
-const Statistics = ({ user }) => {
+type userType = {
+    user: {
+        countSavedWordsOverall: number,
+        countSavedWordsLastWeek: number,
+        countSavedWordsToday: number
+    }
+}
+
+const Statistics = ({ user }: userType) => {
     return (
         <div className="dashboard-statistics">
             <SingleStat

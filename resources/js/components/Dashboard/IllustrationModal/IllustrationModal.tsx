@@ -16,12 +16,12 @@ const IllustrationModal = ({ handleShowAlert, setShowIllustrationModal, currentW
         setShowIllustrationModal(false);
     }
 
-    const handleFormatCanvasText = (text) => {
+    const handleFormatCanvasText = (text: string) => {
         //add \n every 3 third word
         return text.split(/((?:\w+ ){3})/g).filter(Boolean).join("\n");
     }
 
-    const handleTextChange = (direction) => {
+    const handleTextChange = (direction: string) => {
         //console.log(["handleTextChange", direction])
 
         const ctx = canvasImage.current.getContext('2d');
@@ -78,7 +78,9 @@ const IllustrationModal = ({ handleShowAlert, setShowIllustrationModal, currentW
     const loadSavedIllustration = async () => {
         await handlePostRequest(`${config.paths.API_URL}/words/illustartion/find`, {
             wordId: currentWordIdIllustration,
-        }, user.token).then((res) => {
+        }, user.token).then((res: {
+            base64_image: string
+        }) => {
             if (res.base64_image) {
                 const ctx = canvasImage.current.getContext('2d');
                 var imageObj1 = new Image();

@@ -1,6 +1,11 @@
 import * as React from "react";
 
-const Alert = ({ message, status }) => {
+type alertType = {
+    message: string,
+    status: string
+}
+
+const Alert = ({ message, status }: alertType) => {
     return (
         <div className={`alert alert-${status} alert-dismissible`} role="alert">
             <strong>{message}</strong>
